@@ -1,0 +1,2 @@
+class RepeatInfo < ApplicationRecord
+end
