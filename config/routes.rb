@@ -6,7 +6,23 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   get 'application/index'
   
-  root 'default#index'
+  
+  get 'children/new'
+  
+  post 'children/new'
+  
+  
+  
+  resources :children do
+    member do
+      get :delete
+    end
+  end
+  
+  
+  
+  
+    root 'default#index'
   # You can have the root of your site routed with "root"
 
   # Example of regular route:

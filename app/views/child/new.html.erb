@@ -1,0 +1,18 @@
+
+<h2> Add a Child</h2>
+
+
+<%= form_for(@child) do |f| %>
+
+    <%= f.label :name %><br />
+     <div class="field"><%= f.text_field(:name) %> <br /></div>
+     
+    <%= f.label :balance %><br />
+     <div class="field"> <%= f.text_field(:balance) %> <br /></div>
+     
+    <%= f.label :parent_id %><br />
+     <div class="field"> <%= f.text_field(:parent_id) %><br /> </div>
+    
+    <%= f.submit("Add Child") %>
+    
+<% end %>
