@@ -19,8 +19,9 @@
     <%= f.label :balance %><br />
      <div class="field"> <%= f.text_field(:balance) %> <br /></div>
      
-    <%= f.label :parent_id %><br />
-     <div class="field"> <%= f.text_field(:parent_id) %><br /> </div>
+    <%= f.label :parent_id %><b> ID</b><br />
+    
+     <%= f.number_field :parent_id, :value => current_parent.id, :readonly => true %>
     
   <div class="actions">
     <%= f.submit("Add Child") %>
