@@ -24,7 +24,12 @@
      <%= f.number_field :parent_id, :value => current_parent.id, :readonly => true %>
     
   <div class="actions">
+    <% if @child.new_record? == true %>
     <%= f.submit("Add Child") %>
+    <% else %>
+    
+    <%= f.submit("Save Child") %>
+    <% end %>
   </div>
   
   

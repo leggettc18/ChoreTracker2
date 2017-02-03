@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Children</h1>
 
@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @children.children(current_parent.id).each do |child| %>
+    <% @children.childrenOf(current_parent.id).each do |child| %>
       <tr>
         <td><%= child.name %> - </td>
         

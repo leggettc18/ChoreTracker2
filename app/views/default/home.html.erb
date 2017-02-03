@@ -1,4 +1,4 @@
-<% if Child.children(current_parent.id).size <= 0 %>
+<% if Child.childrenOf(current_parent.id).size <= 0 %>
 
 
 
@@ -25,7 +25,7 @@
   <!--<br />-->
   <!--<%= current_parent.id %>-->
   
-  <% @childs = Child.children(current_parent.id) %>
+  <% @childs = Child.childrenOf(current_parent.id) %>
   
   <% @childs.each do |child| %>
   

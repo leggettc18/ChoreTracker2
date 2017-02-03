@@ -17,7 +17,7 @@ end
 
 #defining some shortcuts ?
 
-    scope :children, lambda {|query| where(["parent_id = ?", "#{query}"])}
+    scope :childrenOf, lambda {|query| where(["parent_id = ?", "#{query}"])}
 
 
 
