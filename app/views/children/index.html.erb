@@ -13,8 +13,8 @@
     <% @children.children(current_parent.id).each do |child| %>
       <tr>
         <td><%= child.name %> - </td>
-        <td><%= link_to 'Show', child %></td>
-        <td><%= link_to 'Edit', edit_child_path(child) %></td>
+        
+        <td> <%= link_to 'Edit', edit_child_path(child) %> -</td>
         <td><%= link_to 'Destroy', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
