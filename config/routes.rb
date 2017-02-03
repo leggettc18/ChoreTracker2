@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
-  get 'default/index'
-
-  devise_for :parents
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  
+  get 'default/index'
   get 'application/index'
   
-  
-  get 'children/new'
-  
-  post 'children/new'
+  root 'default#index'
   
   
+  #builds all routes for parents via Devise
+  devise_for :parents
   
+  
+
+  #builds all routes for children
   resources :children do
     member do
       get :delete
@@ -22,7 +24,6 @@ Rails.application.routes.draw do
   
   
   
-    root 'default#index'
   # You can have the root of your site routed with "root"
 
   # Example of regular route:
