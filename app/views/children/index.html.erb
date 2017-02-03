@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @children.each do |child| %>
+    <% @children.children(current_parent.id).each do |child| %>
       <tr>
         <td><%= child.name %> - </td>
         <td><%= link_to 'Show', child %></td>
