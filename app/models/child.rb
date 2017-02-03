@@ -1,7 +1,7 @@
 class Child < ApplicationRecord
  
  #because they dont match, rename
-   self.table_name = "children"
+  # self.table_name = "children"
  
  
  

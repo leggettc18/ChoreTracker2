@@ -12,10 +12,11 @@
   <tbody>
     <% @children.childrenOf(current_parent.id).each do |child| %>
       <tr>
-        <td><%= child.name %> - </td>
+        <td><b><%= child.name%></b> </td>
         
-        <td> <%= link_to 'Edit', edit_child_path(child) %> -</td>
-        <td><%= link_to 'Destroy', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> &nbsp; <%= link_to 'Freeze', edit_child_path(child) %> &nbsp;-</td>
+        <td> &nbsp; <%= link_to 'Edit', edit_child_path(child) %> &nbsp;-</td>
+        <td> &nbsp; <%= link_to 'Destroy', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
