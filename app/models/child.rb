@@ -2,7 +2,7 @@ class Child < ApplicationRecord
  
  #because they dont match, rename
   # self.table_name = "children"
- 
+ #this was wrong ^
  
  
      # this fixes something with frozen attribute being shite #ask me if you wanna know -joey
@@ -16,7 +16,9 @@ end
 
 
 #defining some shortcuts ?
-
+    
+    # Oject.scope - action
+    # Child.childrenOf(X) = returns an array of @children with parent id X
     scope :childrenOf, lambda {|query| where(["parent_id = ?", "#{query}"])}
 
 

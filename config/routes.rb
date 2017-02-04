@@ -5,6 +5,14 @@ Rails.application.routes.draw do
   
   get 'default/index'
   get 'application/index'
+  get 'default/child_door'
+  get 'default/account_door'
+  get 'default/change'
+  
+  post '/default/do_child'
+   post '/default/do_change'
+   post '/default/do_account'
+   
   
   root 'default#index'
   

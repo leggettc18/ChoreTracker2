@@ -1,0 +1,12 @@
+<h2>Change Family PIN</h2>
+<br />
+Please enter a new Family PIN
+<br />
+<%= form_tag '/default/do_change' do %>
+    <%=label_tag 'PIN Code' %>
+    <%=password_field_tag 'pin'%>
+
+    
+
+    <div><%= submit_tag 'Enter' %></div>
+<% end -%>

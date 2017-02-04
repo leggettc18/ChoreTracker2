@@ -14,9 +14,9 @@
       <tr>
         <td><b><%= child.name%></b> </td>
         
-        <td> &nbsp; <%= link_to 'Freeze', edit_child_path(child) %> &nbsp;-</td>
+        <td> &nbsp; <%= link_to 'View', child_path(child) %> &nbsp;-</td>
         <td> &nbsp; <%= link_to 'Edit', edit_child_path(child) %> &nbsp;-</td>
-        <td> &nbsp; <%= link_to 'Destroy', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> &nbsp; <%= link_to 'Remove', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Child', new_child_path %>
+<%= link_to 'New Child', new_child_path %> | <%= link_to 'Change Family PIN', 'default/change' %>

@@ -29,7 +29,7 @@
   
   <% @childs.each do |child| %>
   
-  <a class="btn btn-primary btn-lg" href='#' role="button"><%= child.name %></a>
+  <a class="btn btn-primary btn-lg" href='/children/<%= child.id %>' role="button"><%= child.name %></a>
   
   <% end %>
   </center>
