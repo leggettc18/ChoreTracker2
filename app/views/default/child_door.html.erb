@@ -10,7 +10,7 @@ This is a restricted area. Please enter PIN. <br />
 <br />
 <%= form_tag '/default/do_child' do %>
     <%=label_tag 'PIN Code' %>
-    <%=password_field_tag 'pin' %>
+    <%=password_field_tag 'pin', nil, :autocomplete => :off%>
 
     
 

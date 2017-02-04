@@ -4,7 +4,7 @@ Please enter a new Family PIN
 <br />
 <%= form_tag '/default/do_change' do %>
     <%=label_tag 'PIN Code' %>
-    <%=password_field_tag 'pin'%>
+    <%=text_field_tag 'pin' , nil, :autocomplete => :off %>
 
     
 

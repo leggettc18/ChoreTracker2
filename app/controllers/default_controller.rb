@@ -32,7 +32,7 @@ class DefaultController < ApplicationController
         if pin == current_parent.pincode
             redirect_to("/children")
          else
-            redirect_to("/default/index")
+            redirect_to("/default/child_door")
         end
     end
     
@@ -45,7 +45,7 @@ class DefaultController < ApplicationController
         if pin == current_parent.pincode
             redirect_to("/parents/edit")
          else
-            redirect_to("/default/index")
+            redirect_to("/default/account_door")
         end
     end
     
