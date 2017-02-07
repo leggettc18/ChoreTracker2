@@ -1,15 +1,43 @@
-<div class="jumbotron" background='green'>
+<% if Child.childrenOf(current_parent.id).size <= 0 %>
+
+
+
+<div class="jumbotron">
     <center>
   <h1>Let's get started!</h1>
   <p>Let's start by Adding a Child to your family...</p>
   <br />
-  <p><a class="btn btn-primary btn-lg" href='#' role="button">Add Child</a></p>
+  <p><a class="btn btn-primary btn-lg" href='/children/new' role="button">Add Child</a></p>
   </center>
   <br />
   
 <!--<%= controller_name %>-->
 </div>
 
+<% else %>
 
+
+
+<div class="jumbotron">
+    <center>
+  <h1>YOU GOT KIDS!</h1>
+  <p>you got kids</p>
+  <!--<br />-->
+  <!--<%= current_parent.id %>-->
+  
+  <% @childs = Child.childrenOf(current_parent.id) %>
+  
+  <% @childs.each do |child| %>
+  
+  <a class="btn btn-primary btn-lg" href='/children/<%= child.id %>' role="button"><%= child.name %></a>
+  
+  <% end %>
+  </center>
+  <br />
+  
+  
+<!--<%= controller_name %>-->
+</div>
+<% end %>
 
 <!--<%= controller_name.include?('default') %>-->

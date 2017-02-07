@@ -1,0 +1,29 @@
+<% if parent_signed_in? %>
+
+<h1>Children</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @children.childrenOf(current_parent.id).each do |child| %>
+      <tr>
+        <td><b><%= child.name%></b> </td>
+        
+        <td> &nbsp; <%= link_to 'View', child_path(child) %> &nbsp;-</td>
+        <td> &nbsp; <%= link_to 'Edit', edit_child_path(child) %> &nbsp;-</td>
+        <td> &nbsp; <%= link_to 'Remove', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Child', new_child_path %> | <%= link_to 'Change Family PIN', 'default/change' %>
+
+<% end %>

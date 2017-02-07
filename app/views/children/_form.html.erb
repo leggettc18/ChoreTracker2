@@ -1,0 +1,40 @@
+<% if parent_signed_in? %>
+
+<%= form_for(@child) do |f| %>
+
+  <% if child.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(child.errors.count, "error") %> prohibited this child from being saved:</h2>
+
+      <ul>
+      <% child.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <%= f.label :name %><br />
+     <div class="field"><%= f.text_field(:name) %> <br /></div>
+     
+    <%= f.label :balance %><br />
+     <div class="field"> <%= f.text_field(:balance) %> <br /></div>
+     
+    <%= f.label :parent_id %><b> ID</b><br />
+    
+     <%= f.number_field :parent_id, :value => current_parent.id, :readonly => true %>
+    
+  <div class="actions">
+    <% if @child.new_record? == true %>
+    <%= f.submit("Add Child") %>
+    <% else %>
+    
+    <%= f.submit("Save Child") %>
+    <% end %>
+  </div>
+  
+  
+<% end %>
+
+<% end %>

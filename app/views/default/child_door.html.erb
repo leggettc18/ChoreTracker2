@@ -1,0 +1,18 @@
+<h2>Enter Family PIN</h2>
+
+This is a restricted area. Please enter PIN. <br />
+<% if current_parent.pincode == '0000' %>
+<br />
+ The default pin is 0000.
+<br />
+<% end %>
+
+<br />
+<%= form_tag '/default/do_child' do %>
+    <%=label_tag 'PIN Code' %>
+    <%=password_field_tag 'pin', nil, :autocomplete => :off%>
+
+    
+
+    <div><%= submit_tag 'Enter' %></div>
+<% end -%>
