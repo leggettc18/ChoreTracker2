@@ -1,3 +1,5 @@
+<% if parent_signed_in? %>
+
 <%= form_for(@child) do |f| %>
 
   <% if child.errors.any? %>
@@ -33,4 +35,6 @@
   </div>
   
   
+<% end %>
+
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170204025331) do
+ActiveRecord::Schema.define(version: 20170207072737) do
 
   create_table "children", force: :cascade do |t|
     t.integer  "parent_id",  default: 0,     null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20170204025331) do
   create_table "rewards", force: :cascade do |t|
     t.integer  "cost",          default: 0,     null: false
     t.boolean  "auto_approve?", default: false, null: false
-    t.integer  "parent_id",                     null: false
+    t.integer  "parent_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["parent_id"], name: "index_rewards_on_parent_id"

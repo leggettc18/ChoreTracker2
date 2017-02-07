@@ -1,4 +1,4 @@
-
+<% if parent_signed_in? %>
 
 <h1>Children</h1>
 
@@ -25,3 +25,5 @@
 <br>
 
 <%= link_to 'New Child', new_child_path %> | <%= link_to 'Change Family PIN', 'default/change' %>
+
+<% end %>
