@@ -1,0 +1,40 @@
+<%= form_for(chore) do |f| %>
+  <% if chore.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chore.errors.count, "error") %> prohibited this chore from being saved:</h2>
+
+      <ul>
+      <% chore.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.label :name %><br />
+  <div class="field"><%= f.text_field(:name) %> <br /></div>
+  
+  <%= f.label :description %><br />
+  <div class="field"><%= f.text_area(:description, size: "20x5") %> <br /></div>
+     
+  <%= f.label :coins %><br />
+  <div class="field"><%= f.number_field(:coins) %> <br /></div>
+     
+  <div class="field"><%= f.hidden_field(:parent_id, :value => current_parent.id) %></div>
+  
+  <%= f.label :needs_approval? %><br />
+  <div class="field"><%= f.check_box(:needs_approval) %> <br /></div>
+       
+  <%= f.label :repeat_type %><br />
+  <div class="field"><%= f.select(:repeat_type, Chore.repeat_types.keys.to_a) %> <br /></div>
+  
+  <%= f.label :repeat_data %><p>Select 1-7 for days of the week, 1-31 for days of the month</p>
+  <div class="field"><%= f.number_field(:repeat_data) %> <br /></div>
+  
+  <%= f.label :child_id %><br />
+  <div class="field"><%= f.collection_select(:child_id, current_parent.children, :id, :name, {:include_blank => true}) %> <br /></div>
+     
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
