@@ -22,8 +22,11 @@
      
   <div class="field"><%= f.hidden_field(:parent_id, :value => current_parent.id) %></div>
   
-  <%= f.label :needs_approval? %><br />
+  <%= f.label :needs_approval %><br />
   <div class="field"><%= f.check_box(:needs_approval) %> <br /></div>
+  
+  <%= f.label :due_date %><br />
+  <div class="field"><%= f.datetime_field(:due_date) %> <br /></div>
        
   <%= f.label :repeat_type %><br />
   <div class="field"><%= f.select(:repeat_type, Chore.repeat_types.keys.to_a) %> <br /></div>

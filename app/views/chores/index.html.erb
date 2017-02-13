@@ -7,6 +7,7 @@
     <tr>
       <th> Name </th>
       <th> Coins </th>
+      <th> Due Date </th>
       <th >Repeat? </th>
       <th> Parent </th>
       <th >Child </th>
@@ -19,8 +20,9 @@
       <tr>
         <td><%= chore.name %></td>
         <td><%= chore.coins %></td>
+        <td><%= chore.due_date %></td>
         <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>
-        <td><%= Parent.find(chore.parent_id).id %></td> <!--replace later with name of parent, name is currently not stored in database--!>
+        <td><%= Parent.find(chore.parent_id).id %></td>
         <td><%= chore.child_id != nil ? Child.find(chore.child_id).name : 'Family-Wide' %></td>
         <td><%= link_to 'Show', chore %></td>
         <td><%= link_to 'Edit', edit_chore_path(chore) %></td>
