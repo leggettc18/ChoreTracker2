@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @chores.each do |chore| %>
+    <% @chores.made_by_parent(current_parent).each do |chore| %>
       <tr>
         <td><%= chore.name %></td>
         <td><%= chore.coins %></td>

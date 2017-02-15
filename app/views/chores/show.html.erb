@@ -56,11 +56,15 @@
         <% end %>
         <tr>
             <th>Due Date</th>
-            <td><%= @chore.due_date.to_formatted_s(:long_ordinal) %></td>
+            <td><%= @chore.due_date ? @chore.due_date.to_formatted_s(:long_ordinal) : 'None' %></td>
         </tr>
         <tr>
             <th>Child Name</th>
             <td><%= @chore.child_id ? Child.find(@chore.child_id).name : "Unassigned" %></td>
+        </tr>
+        <tr>
+            <th>Completed?</th>
+            <td><%= @chore.completed ? 'Yes' : 'No' %></td>
         </tr>
     </table>
 </div>

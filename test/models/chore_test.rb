@@ -24,5 +24,10 @@ class ChoreTest < ActiveSupport::TestCase
     assert_includes Chore.made_by_parent(parents(:one)), chores(:one)
     assert_includes Chore.made_by_parent(parents(:one)), chores(:two)
     refute_includes Chore.made_by_parent(parents(:one)), chores(:three)
+    sign_out parents(:one)
+    sign_in parents(:two)
+    refute_includes Chore.made_by_parent(parents(:two)), chores(:one)
+    refute_includes Chore.made_by_parent(parents(:two)), chores(:two)
+    assert_includes Chore.made_by_parent(parents(:two)), chores(:three)
   end
 end
