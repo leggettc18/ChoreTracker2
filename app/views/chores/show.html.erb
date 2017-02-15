@@ -1,4 +1,69 @@
 <p id="notice"><%= notice %></p>
 
+<div class="chores show">
+    <h2><%= @chore.name %></h2>
+    
+    <table summary="Chore detail view">
+        <tr>
+            <th>Name</th>
+            <td><%= @chore.name %></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><%= @chore.description %></td>
+        </tr>
+        <tr>
+            <th>Coins</th>
+            <td><%= @chore.coins %></td>
+        </tr>
+        <tr>
+            <th>Needs Parent Approval?</th>
+            <td><%= @chore.needs_approval ? 'Yes' : 'No' %></td>
+        </tr>
+        <tr>
+            <th>Repeat?</th>
+            <td><%= @chore.repeat_type %></td>
+        </tr>
+        <% if @chore.repeat_type == "Weekly" %>
+        <tr>
+            <th>Repeat Day of the Week</th>
+            <td>
+            <% case @chore.repeat_data
+                when 1 %>
+                <%= "Sunday" %>
+                <% when 2 %>
+                <%= "Monday" %>
+                <% when 3 %>
+                <%= "Tuesday" %>
+                <% when 4 %>
+                <%= "Wednesday" %>
+                <% when 5 %>
+                <%= "Thursday" %>
+                <% when 6 %>
+                <%= "Friday" %>
+                <% when 7 %>
+                <%= "Saturday" %>
+                <% else %>
+                <%= "Not a valid day of the week" %>
+                <% end %>
+            </td>
+        </tr>
+        <% elsif @chore.repeat_type == "Monthly" %>
+        <tr>
+            <th>Repeat Day of the Month</th>
+            <td><%= @chore.repeat_data %></td>
+        </tr>
+        <% end %>
+        <tr>
+            <th>Due Date</th>
+            <td><%= @chore.due_date.to_formatted_s(:long_ordinal) %></td>
+        </tr>
+        <tr>
+            <th>Child Name</th>
+            <td><%= @chore.child_id ? Child.find(@chore.child_id).name : "Unassigned" %></td>
+        </tr>
+    </table>
+</div>
+
 <%= link_to 'Edit', edit_chore_path(@chore) %> |
 <%= link_to 'Back', chores_path %>
