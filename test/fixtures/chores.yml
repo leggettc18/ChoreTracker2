@@ -10,6 +10,7 @@ one:
     needs_approval: false
     repeat_type: 0
     repeat_data: 0
+    due_date: <%= DateTime.now.tomorrow %>
     child_id: 1
     parent_id: 1
     id: 1
@@ -21,7 +22,18 @@ two:
     needs_approval: true
     repeat_type: 1
     repeat_data: 0
+    due_date: <%= 2.weeks.ago %>
     child_id: 1
     parent_id: 1
     id: 2
 # column: value
+three:
+    coins: 5
+    description: test
+    needs_approval: true
+    repeat_type: 2
+    repeat_data: 5
+    due_date: <%= DateTime.now %>
+    child_id: 2
+    parent_id: 2
+    id: 3

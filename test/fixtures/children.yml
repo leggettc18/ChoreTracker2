@@ -19,3 +19,9 @@ two:
     balance: 100
     id: 2
 # column: value
+three:
+    parent_id: 2
+    name: Jim Bob
+    frozen?: false
+    balance: 150
+    id: 3
