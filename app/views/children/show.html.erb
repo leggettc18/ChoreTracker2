@@ -2,7 +2,7 @@
 
 <% if current_parent.id == @child.parent_id %>
 
-<h2>Welcome <%= @child.name %> !</h2>
+<h2>Welcome <%= @child.name %> !</h2
 
 
 <h3> Your Current Chores </h3>
@@ -16,6 +16,7 @@
 
   <tbody>
     <% @children.each do |child| %>
+    <!--Each time it goes through and creates the three table rows for each child.
       <tr>
         <td><b> Chore <%#= child.name%></b> </td>
         

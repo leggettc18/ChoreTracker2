@@ -29,7 +29,6 @@
        <a href="/default/index">Home <span class="sr-only">(current)</span></a></li>
       
        
-       
         <%if parent_signed_in? %>
         
         
@@ -42,7 +41,7 @@
         
         
           <% if controller_name.include?('reward') %><li class="active"><% else %><li><% end %>
-          <a href="#">Rewards <span class="sr-only">(current)</span></a></li>
+          <a href="/rewards">Rewards <span class="sr-only">(current)</span></a></li>
         
         
         <% end %>
