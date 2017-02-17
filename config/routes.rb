@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :rewards
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   get 'default/child_door'
   get 'default/account_door'
   get 'default/change'
-  
+
   post '/default/do_child'
    post '/default/do_change'
    post '/default/do_account'
