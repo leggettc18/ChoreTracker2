@@ -9,9 +9,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 20170208060022) do
-
+ActiveRecord::Schema.define(version: 20170215201322) do
   create_table "children", force: :cascade do |t|
     t.integer  "parent_id",  default: 0,     null: false
     t.string   "name",       default: "",    null: false
@@ -24,13 +22,19 @@ ActiveRecord::Schema.define(version: 20170208060022) do
 
   create_table "chores", force: :cascade do |t|
     t.integer  "child_id"
-    t.boolean  "repeat?",     default: false, null: false
-    t.integer  "coins",       default: 0,     null: false
-    t.string   "name",        default: "",    null: false
+    t.integer  "coins",                     default: 0,     null: false
+    t.string   "name",                      default: "",    null: false
     t.text     "description"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "parent_id"
+    t.boolean  "needs_approval",            default: false
+    t.integer  "repeat_type",               default: 0
+    t.integer  "repeat_data",    limit: 31, default: 0
+    t.datetime "due_date"
+    t.boolean  "completed",                 default: false
     t.index ["child_id"], name: "index_chores_on_child_id"
+    t.index ["parent_id"], name: "index_chores_on_parent_id"
   end
 
   create_table "parents", force: :cascade do |t|

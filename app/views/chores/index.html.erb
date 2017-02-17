@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Chores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Coins </th>
+      <th> Due Date </th>
+      <th >Repeat? </th>
+      <th> Parent </th>
+      <th >Child </th>
+      <th colspan="3"> Actions </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chores.made_by_parent(current_parent).each do |chore| %>
+      <tr>
+        <td><%= chore.name %></td>
+        <td><%= chore.coins %></td>
+        <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>
+        <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>
+        <td><%= Parent.find(chore.parent_id).id %></td>
+        <td><%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></td>
+        <td><%= link_to 'Show', chore %></td>
+        <td><%= link_to 'Edit', edit_chore_path(chore) %></td>
+        <td><%= link_to 'Destroy', chore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chore', new_chore_path %>
