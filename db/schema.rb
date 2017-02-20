@@ -9,7 +9,9 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+
 ActiveRecord::Schema.define(version: 20170215201322) do
+
   create_table "children", force: :cascade do |t|
     t.integer  "parent_id",  default: 0,     null: false
     t.string   "name",       default: "",    null: false
