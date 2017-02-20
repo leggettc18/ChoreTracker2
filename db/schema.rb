@@ -9,7 +9,9 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 20170215201322) do
+
+ActiveRecord::Schema.define(version: 20170219234319) do
+
   create_table "children", force: :cascade do |t|
     t.integer  "parent_id",  default: 0,     null: false
     t.string   "name",       default: "",    null: false
@@ -71,6 +73,8 @@ ActiveRecord::Schema.define(version: 20170215201322) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "name"
+    t.integer  "child_id"
+    t.index ["child_id"], name: "index_rewards_on_child_id"
     t.index ["parent_id"], name: "index_rewards_on_parent_id"
   end
 
