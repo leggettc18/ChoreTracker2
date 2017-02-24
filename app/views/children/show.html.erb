@@ -2,68 +2,35 @@
 
 <% if current_parent.id == @child.parent_id %>
 
-<h2>Welcome <%= @child.name %>!</h2
+<h1>Welcome <%= @child.name %>!<br></h1>
 
-<h3> Your Current Chores</h3>
-
-<table style="width:40%">
-  <tr>
-    <th>Name</th></th>
-    <th>Coins</th>
-    <th>Date</th>
-  </tr>
-  <tr>
+<table id="separated">
 <tbody>
-    <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
       <tr>
-        <td><%= chore.name %></td>
-        <td><%= chore.coins %></td>
-        <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>
+        <td><font size="4"><%= link_to 'Return Home', '/default/index' %></td>
+        <td><font size="4">Reward Store</td>
+        <td><font size="4">Extra Chores</td>
       </tr>
-    <% end %>
-  </tbody>
-  </tr>
-</table>
-
-  <tbody>
-    <% @children.each do |child| %>
-    <!--Each time it goes through and creates the three table rows for each child.
-      <tr>
-        <td><b> Chore <%#= child.name%></b> </td>
-        
-        <td> &nbsp; <%= link_to 'View', child_path(child) %> &nbsp;-</td>
-        <td> &nbsp; <%= link_to 'Complete', edit_child_path(child) %> &nbsp;-</td>
-        <td> &nbsp; <%= link_to 'Trade', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
+<h2>Your Assigned Chores...</h2>
+<h3>Click to Complete</h3>
 
-<h3> Completed Chores </h3>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @children.childrenOf(current_parent.id).each do |child| %>
+<% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
+<table id="chores">
+<tbody>
       <tr>
-        <td><b> Chore <%#= child.name%></b> </td>
-        
-        <td> &nbsp; <%= link_to 'View', child_path(child) %> &nbsp;-</td>
-        <td> &nbsp; <%= link_to 'Complete', edit_child_path(child) %> &nbsp;-</td>
-        <td> &nbsp; <%= link_to 'Trade', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td align="left"><font size="4" color=white><%= link_to chore.name, chore %></td>
+        <td align="right"><font color=white>Due: <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></td>
+      </tr>
+      <tr>
+        <td align="left"><font size='2' color=white><%= chore.description %></td>
+        <td align="right"><font size="4" color=white><img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="" height=25width=25></img>x <%= chore.coins %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%#= link_to 'Edit', edit_child_path(@child) %> |
-<%= link_to 'Back', '/default/index' %>
 
 <% else %>
 
@@ -75,7 +42,6 @@
 <center>
 You must be logged in to see this page. <br />
 <%= link_to "Log in", '/parents/sign_in/' %><br />
-
 </center>
 
 <% end %>

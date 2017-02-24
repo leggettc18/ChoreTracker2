@@ -17,4 +17,54 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+h1 {
+    font-size: 70px;
+    font-weight: bold;  
+    font-family: Helvetica;
+    color: #FFFFFF;
+    text-align: center;
+}
 
+h2 {
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 25px;
+    margin-bottom: 2px;
+}
+
+h3 {
+    margin-top: 2px;
+    margin-bottom: 0px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 13px;
+}
+
+body {
+    background-color: #3f3f3f;
+}
+
+table, th, td#separated {
+    text-align: center;
+    color: #FFFFFF;
+    table-layout:fixed;
+    width:40%;
+    border: 1px solid black;
+    background-color:#6495ED;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+table, th, td#chores {
+    color: #FFFFFF;
+    table-layout:fixed;
+    width:40%;
+    border: 1px solid black;
+    background-color:#6495ED;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+a, a:active, a:visited { color: white; }
