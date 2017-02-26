@@ -6,7 +6,7 @@ class RewardsController < ApplicationController
   # GET /rewards
   # GET /rewards.json
   def index
-    @rewards = Reward.all
+    @rewards = current_parent.rewards
   end
 
   # GET /rewards/1
@@ -71,6 +71,6 @@ class RewardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reward_params
-      params.fetch(:reward, {}).permit(:cost, :name)
+      params.fetch(:reward, {}).permit(:cost, :name, :child_id, :parent_id)
     end
 end
