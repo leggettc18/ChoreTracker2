@@ -1,4 +1,6 @@
 class RewardsController < ApplicationController
+  
+  
   before_action :set_reward, only: [:show, :edit, :update, :destroy]
 
   # GET /rewards
