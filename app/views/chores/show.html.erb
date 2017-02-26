@@ -3,31 +3,31 @@
 <div class="chores show">
     <h2><%= @chore.name %></h2>
     
-    <table summary="Chore detail view">
+    <table>
         <tr>
             <th>Name</th>
-            <td><%= @chore.name %></td>
+            <th><%= @chore.name %></th>
         </tr>
         <tr>
             <th>Description</th>
-            <td><%= @chore.description %></td>
+            <th><%= @chore.description %></th>
         </tr>
         <tr>
             <th>Coins</th>
-            <td><%= @chore.coins %></td>
+            <th><%= @chore.coins %></th>
         </tr>
         <tr>
             <th>Needs Parent Approval?</th>
-            <td><%= @chore.needs_approval ? 'Yes' : 'No' %></td>
+            <th><%= @chore.needs_approval ? 'Yes' : 'No' %></th>
         </tr>
         <tr>
             <th>Repeat?</th>
-            <td><%= @chore.repeat_type %></td>
+            <th><%= @chore.repeat_type %></th>
         </tr>
         <% if @chore.repeat_type == "Weekly" %>
         <tr>
             <th>Repeat Day of the Week</th>
-            <td>
+            <th>
             <% case @chore.repeat_data
                 when 1 %>
                 <%= "Sunday" %>
@@ -46,25 +46,25 @@
                 <% else %>
                 <%= "Not a valid day of the week" %>
                 <% end %>
-            </td>
+            </th>
         </tr>
         <% elsif @chore.repeat_type == "Monthly" %>
         <tr>
             <th>Repeat Day of the Month</th>
-            <td><%= @chore.repeat_data %></td>
+            <th><%= @chore.repeat_data %></th>
         </tr>
         <% end %>
         <tr>
             <th>Due Date</th>
-            <td><%= @chore.due_date ? @chore.due_date.to_formatted_s(:long_ordinal) : 'None' %></td>
+            <th><%= @chore.due_date ? @chore.due_date.to_formatted_s(:long_ordinal) : 'None' %></th>
         </tr>
         <tr>
             <th>Child Name</th>
-            <td><%= @chore.child_id ? Child.find(@chore.child_id).name : "Unassigned" %></td>
+            <th><%= @chore.child_id ? Child.find(@chore.child_id).name : "Unassigned" %></th>
         </tr>
         <tr>
             <th>Completed?</th>
-            <td><%= @chore.completed ? 'Yes' : 'No' %></td>
+            <th><%= @chore.completed ? 'Yes' : 'No' %></th>
         </tr>
     </table>
 </div>
