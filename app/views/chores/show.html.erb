@@ -1,73 +1,403 @@
-<p id="notice"><%= notice %></p>
 
-<div class="chores show">
-    <h2><%= @chore.name %></h2>
-    
-    <table>
-        <tr>
-            <th>Name</th>
-            <th><%= @chore.name %></th>
-        </tr>
-        <tr>
-            <th>Description</th>
-            <th><%= @chore.description %></th>
-        </tr>
-        <tr>
-            <th>Coins</th>
-            <th><%= @chore.coins %></th>
-        </tr>
-        <tr>
-            <th>Needs Parent Approval?</th>
-            <th><%= @chore.needs_approval ? 'Yes' : 'No' %></th>
-        </tr>
-        <tr>
-            <th>Repeat?</th>
-            <th><%= @chore.repeat_type %></th>
-        </tr>
-        <% if @chore.repeat_type == "Weekly" %>
-        <tr>
-            <th>Repeat Day of the Week</th>
-            <th>
-            <% case @chore.repeat_data
-                when 1 %>
-                <%= "Sunday" %>
-                <% when 2 %>
-                <%= "Monday" %>
-                <% when 3 %>
-                <%= "Tuesday" %>
-                <% when 4 %>
-                <%= "Wednesday" %>
-                <% when 5 %>
-                <%= "Thursday" %>
-                <% when 6 %>
-                <%= "Friday" %>
-                <% when 7 %>
-                <%= "Saturday" %>
-                <% else %>
-                <%= "Not a valid day of the week" %>
-                <% end %>
-            </th>
-        </tr>
-        <% elsif @chore.repeat_type == "Monthly" %>
-        <tr>
-            <th>Repeat Day of the Month</th>
-            <th><%= @chore.repeat_data %></th>
-        </tr>
-        <% end %>
-        <tr>
-            <th>Due Date</th>
-            <th><%= @chore.due_date ? @chore.due_date.to_formatted_s(:long_ordinal) : 'None' %></th>
-        </tr>
-        <tr>
-            <th>Child Name</th>
-            <th><%= @chore.child_id ? Child.find(@chore.child_id).name : "Unassigned" %></th>
-        </tr>
-        <tr>
-            <th>Completed?</th>
-            <th><%= @chore.completed ? 'Yes' : 'No' %></th>
-        </tr>
-    </table>
+
+<div class="col-md-6 col-md-offset-3">
+	<h2><%= @chore.name %></h2>
+	<p><%= @chore.description %></p>
+	<th><%= @chore.coins %></th>
+
+
+	<%= link_to "Edit", edit_chore_path(@chore) %>
+	<%= link_to "Delete", chore_path(@chore), method: :delete, data: { confirm: "Are you sure?" } %>
+	<%= link_to "Back", chores_path %>
 </div>
 
-<%= link_to 'Edit', edit_chore_path(@chore) %> |
-<%= link_to 'Back', chores_path %>
+<div ng-app="TaskManager">        
+<div class="container">
+            <div class="content" ng-controller="taskController">
+            <h1>NoGo</h1>
+            <p class="tagline">an angularJS todo app</p>
+            <form>
+                <div class="inputContainer">
+                    <input type="text" id="description" class="taskName" placeholder="What do you need to do?" ng-model="newTask">
+                    <label for="description">Description</label>
+                </div>
+                <div class="inputContainer half last">
+                    <i class="fa fa-caret-down selectArrow"></i>
+                    <select id="category" class="taskCategory" ng-model="newTaskCategory" ng-options="obj.name for obj in categories">
+                        <option class="disabled" value="">Choose a category</option>
+                    </select>
+                    <label for="category">Category</label>
+                </div>
+                <div class="inputContainer half last right">
+                    <input type="date" id="dueDate" class="taskDate" ng-model="newTaskDate">
+                    <label for="dueDate">Due Date</label>
+                </div>
+                <div class="row">
+                    <button class="taskAdd" ng-click="addNew()"><i class="fa fa-plus icon"></i>Add task</button>
+                    <button class="taskDelete" ng-click="deleteTask()"><i class="fa fa-trash-o icon"></i>Delete Tasks</button>
+                </div>
+            </form>
+            <ul  class="taskList">
+                <li class="taskItem" ng-repeat="taskItem in taskItem track by $index" ng-model="taskItem"><input type="checkbox" class="taskCheckbox" ng-model="taskItem.complete" ng-change="save()">
+                    <span class="complete-{{taskItem.complete}}">{{taskItem.description}}</span>
+                    <span class="category-{{taskItem.category}}">{{taskItem.category}}</span>
+                    <strong class="taskDate complete-{{taskItem.complete}}"><i class="fa fa-calendar"></i>{{taskItem.date | date : 'mediumDate'}}</strong>
+                </li>
+            </ul><!-- taskList -->
+            </div><!-- content -->
+ </div><!-- container -->
+        <footer>
+            <p>Built by <a href="http://www.aaroncochran.me">Aaron Cochran</a> | Fonts by Google | Icons by <a href="http://fortawesome.github.io/Font-Awesome/">FontAwesome</a></p>
+        </footer>
+</div>
+
+<style>
+    /* basic reset */
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+/* app */
+html {
+    font-size: 100%;
+}
+
+body {
+    background: #b1f6cb;
+    background-image: url(http://i1367.photobucket.com/albums/r792/acochran89/congruent_pentagon_zps6e6b49bf.png);
+    font-family: 'Open Sans',sans-serif;
+}
+/* super basic grid structure */
+.container {
+    width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 20px 0;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.2);
+            box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+.row {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+}
+
+.half {
+    width: 50%;
+    float: left;
+}
+
+.content {
+    background: #fff;
+}
+
+/* logo */
+h1 {
+    font-family: 'Rokkitt', sans-serif;
+    color: #666;
+    text-align: center;
+    font-weight: 400;
+    margin: 0;
+}
+
+.tagline {
+    margin-top: -10px;
+    text-align: center;
+    padding: 5px 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #777; 
+}
+
+/* inputs */
+.inputContainer {
+    height: 60px;
+    border-top: 1px solid #e5e5e5;
+    position: relative;
+    overflow: hidden;
+}
+
+.inputContainer.last {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+}
+
+.inputContainer.half.last.right {
+    border-left: 1px solid #efefef;
+}
+
+input[type="date"], input[type="text"], select {
+    height: 100%;
+    width: 100%;
+    padding: 0 20px;
+    position: absolute;
+    top: 0;
+    vertical-align: middle;
+    display: inline-block;
+    border: none;
+    border-radius: none;
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    -webkit-transition: background 0.3s;
+            transition: background 0.3s;
+}
+
+input[type="date"] {
+    cursor: pointer;
+}
+
+input[type="date"]:focus, input[type="text"]:focus, select:focus {
+    outline: none;
+    background: #ecf0f1;
+}
+
+::-webkit-input-placeholder {
+    color: lightgrey;
+    font-weight: normal;
+    -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+}
+::-moz-placeholder {
+    color: lightgrey;
+    font-weight: normal;
+    transition: all 0.3s;
+}
+::-ms-input-placeholder {
+    color: lightgrey;
+    font-weight: normal;
+    transition: all 0.3s;
+}
+input:-moz-placeholder {
+    color: lightgrey;
+    font-weight: normal;
+    transition: all 0.3s;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: #95a5a6;
+    font-weight: bold;
+}
+
+input:focus::-moz-input-placeholder {
+    color: #95a5a6;
+    font-weight: bold;
+}
+
+label {
+    padding: 5px 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #777;
+    display: block;
+    position: absolute;
+}
+
+button {
+    font-family: 'Open Sans', sans-serif;
+    background: transparent;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 150px;
+    font-size: 1em;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    position: relative;
+    -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+}
+
+.icon {
+    position: absolute;
+    top: 30%;
+    left: 10px;
+    font-size: 20px;
+}
+
+.taskAdd {
+    background: #444;
+    padding-left: 15px;
+}
+
+.taskAdd:hover {
+    background: #303030;
+}
+
+.taskDelete {
+    background: #e74c3c;
+    padding-left: 30px;
+}
+
+.taskDelete:hover {
+    background: #c0392b;
+}
+
+/* task styles */
+.taskList {
+    list-style: none;
+    padding: 0 20px;
+}
+
+.taskItem {
+    border-top: 1px solid #e5e5e5;
+    padding: 15px 0;
+    color: #777;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.taskList .taskItem:nth-child(even) {
+    background: #fcfcfc;
+}
+
+.taskCheckbox {
+    margin-right: 1em;
+}
+
+.complete-true {
+    text-decoration:  line-through;
+    color: #bebebe;
+}
+
+.taskList .taskDate {
+    color: #95a5a6;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    margin-left: 41px;
+}
+
+.fa-calendar {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+[class*='category-'] {
+    display: inline-block;
+    font-size: 10px;
+    background: #444;
+    vertical-align: middle;
+    color: #fff;
+    padding: 10px;
+    width: 75px;
+    text-align: center;
+    border-radius: 2px;
+    float: right;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-right: 20px;
+}
+
+.category- {
+    background: transparent;
+}
+
+.category-Personal {
+    background: #2980b9;
+}
+
+.category-Work {
+    background: #8e44ad;
+}
+
+.category-School {
+    background: #f39c12;
+}
+
+.category-Cleaning {
+    background: #16a085;
+}
+
+.category-Other {
+    background: #d35400;
+}
+
+footer {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #777;
+}
+
+footer a {
+    color: #f39c12;
+}
+/* custom checkboxes */
+.taskCheckbox {
+    -webkit-appearance: none;
+            appearance: none;
+    -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+    display: inline-block;
+    cursor: pointer;
+    width: 19px;
+    height: 19px;
+    vertical-align: middle;
+}
+
+.taskCheckbox:focus {
+    outline: none;
+}
+
+.taskCheckbox:before, .taskCheckbox:checked:before {
+    font-family: 'FontAwesome';
+    color: #444;
+    font-size: 20px;
+    -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+
+}
+
+.taskCheckbox:before {
+    content: '\f096';
+}
+
+.taskCheckbox:checked:before {
+    content: '\f14a';
+    color: #16a085;
+}
+/* custom select menu */
+.taskCategory {
+    -webkit-appearance: none;
+            appearance: none;
+    cursor: pointer;
+    padding-left: 16.5px; /*specific positioning due to difficult behavior of select element*/
+    background: #fff;
+}
+
+.selectArrow {
+    position: absolute;
+    z-index: 10;
+    top: 35%;
+    right: 0;
+    margin-right: 20px;
+    color: #777;
+    pointer-events: none;
+}
+
+.taskCategory option {
+    background: #fff;
+    border: none;
+    outline: none;
+    padding: 0 100px;
+}
+
+
+</style>
