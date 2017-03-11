@@ -58,3 +58,5 @@ group :development do
   gem 'spring'
 end
 
+# Magus Test
+gem 'simple_form'
