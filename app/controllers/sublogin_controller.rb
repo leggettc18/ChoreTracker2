@@ -1,0 +1,2 @@
+class SubloginController < ApplicationController
+end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   
+  
   get 'default/index'
   get 'application/index'
   get 'default/child_door'
@@ -32,7 +33,8 @@ Rails.application.routes.draw do
     end
   end
   
-  
+  get '/sublogin/', to: 'sublogin#login'
+  get '/sublogin/who', to: 'sublogin#reportLoggedIn.html.erb'
   
   
   # You can have the root of your site routed with "root"

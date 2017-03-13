@@ -30,18 +30,19 @@ module ApplicationHelper
         
         if (expiration <=> DateTime.now) == 1 #cookie is still valid
         
-        #Reset cookie expiration
-        if(persistant) #The cookie is set to not expire for a long time
-            cookies[:sublogin] = {
-              value: JSON.generate([type, 1.year.from_now, id, true]),
-              expires: 1.year.from_now
-            }
-        else #Normal cookie expiration time. Maybe this will can be changed later to have different times for parents and children
-            cookies[:sublogin] = {
-              value: JSON.generate([type, 5.minutes.from_now, id, false]),
-              expires: 5.minutes.from_now
-            }
-        end
+            #Reset cookie expiration
+            if(persistant) #The cookie is set to not expire for a long time
+                cookies[:sublogin] = {
+                  value: JSON.generate([type, 1.year.from_now, id, true]),
+                  expires: 1.year.from_now
+                }
+            else #Normal cookie expiration time. Maybe this will can be changed later to have different times for parents and children
+                cookies[:sublogin] = {
+                  value: JSON.generate([type, 5.minutes.from_now, id, false]),
+                  expires: 5.minutes.from_now
+                }
+            end
+        
         
             if(type == 'parent' or type == 'child')
                 return {
@@ -66,6 +67,7 @@ module ApplicationHelper
     #pin is obviously the pin
     #returns true if login information is correct, false otherwise.
     #sets cookie automatically if information is correct
+    #Returns true if the login was successful, false otherwise
     #WARNING: THIS FUNCTION DOES NOT CURRENTLY ENFORCE LOGGING IN FOR ONLY THE FAMILY LOGGED IN WITH DEVISE
     #WARNING: THIS FUNCTION DOES NOT CURRENTLY ENFORCE LOGGING IN FOR ONLY THE FAMILY LOGGED IN WITH DEVISE
     #WARNING: THIS FUNCTION DOES NOT CURRENTLY ENFORCE LOGGING IN FOR ONLY THE FAMILY LOGGED IN WITH DEVISE
@@ -89,6 +91,9 @@ module ApplicationHelper
                expiration = 1.year.from_now 
             end
             cookie[:sublogin] = JSON.generate(type, expiration, id, stayLoggedIn)
+            return true
+        else
+            return false
         end
             
     end
