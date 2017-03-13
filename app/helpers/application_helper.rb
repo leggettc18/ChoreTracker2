@@ -19,10 +19,10 @@ module ApplicationHelper
     #If nobody is logged in, returns false
     #Refreshes the expiration time if it's valid and not expired
     def getSubLoggedUser
-        if cookie[:sublogin].nil? #They don't even have a cookie! How could they be logged in?
+        if cookies[:sublogin].nil? #They don't even have a cookie! How could they be logged in?
             return false
         end
-        unpackedCookie = JSON.parse(cookie[:sublogin])
+        unpackedCookie = JSON.parse(cookies[:sublogin])
         type = unpackedCookie[0]
         expiration = unpackedCookie[1]
         id = unpackedCookie[2]
@@ -86,11 +86,11 @@ module ApplicationHelper
         end
         
         if allowLogin
-            expiration = 5.minutes.from_now #stayLoggedIn == false
+            expiration = 20.minutes.from_now #stayLoggedIn == false
             if stayLoggedIn
                expiration = 1.year.from_now 
             end
-            cookie[:sublogin] = JSON.generate(type, expiration, id, stayLoggedIn)
+            cookies[:sublogin] = JSON.generate([type, expiration, id, stayLoggedIn])
             return true
         else
             return false
