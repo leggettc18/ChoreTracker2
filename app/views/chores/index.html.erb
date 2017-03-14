@@ -1,18 +1,17 @@
 
-<h1>CHORES!</h1>
+<!-- Checks to see if a parent is signed in, if one is, it will list its chores. -->
+<!-- If not, it will render the landing page that asks the user to sign up or login. -->
 
- <!--Checks to see if a user is signed in, if one is, it will list its checklist. -->
- <!--If not, it will render the landing page that asks the user to sign up or login. -->
- <button type="button" class="btn btn-warning" style="color: #1ECD97;"><%= link_to "New Chore", new_chore_path %></button>
-
+<% if parent_signed_in? %>
+	<button type="button" class="btn btn-warning"><%= link_to "New Chore", new_chore_path %></button>
 	<div class="col-md-6 col-md-offset-3">
 		<% @chores.each do |chore| %>
 			<div class="index-wrapper">
 				<% if chore.completed? %>
 					<div class="row chore">
 						<div class="col-md-8">
-							<h2 style="opacity: 0.5;" class="chore-title"><strike><%= link_to chore.name, chore %></strike></h2>
-							<p style="opacity: 0.5;" class="chore-sub-title chore-desc"><%= chore.description %></p>
+							<h2 style="opacity: 0.5;text-align: left;" class="item-title"><strike><%= link_to chore.name, chore %></strike></h2>
+							<p style="opacity: 0.5;" class="item-sub-title item-desc"><%= chore.description %></p>
 							<p style="opacity: 0.5;" class="time-created-at item-sub-title">Completed <%= time_ago_in_words(chore.completed_at) %> ago</p>
 						</div>
 						<div class="col-md-2">
@@ -29,11 +28,15 @@
 				<% else %>	
 					<div class="row chore">
 						<div class="col-md-8">
-							<h2 class="chore-title" style="text-align: left;     margin-bottom: 5px;"><%= link_to chore.name, chore %></h2>
-							<p class="chore-sub-title chore-desc"><%= chore.description %></p>
-							<p style="opacity: 0.5;" class="time-created-at chore-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+							<h2 class="chore-title" style="text-align: left;"><%= link_to chore.name, chore %></h2>
+							<p><%= link_to "Mark as Completed", complete_chore_path(chore), method: :patch %></p>
+							<p> <%= link_to "Delete", chore, method: :delete, data: { confirm: "Are you sure?" } %> </p>
+							
+							<p class="item-sub-title item-desc"><%= chore.description %></p>
+							<p style="opacity: 0.5;" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
 						</div>
 						<div class="col-md-2">
+							<p><%= link_to complete_chore_path(chore), method: :patch do %></p>
 								<i class="fa fa-check fa-lg"></i>
 							<% end %>
 						</div>
@@ -46,5 +49,8 @@
 				<% end %>
 			</div>
 
+		<% end %>	
 	</div>
-	
+<% else %>
+	<%= render 'default/home' %>
+<% end %>

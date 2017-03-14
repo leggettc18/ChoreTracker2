@@ -3,9 +3,9 @@ class ChoresController < ApplicationController
 	before_action :authenticate_parent!, except: [:index]
 
 	def index
-
-    @chores = Chore.all.order("created_at DESC")
-
+		if parent_signed_in?
+    		@chores = Chore.where(:parent_id => current_parent.id).order("created_at DESC")
+    	end
 	end
 
 	def show
