@@ -54,8 +54,9 @@ class RewardsController < ApplicationController
   end
   
   def store
-    @rewards = Reward.where( parent_id: current_parent.id ).not_purchased
-    
+    @child_buyer = Child.find(getSubLoggedUser()[:id])
+    @child = Child.find(getSubLoggedUser()[:id])
+    @rewards = Reward.where(:child_id => @child.id)
   end
   
   def purchase

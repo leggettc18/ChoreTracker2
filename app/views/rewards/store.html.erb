@@ -1,22 +1,33 @@
-<% @child_buyer = Child.find(getSubLoggedUser()[:id]) %>
-<h1>Welcome to the Rewards Store, <%= @child_buyer.name %></h1>
 
-<table>
+<h1>Welcome to the Rewards Store, <%= @child_buyer.name %></h1>
+<h2>Current Balance: <img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="" height=25width=25></img>x <%= @child.balance %></h2>
+
+</br>
+<table style="width:90%">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Name</th>
+      <th>Cost</th>
+      <th>Auto Approve?</th>
+      <th>Options</th>
     </tr>
   </thead>
 
   <tbody>
     <% @rewards.each do |reward| %>
       <tr>
-        <td> This is a Reward </td>
         <td><%= reward.name %></td>
         <td><%= reward.cost %></td>
-        <td>-<%= link_to ' View ', reward %></td>
-        <td>-<%= link_to ' Buy ', purchase_reward_path(:id => reward.id) %></td>
-        <td>-<%= link_to ' Request ', reward, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= if reward.auto_approve?
+                  "Yes" 
+                else 
+                  "No" 
+                end %></td>
+        <td><%= if reward.auto_approve?
+                  link_to 'Redeem',{:controller => "rewards", :action => "store"},data: { confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } 
+                else
+                  link_to 'Submit',{:controller => "rewards", :action => "store"},data: { confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } 
+                end%></td>
       </tr>
     <% end %>
   </tbody>

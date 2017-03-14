@@ -16,3 +16,4 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+//Override the default confirm dialog by rails
