@@ -41,7 +41,7 @@ class ChoresController < ApplicationController
     incrementChild.save
     
        
-    redirect_to :back
+    redirect_to :back, notice: 'Chore was successfully completed.'
     
   end
   

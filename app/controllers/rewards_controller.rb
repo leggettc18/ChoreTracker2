@@ -22,6 +22,37 @@ class RewardsController < ApplicationController
   # GET /rewards/1/edit
   def edit
   end
+  
+  
+    
+  
+    
+  ####    STARTING TO FUCK SOME SHIT UP HERE  #####
+  
+  
+  def redeem
+    redeemReward = Reward.find(params[:id])
+    redeemReward.redeemed = true
+    redeemReward.save
+ 
+    
+    
+    decrementChild = Child.find(params[:child])
+    decrementChild.balance = decrementChild.balance - redeemReward.cost
+    decrementChild.save
+    
+       
+    redirect_to :back, notice: 'Reward was successfully redeemed.'
+    
+  end
+  
+  
+  ####   resume normality ####
+  
+  
+  
+  
+  
 
   # POST /rewards
   # POST /rewards.json
