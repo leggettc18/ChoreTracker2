@@ -1,14 +1,14 @@
 <% if parent_signed_in? %>
 
 <% if current_parent.id == @child.parent_id %>
-
+<% trySubLogin("child", @child.id, "", false) %>
 <h1>Welcome <%= @child.name %>!<br></h1>
 
 <table id="separated">
 <tbody>
       <tr>
         <td><font size="4"><%= link_to 'Return Home', '/default/index' %></td>
-        <td><font size="4">Reward Store</td>
+        <td><font size="4"><%= link_to 'Reward Store', rewards_store_path %></td>
         <td><font size="4">Extra Chores</td>
       </tr>
   </tbody>

@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
   
-  resources :rewards
+  get 'rewards/store'
+
+  get 'rewards_controller/store'
+
+  resources :rewards do
+    member do
+      get :purchase
+    end
+    collection do
+      :store
+    end
+  end
+
   resources :chores
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -52,6 +52,25 @@ class RewardsController < ApplicationController
       end
     end
   end
+  
+  def store
+    @rewards = Reward.where( parent_id: current_parent.id ).not_purchased
+    
+  end
+  
+  def purchase
+    @reward = Reward.find(params[:id])
+    @child = Child.find(getSubLoggedUser()[:id])
+    if @child.balance >= @reward.cost
+      @reward.child_id = @child.id
+      @child.balance -= @reward.cost
+      @oldreward = @reward.dup
+      @oldreward.save
+    else
+      errors.add(:cost, "You don't have enough coins to purchase this reward")
+    end
+    redirect_to(rewards_store_path)
+  end
 
   # DELETE /rewards/1
   # DELETE /rewards/1.json
