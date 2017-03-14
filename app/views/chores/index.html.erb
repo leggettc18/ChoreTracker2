@@ -1,59 +1,22 @@
-<!--<p id="notice"><%= notice %></p>-->
 
-<!--<h1>Chores</h1>-->
+<h1>CHORES!</h1>
 
-<!--<table style="width:100%">-->
-<!--  <thead>-->
-<!--    <tr>-->
-<!--      <th>Magus</th>-->
-<!--      <th>Name</th>-->
-<!--      <th>Coins</th>-->
-<!--      <th>Due Date</th>-->
-<!--      <th>Repeat?</th>-->
-<!--      <th>Parent</th>-->
-<!--      <th>Child</th>-->
-<!--      <th>Show</th>-->
-<!--      <th>Edit</th>-->
-<!--      <th>Delete</th>-->
-<!--    </tr>-->
-<!--  </thead>-->
+ <!--Checks to see if a user is signed in, if one is, it will list its checklist. -->
+ <!--If not, it will render the landing page that asks the user to sign up or login. -->
+ <button type="button" class="btn btn-warning" style="color: #1ECD97;"><%= link_to "New Chore", new_chore_path %></button>
 
-<!--  <tbody>-->
-<!--    <% @chores.made_by_parent(current_parent).each do |chore| %>-->
-<!--      <tr>-->
-<!--        <td><%= chore.name %></td>-->
-<!--        <td><%= chore.coins %></td>-->
-<!--        <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>-->
-<!--        <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>-->
-<!--        <td><%= Parent.find(chore.parent_id).id %></td>-->
-<!--        <td><%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></td>-->
-<!--        <td><%= link_to 'Show', chore %></td>-->
-<!--        <td><%= link_to 'Edit', edit_chore_path(chore) %></td>-->
-<!--        <td><%= link_to 'Delete', chore, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-<!--      </tr>-->
-<!--    <% end %>-->
-<!--  </tbody>-->
-<!--</table>-->
-
-<!--<br>-->
-
-<!--<%= link_to 'New Chore', new_chore_path %>-->
-
-
-<!-- Checks to see if a user is signed in, if one is, it will list its checklist. -->
-<!-- If not, it will render the landing page that asks the user to sign up or login. -->
 	<div class="col-md-6 col-md-offset-3">
 		<% @chores.each do |chore| %>
 			<div class="index-wrapper">
 				<% if chore.completed? %>
-					<div class="row item">
+					<div class="row chore">
 						<div class="col-md-8">
 							<h2 style="opacity: 0.5;" class="chore-title"><strike><%= link_to chore.name, chore %></strike></h2>
 							<p style="opacity: 0.5;" class="chore-sub-title chore-desc"><%= chore.description %></p>
-							<p style="opacity: 0.5;" class="time-created-at item-sub-title">Completed <%= time_ago_in_words(item.completed_at) %> ago</p>
+							<p style="opacity: 0.5;" class="time-created-at item-sub-title">Completed <%= time_ago_in_words(chore.completed_at) %> ago</p>
 						</div>
 						<div class="col-md-2">
-							<p><%= link_to complete_item_path(item), method: :patch do %></p>
+							<p><%= link_to complete_chore_path(chore), method: :patch do %></p>
 								<i class="fa fa-check fa-lg"></i>
 							<% end %>
 						</div>
@@ -64,9 +27,9 @@
 						</div>	
 					</div>
 				<% else %>	
-					<div class="row item">
+					<div class="row chore">
 						<div class="col-md-8">
-							<h2 class="chore-title"><%= chore.name %></h2>
+							<h2 class="chore-title" style="text-align: left;     margin-bottom: 5px;"><%= link_to chore.name, chore %></h2>
 							<p class="chore-sub-title chore-desc"><%= chore.description %></p>
 							<p style="opacity: 0.5;" class="time-created-at chore-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
 						</div>
@@ -84,3 +47,4 @@
 			</div>
 
 	</div>
+	
