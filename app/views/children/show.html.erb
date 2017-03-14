@@ -24,9 +24,9 @@
 
 <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
 
+  <% if chore.completed == false %>
 <table id="chores">
 <tbody>
-  <% if chore.completed == false %>
       <tr>
         <td align="left"><font size="4" color=white><%= link_to chore.name, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id } %></td>
         <td align="right"><font color=white>Due: <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></td>
