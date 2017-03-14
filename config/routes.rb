@@ -26,9 +26,10 @@ Rails.application.routes.draw do
   get 'default/change'
 
   post '/default/do_child'
-   post '/default/do_change'
-   post '/default/do_account'
+  post '/default/do_change'
+  post '/default/do_account'
    
+  get '/chores/:id/complete', to: 'chores#complete'
   
   root 'default#index'
   
