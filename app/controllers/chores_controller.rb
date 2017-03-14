@@ -22,6 +22,33 @@ class ChoresController < ApplicationController
   # GET /chores/1/edit
   def edit
   end
+  
+  
+  
+    
+  ####    STARTING TO FUCK SOME SHIT UP HERE  #####
+  
+  
+  def complete
+    completeChore = Chore.find(params[:id])
+    completeChore.completed = true
+    completeChore.save
+ 
+    
+    
+    incrementChild = Child.find(params[:child])
+    incrementChild.balance = incrementChild.balance + completeChore.coins
+    incrementChild.save
+    
+       
+    redirect_to :back
+    
+  end
+  
+  
+  ####   resume normality ####
+  
+  
 
   # POST /chores
   # POST /chores.json

@@ -22,7 +22,10 @@ class ChildrenController < ApplicationController
   # GET /children/1/edit
   def edit
   end
+  
 
+  
+  
   # POST /children
   # POST /children.json
   def create
