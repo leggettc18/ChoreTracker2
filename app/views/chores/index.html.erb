@@ -14,11 +14,11 @@
 							<p style="opacity: 0.5;" class="item-sub-title item-desc"><%= chore.description %></p>
 							<p style="opacity: 0.5;" class="time-created-at item-sub-title">Completed <%= time_ago_in_words(chore.completed_at) %> ago</p>
 						</div>
-						<div class="col-md-2">
-							<p><%= link_to complete_chore_path(chore), method: :patch do %></p>
-								<i class="fa fa-check fa-lg"></i>
-							<% end %>
-						</div>
+						<!--<div class="col-md-2">-->
+						<!--	<p><%= link_to complete_chore_path(chore), method: :patch do %></p>-->
+						<!--		<i class="fa fa-check fa-lg"></i>-->
+						<!--	<% end %>-->
+						<!--</div>-->
 						<div class="col-md-2">
 							<p><%= link_to chore, method: :delete, data: { confirm: "Are you sure?" } do %></p>
 								<i class="fa fa-trash fa-lg"></i>
