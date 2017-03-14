@@ -15,6 +15,8 @@
 
   <tbody>
     <% @rewards.each do |reward| %>
+    
+  <% if reward.redeemed == false %>
       <tr>
         <td><%= reward.name %></td>
         <td><%= reward.cost %></td>
@@ -29,6 +31,7 @@
                   link_to 'Submit',{:controller => "rewards", :action => "redeem", :id => reward.id, :child => @child.id},data: { confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } 
                 end%></td>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>

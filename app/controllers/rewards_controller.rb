@@ -1,5 +1,6 @@
 class RewardsController < ApplicationController
   
+  before_filter :authenticate_parent!
   
   before_action :set_reward, only: [:show, :edit, :update, :destroy]
 
