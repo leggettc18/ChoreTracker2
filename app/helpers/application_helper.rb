@@ -86,7 +86,7 @@ module ApplicationHelper
         end
         
         if allowLogin
-            expiration = 20.minutes.from_now #stayLoggedIn == false
+            expiration = 10.minutes.from_now #stayLoggedIn == false
             if stayLoggedIn
                expiration = 1.year.from_now 
             end

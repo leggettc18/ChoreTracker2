@@ -1,5 +1,19 @@
-<% if parent_signed_in? %>
-<h1>Logged in account reporting page!</h1>
-
-
-<%end%>
+<!--You can reach this page through /sublogin/who -->
+<h1>Sublogin reporting page</h1>
+<h2>
+<%=
+loginData = getSubLoggedUser()
+if(loginData)
+    type = loginData[:type]
+    id = loginData[:id]
+    if(type == "parent")
+        "You are logged in as the parent account"
+    else
+        child = Child.find(id)
+        "You are logged in as " + child[:name] + " with ID = " + child[:id].to_s
+    end
+else
+   "You are not logged in" 
+end
+%>
+</h2>
