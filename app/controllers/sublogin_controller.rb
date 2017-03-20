@@ -10,8 +10,10 @@ class SubloginController < ApplicationController
         #This would be better if we verified that the child belonged to the parent
         if (type == 'parent')
             trySubLogin("parent", current_parent[:id], pin, false)
+            redirect_to "/sublogin/who"
         elsif (type == 'child')
             trySubLogin("child", id, pin, false)
+            redirect_to "/sublogin/who"
         else #Malformed input
             throw "invalid account type"
         
