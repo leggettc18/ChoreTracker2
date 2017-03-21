@@ -49,9 +49,11 @@ Rails.application.routes.draw do
   end
   
   get '/sublogin/', to: 'sublogin#login'
-  get '/sublogin/who', to: 'sublogin#reportLoggedIn.html.erb'
+  get '/sublogin/who', to: 'sublogin#reportLoggedIn'
   get '/sublogin/logout', to: 'sublogin#logout'
   post '/sublogin/', to: 'sublogin#sublogin'
+  get '/sublogin/pin/', to: 'sublogin#changePin'
+  post '/sublogin/pin', to: 'sublogin#chgPin' #Controller function
   
   
   # You can have the root of your site routed with "root"

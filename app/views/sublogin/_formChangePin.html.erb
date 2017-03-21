@@ -1,0 +1,17 @@
+<%= form_for(:sublogin) do |f| %>
+
+  <%= f.label :curpin %><br />
+  <div class="field"><%= f.text_field(:pin) %> <br /></div>
+  
+  <%= f.label :newpin %><br />
+  <div class="field"><%= f.text_field(:newpin) %> <br /></div>
+  
+  <%= f.label :newpin2 %><br />
+  <div class="field"><%= f.text_field(:newpin2) %> <br /></div>
+  
+     
+     
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

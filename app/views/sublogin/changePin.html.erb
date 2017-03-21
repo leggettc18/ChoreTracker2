@@ -1,0 +1,8 @@
+<% loginstatus = getSubLoggedUser() %>
+<% if(!loginstatus) %>
+   <h1>You must be logged in as a parent or child to use this page</h1>
+   <h2><a href="/sublogin/">You may login here!</a></h2>
+<% else %>
+    <h1>Pin change page</h1>
+    <%= render 'formChangePin' %>
+<% end %>
