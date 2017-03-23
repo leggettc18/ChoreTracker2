@@ -1,4 +1,5 @@
 class SubloginController < ApplicationController
+    before_filter :authenticate_parent!
     
     def sublogin #Not 100% done yet. The form still need stay logged option, also a better interface
         puts "Beginning sublogin attempt"
@@ -66,7 +67,8 @@ class SubloginController < ApplicationController
         end
         #doSubLogout()
         #redirect_to "/sublogin/"
-        redirect_to "/sublogin/pin"
+        #redirect_to "/sublogin/pin"
+        redirect_to :back, notice: 'BLEH'
         
     end
     
