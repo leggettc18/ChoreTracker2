@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328195215) do
+ActiveRecord::Schema.define(version: 20170402144305) do
 
   create_table "children", force: :cascade do |t|
     t.integer  "parent_id",            default: 0,     null: false
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 20170328195215) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.boolean  "unread",     default: true, null: false
-    t.integer  "type"
+    t.boolean  "unread",      default: true, null: false
+    t.integer  "object_type"
     t.integer  "object_id"
     t.integer  "parent_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "parents", force: :cascade do |t|

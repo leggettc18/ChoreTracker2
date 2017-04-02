@@ -17,21 +17,22 @@
         <% @notifications.each do |notif| %>
         <tr>
             <td><%= notif.unread %></td>
-            <td><%= notif.type %></td>
+            <td><%= notif.chore? ? "Chore" : "Reward" %></td>
             <td>
-                <% if notif.type = "Chore" %>
+                <% if notif.chore? %>
                 <%= Chore.find(notif.object_id).name %>
                 <% else %>
                 <%= Reward.find(notif.object_id).name %>
                 <% end %>
             </td>
             <td>
-                <% if notif.type = "Chore" %>
+                <% if notif.chore? %>
                 <%= link_to '#' %> <%# Replace with Chore Approval Page Path %>
                 <% else %>
                 <%= link_to '#' %> <%# Replace with Reward Approval Page Path %>
                 <% end %>
             </td>
         </tr>
+        <% end %>
     </tbody>
 </table>
