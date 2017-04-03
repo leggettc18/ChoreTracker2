@@ -16,6 +16,8 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 h1 {
     font-size: 70px;
@@ -30,6 +32,10 @@ h2 {
     color: #FFFFFF;
     font-size: 25px;
     margin-bottom: 2px;
+}
+
+p {
+    color: #FFFFFF;
 }
 
 h3 {
@@ -53,6 +59,10 @@ table, th, td#separated {
     background-color:#6495ED;
     margin-left:auto; 
     margin-right:auto;
+}
+
+label {
+    color: white;
 }
 
 table, th, td#chores {

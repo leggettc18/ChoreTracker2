@@ -39,12 +39,13 @@ class DefaultController < ApplicationController
     
     
     
-       def do_account
+    def do_account
         pin = params[:pin]
   
         if pin == current_parent.pincode
             redirect_to("/parents/edit")
-         else
+            cookies[:logged] = "logged"
+        else
             redirect_to("/default/account_door")
         end
     end

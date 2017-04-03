@@ -29,11 +29,11 @@
        <a href="/default/index">Home <span class="sr-only">(current)</span></a></li>
       
        
-        <%if parent_signed_in? %>
+        <%if cookies().key?("logged") %>
         
         
           <% if controller_name.include?('child') %><li class="active"><% else %><li><% end %>
-          <a href="/default/child_door">Children <span class="sr-only">(current)</span></a></li>
+          <a href="/children">Children <span class="sr-only">(current)</span></a></li>
        
         
           <% if controller_name.include?('chore') %><li class="active"><% else %><li><% end %>
@@ -79,11 +79,10 @@
         <li>
        <% end %>
        <% if controller_name.include?('registrations') %><li class="active"><% else %><li><% end %>
-        <a href="/default/account_door">Account <span class="sr-only">(current)</span></a></li>
+        <a href="/default/account_door"><i class="fa fa-cogs fa-lg"></i> <span class="sr-only"></span></a></li>
         
           <li><%= link_to "Log out", destroy_parent_session_path, :method => :delete %>  </li>
-          
-          
+        
           <% else %>
           
           <% if controller_name.include?('registrations') %><li class="active"><% else %><li><% end %>
