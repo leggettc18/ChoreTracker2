@@ -23,8 +23,6 @@ class ChoresController < ApplicationController
   def edit
   end
   
-  
-  
     
   ####    STARTING TO FUCK SOME SHIT UP HERE  #####
   
@@ -49,8 +47,7 @@ class ChoresController < ApplicationController
   ####   resume normality ####
   
   
-
-  # POST /chores
+   # POST /chores
   # POST /chores.json
   def create
     @chore = Chore.new(chore_params)

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Approve your kids work</h1>
+
+<table style="width:100%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Coins</th>
+      <th>Due Date</th>
+      <th>Repeat?</th>
+      <th>Child</th>
+      <th>Complete</th>
+    </tr>
+  </thead>
+  
+  
+<!--pending approval bool value. Child must first submit "completed" chore for parent to review-->
+<!--As it stands, this view takes and displays EVERY chore that needs approval-->
+
+  <tbody>
+    <% @chores.made_by_parent(current_parent).each do |chore| %>
+      <% if chore.needs_approval %>  <!--if chore.pending_approval-->
+          <tr>
+            <td><%= chore.name %></td>
+            <td><%= chore.coins %></td>
+            <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>
+            <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>
+            <td><%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></td>
+            <td> <%= link_to chore.name, chore_path(chore.id) %></td>
+          </tr>
+       <% end %>  
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
