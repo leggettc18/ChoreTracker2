@@ -4,9 +4,17 @@ class ChoresController < ApplicationController
 
   # GET /chores
   # GET /chores.json
+  
   def index
-    @chores = Chore.all
+		if parent_signed_in?
+    		@chores = Chore.where(:parent_id => current_parent.id).order("created_at DESC")
+    end
   end
+	
+  
+  # def index
+  #   @chores = Chore.all
+  # end
 
   # GET /chores/1
   # GET /chores/1.json

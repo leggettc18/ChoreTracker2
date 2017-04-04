@@ -17,6 +17,45 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700|Merriweather:400,300);
+
+
+/* Mixins, variables, etc... */
+
+@mixin nav_link_hover {
+	transition: 0.4s;
+	color: lighten(#222, 30%);
+	text-decoration: none;
+}
+
+/* Navbar and navigation styles */
+
+.navbar {
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+}
+
+.navbar-default {
+
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #fff;
+
+	.navbar-nav > li > a {
+		color: #222;
+	}
+
+	.navbar-link {
+		color: #222;
+	}
+
+	.navbar-brand {
+		color: #222;
+		letter-spacing: 1.25px;
+	}
+
+}
+
 h1 {
     font-size: 70px;
     font-weight: bold;  
@@ -40,9 +79,14 @@ h3 {
     font-size: 13px;
 }
 
-body {
-    background-color: #3f3f3f;
+body 
+{
+//     background: -webkit-linear-gradient(left, #04A5C1, #F9F981);
+//   background: linear-gradient(to right, #04A5C1, #F9F981);
+    // background-color: #CC3366;
+    background-image: url(http://static.tumblr.com/ee5a6a8beb8a02e2880c9a99d4ed008e/cxks3x1/OVqndv5ug/tumblr_static_9maai8qgqzwo0g08g8wwwoows.jpg);
 }
+
 
 table, th, td#separated {
     text-align: center;

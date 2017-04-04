@@ -58,3 +58,10 @@ group :development do
   gem 'spring'
 end
 
+gem 'simple_form'
+
+
+gem 'jquery-turbolinks'
+gem 'chartkick'
+gem 'groupdate'
+gem 'active_median'
