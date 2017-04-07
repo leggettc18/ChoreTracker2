@@ -1,0 +1,242 @@
+<% if parent_signed_in? %>
+         <% if current_parent.id == @child.parent_id %>
+         <% trySubLogin("child", @child.id, "", false) %>
+         <h1>Welcome <%= @child.name %>!<br></h1>
+         <table id="separated">
+            <tbody>
+               <tr>
+                  <td><font size="4"><%= link_to 'Return Home', '/default/index' %></td>
+                  <td><font size="4"><%= link_to 'Reward Store', rewards_store_path %></td>
+                  <td><font size="4">Extra Chores</td>
+               </tr>
+            </tbody>
+         </table>
+         </br>
+         <h2>Current Balance: <img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="" height=25 width=25></img>x <%= @child.balance %></h2>
+         </br>
+         <h2>Your Assigned Chores...</h2>
+         <h3>Click to Complete</h3>
+         <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
+         <% if chore.completed == false %>
+         <table id="chores">
+            <tbody>
+               <tr>
+                  <td align="left"><font size="4" color=white><%= link_to chore.name, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id } %></td>
+                  <td align="right"><font color=white>Due: <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></td>
+               </tr>
+               <tr>
+                  <td align="left"><font size='2' color=white><%= chore.description %></td>
+                  <!--<td align="right"><font size="4" color=white><img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="" height=25width=25></img>x <%= chore.coins %></td>-->
+               </tr>
+               <% end %>  
+               <% end %>
+            </tbody>
+         </table>
+         <% else %>
+         <h2> Wtf not your kid bro</h2>
+         <% end %>
+         <% else %>
+         <center>
+            You must be logged in to see this page. <br />
+            <%= link_to "Log in", '/parents/sign_in/' %><br />
+         </center>
+         <% end %>
+         
+<div class="tab">
+   <ul class="tabs">
+      <li><a href="#">Chores</a></li>
+      <li><a href="#">Completed</a></li>
+      <li><a href="#">Test Chore (Beta)</a></li>
+      <li><a href="#">Test Complete (Beta)</a></li>
+      <li><a href="#">Test All (Beta)</a></li>
+      <li><a href="#">Dashboard (Beta)</a></li>
+   </ul>
+   <!-- / tabs -->
+   <div class="tab_content">
+      <div class="tabs_item">
+        
+        <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
+         <% if chore.completed == false %>
+         <table id="chores">
+            <tbody>
+               <tr>
+                  <td align="left"><font size="4" color=white><%= link_to chore.name, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id } %></td>
+                  <td align="right"><font color=white>Due: <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></td>
+               </tr>
+               <tr>
+                  <td align="left"><font size='2' color=white><%= chore.description %></td>
+                  <td align="right"><font size="4" color=white><i class="fa fa-star fa-lg" style="color:gold;"></i>x <%= chore.coins %></td>
+               </tr>
+               <% end %>  
+               <% end %>
+            </tbody>
+         </table>
+      </div>
+     
+      <div class="tabs_item">
+
+         <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
+         <% if chore.completed %>
+         <table id="chores">
+            <tbody>
+               <tr>
+                  <td align="left"><font size="4" color=white><%= link_to chore.name, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id } %></td>
+                  <td align="right"><font color=white>Due: <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></td>
+               </tr>
+               <tr>
+                  <td align="left"><font size='2' color=white><%= chore.description %></td>
+                  <td align="right"><font size="4" color=white><i class="fa fa-star fa-lg" style="color:gold;"></i>x <%= chore.coins %></td>
+               </tr>
+               <% end %>  
+               <% end %>
+            </tbody>
+         </table>
+
+      
+      
+      
+      <!-- / tabs_item -->
+   </div>
+   
+   <div class="tabs_item">
+        <div class="col-md-6 col-md-offset-3">
+         <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
+			<div class="index-wrapper">
+				<% if chore.completed == false %>
+   				<div class="row chore">
+   						<div class=".col-xs-6 col-md-1">
+   							<p><%= link_to '<i class="fa fa-check fa-lg"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
+   						</div>
+   						<div class=".col-xs-6 col-md-7">
+   							<h2 class="chore-title" style="text-align: left;"><%=  chore.name %></h2>
+   							<p class="item-sub-title item-desc"><%= chore.description %></p>
+   							<p style="color: white" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+   						</div>
+   						<div class=".col-xs-6 col-md-4">
+   						   <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+   						   <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+   						</div>
+   					</div>
+   				<% else %>	
+					
+			   	<% end %>
+			</div>
+		<% end %>	
+	   </div>
+   <!-- / tabs_item -->
+         
+      </div>
+   
+   
+   <div class="tabs_item">
+      <div class="col-md-6 col-md-offset-3">
+         <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
+			<div class="index-wrapper">
+				<% if chore.completed? %>
+					<div class="row chore">
+					   <div class=".col-xs-6 col-md-1">
+   							<p style="color: #3efd7a"><i class="fa fa-check fa-lg"></i></p>
+   						</div>
+   						<div class=".col-xs-6 col-md-7">
+   							<h2 class="chore-title" style="text-align: left;"><strike><%=  chore.name %></strike></h2>
+   							<p class="item-sub-title item-desc"><%= chore.description %></p>
+   							<p style="color: white" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+   						</div>
+   						<div class=".col-xs-6 col-md-4">
+   						   <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+   						   <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+   						</div>
+					   
+					</div>
+				<% else %>	
+					
+				<% end %>
+			</div>
+		<% end %>	
+	   </div>
+   <!-- / tabs_item -->
+   </div>
+   
+   
+   <div class="tabs_item">
+      <div class="col-md-6 col-md-offset-3">
+         <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
+			<div class="index-wrapper">
+				<% if chore.completed? %>
+					<div class="row chore">
+					   <div class=".col-xs-6 col-md-1">
+   							<p style="color: #3efd7a"><i class="fa fa-check fa-lg"></i></p>
+   						</div>
+   						<div class=".col-xs-6 col-md-7">
+   							<h2 class="chore-title" style="text-align: left;"><strike><%=  chore.name %></strike></h2>
+   							<p class="item-sub-title item-desc"><%= chore.description %></p>
+   							<p style="color: white;" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+   						</div>
+   						<div class=".col-xs-6 col-md-4">
+   						   <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+   						   <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+   						</div>
+					   
+					</div>
+				<% else %>	
+					
+						<div class="row chore">
+   						<div class=".col-xs-6 col-md-1">
+   							<p><%= link_to '<i class="fa fa-check fa-lg"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
+   						</div>
+   						<div class=".col-xs-6 col-md-7">
+   							<h2 class="chore-title" style="text-align: left;"><%=  chore.name %></h2>
+   							<p class="item-sub-title item-desc"><%= chore.description %></p>
+   							<p style="color: white;" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+   						</div>
+   						<div class=".col-xs-6 col-md-4">
+   						   <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+   						   <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+   						</div>
+   					</div>
+					
+					
+				<% end %>
+			</div>
+		<% end %>	
+	   </div>
+   <!-- / tabs_item -->
+   </div>
+   
+   
+   
+   <!-- / tab_content -->
+   
+   <div class="tabs_item">
+        
+      <legend>
+         <%= @child.name %>
+         <%#if current_parent.id == @child.parent_id%>
+            
+                     <%# if current_parent.id == @child.parent_id %>
+                        
+                        <%#= Child.childrenOf(current_parent.id).size %>
+                        <%= Chore.where(:child_id => @child.id).count %>
+                        <%= Chore.count(@child.id) %>
+                        <%= Chore.count(current_parent.id) %>
+                        <%= Chore.calculate(:count, :all) %>
+                        
+                        
+                        
+                     <%# else %>
+                     <%# end %>
+                     
+                     <%= current_parent.children %>
+                     <%#= Chore.count(current_parent.children) %>
+         <!--<span class='text-muted'><%= @child.chores%></span>-->
+      </legend>
+   
+      <%#= pie_chart Yogurt.group(:flavor).count %>
+
+      <%#= column_chart Chore.count(:complete) %>
+
+
+   </div>
+   
+</div>
+<!-- / tab -->
