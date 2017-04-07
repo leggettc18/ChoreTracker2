@@ -10,7 +10,6 @@
       <th>Due Date</th>
       <th>Repeat?</th>
       <th>Child</th>
-      <th>Complete</th>
     </tr>
   </thead>
   
@@ -20,14 +19,13 @@
 
   <tbody>
     <% @chores.made_by_parent(current_parent).each do |chore| %>
-      <% if chore.needs_approval %>  <!--if chore.pending_approval-->
+      <% if chore.needs_approval && !chore.completed%>  <!--if chore.pending_approval-->
           <tr>
-            <td><%= chore.name %></td>
+            <td><%= link_to chore.name, {:controller => "chores", :action => "complete", :id => chore.id, :child => chore.child_id } %> </td>
             <td><%= chore.coins %></td>
             <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>
             <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>
             <td><%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></td>
-            <td> <%= link_to chore.name, chore_path(chore.id) %></td>
           </tr>
        <% end %>  
     <% end %>

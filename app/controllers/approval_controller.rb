@@ -1,6 +1,5 @@
 class ApprovalController < ApplicationController
     before_filter :authenticate_parent!
-    
       
     def index
         @chores = Chore.all

@@ -45,8 +45,7 @@ class ChoresController < ApplicationController
   
   
   ####   resume normality ####
-  
-  
+
    # POST /chores
   # POST /chores.json
   def create
