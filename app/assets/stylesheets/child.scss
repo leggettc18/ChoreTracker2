@@ -1,142 +1,142 @@
-// Place all the styles related to the Child controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// // Place all the styles related to the Child controller here.
+// // They will automatically be included in application.css.
+// // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import url(http://fonts.googleapis.com/css?family=Roboto:300);
+// @import url(http://fonts.googleapis.com/css?family=Roboto:300);
 
 
 
-// @import url("https://uwhealth.github.io/Nu-Connect/uconnect_assets/css/main.css");
+// // @import url("https://uwhealth.github.io/Nu-Connect/uconnect_assets/css/main.css");
 
-.wrapper {
-  padding: 3rem 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-.st0{fill:#D7DDE5;}
-.st1, .knob_data{fill:#2EAB6F; color:#2EAB6F;}
+// .wrapper {
+//   padding: 3rem 1.5rem;
+//   max-width: 800px;
+//   margin: 0 auto;
+// }
+// .st0{fill:#D7DDE5;}
+// .st1, .knob_data{fill:#2EAB6F; color:#2EAB6F;}
 
-.graph {
-  width: 80%;
-  display: table;
-  margin: 0 auto 0;
-  position: relative;
-  text-align: center;
-  height: 12.5rem;
-}
-
-.graph_media {
-  max-height: 12rem;
-}
-
-.graph_data, .knob_data {
-  font-size: 3rem;
-}
-
-.graph_data {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.card_division {
-  border-top: 1px solid #D7DDE5;
-  padding: 0;
-}
-
-// .card_body {
-//   background-image: linear-gradient(#ededed 1px, transparent 1px),
-// linear-gradient(90deg, #ededed 1px, transparent 1px);
-//   background-size: 9px 9px;
+// .graph {
+//   width: 80%;
+//   display: table;
+//   margin: 0 auto 0;
+//   position: relative;
+//   text-align: center;
+//   height: 12.5rem;
 // }
 
-.card_full {
-  max-height: none;
-  height: auto;
-}
+// .graph_media {
+//   max-height: 12rem;
+// }
 
-.card_more_button {
-  display: block;
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 1.1;
-  transition: transform .12s ease-out;
-}
+// .graph_data, .knob_data {
+//   font-size: 3rem;
+// }
 
-.card_more_button {
-  border-radius: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom-color: #D7DDE5;
-  border-top-color: #D7DDE5;
-  background-color: #fff;
-}
+// .graph_data {
+//   display: table-cell;
+//   vertical-align: middle;
+// }
 
-.card_more_button:after {
-  	content: '\e629';
-}
+// .card_division {
+//   border-top: 1px solid #D7DDE5;
+//   padding: 0;
+// }
 
-.card_more_content {
-  display: none;
-  font-size: .865rem;
-  line-height: 1.5;
-  padding: .75rem;
-}
+// // .card_body {
+// //   background-image: linear-gradient(#ededed 1px, transparent 1px),
+// // linear-gradient(90deg, #ededed 1px, transparent 1px);
+// //   background-size: 9px 9px;
+// // }
 
-.stats {
-  width: 100%;
-  margin-bottom: -2px;
-  height: 5.75rem;
-  display: table;
-}
+// .card_full {
+//   max-height: none;
+//   height: auto;
+// }
 
-.stats_row > .stats_item {
-  border-left: 1px solid #D7DDE5;
-  padding: .75rem 1.5rem;
-  overflow: hidden;
-  display: table-cell;
-  vertical-align: middle;
-  height: 100%;
-}
+// .card_more_button {
+//   display: block;
+//   text-align: center;
+//   font-size: 1.5rem;
+//   line-height: 1.1;
+//   transition: transform .12s ease-out;
+// }
 
-.stats_row > .stats_item:first-child {
-  border-left: 0;
-}
+// .card_more_button {
+//   border-radius: 0;
+//   border-left: 0;
+//   border-right: 0;
+//   border-bottom-color: #D7DDE5;
+//   border-top-color: #D7DDE5;
+//   background-color: #fff;
+// }
 
-.stats_row:after {
-  content: ' ';
-  display: table;
-  clear: both;
-}
+// .card_more_button:after {
+//   	content: '\e629';
+// }
 
-.stats_item_number {
-  white-space: nowrap;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+// .card_more_content {
+//   display: none;
+//   font-size: .865rem;
+//   line-height: 1.5;
+//   padding: .75rem;
+// }
+
+// .stats {
+//   width: 100%;
+//   margin-bottom: -2px;
+//   height: 5.75rem;
+//   display: table;
+// }
+
+// .stats_row > .stats_item {
+//   border-left: 1px solid #D7DDE5;
+//   padding: .75rem 1.5rem;
+//   overflow: hidden;
+//   display: table-cell;
+//   vertical-align: middle;
+//   height: 100%;
+// }
+
+// .stats_row > .stats_item:first-child {
+//   border-left: 0;
+// }
+
+// .stats_row:after {
+//   content: ' ';
+//   display: table;
+//   clear: both;
+// }
+
+// .stats_item_number {
+//   white-space: nowrap;
+//   font-size: 2.25rem;
+//   line-height: 2.5rem;
   
-  &:before {
-    display: none;
-  }
-}
+//   &:before {
+//     display: none;
+//   }
+// }
 
-.txt_success {
-  color: #2EAB6F;
-}
+// .txt_success {
+//   color: #2EAB6F;
+// }
 
-.txt_warn {
-  color: #DDC728;
-}
+// .txt_warn {
+//   color: #DDC728;
+// }
 
-.txt_smaller {
-  font-size: .75em;
-}
+// .txt_smaller {
+//   font-size: .75em;
+// }
 
-.flipY {
-  transform: scaleY(-1);
-  border-bottom-color: #fff;
-}
+// .flipY {
+//   transform: scaleY(-1);
+//   border-bottom-color: #fff;
+// }
 
-.txt_faded {
-  opacity: .65;
-}
+// .txt_faded {
+//   opacity: .65;
+// }
 
-// END TAB ~~~~~~~~~~~~~~~ (.)(.)
+// // END TAB ~~~~~~~~~~~~~~~ (.)(.)

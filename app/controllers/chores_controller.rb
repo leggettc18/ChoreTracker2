@@ -7,6 +7,7 @@ class ChoresController < ApplicationController
   
   def index
     @chores = Chore.all
+    # @chores = Chore.all.order("created_at DESC")
   end
 
   # GET /chores/1

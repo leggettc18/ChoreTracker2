@@ -60,6 +60,7 @@ end
 
 gem 'simple_form'
 
+gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 
 gem 'jquery-turbolinks'
 gem 'chartkick'
