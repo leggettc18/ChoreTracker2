@@ -5,6 +5,8 @@
 <table style="width:100%">
   <thead>
     <tr>
+      <th>Approve</th>
+      <th>Deny</th>
       <th>Name</th>
       <th>Coins</th>
       <th>Due Date</th>
@@ -19,9 +21,11 @@
 
   <tbody>
     <% @chores.made_by_parent(current_parent).each do |chore| %>
-      <% if chore.needs_approval && !chore.completed%>  <!--if chore.pending_approval-->
+      <%if chore.pending_approval%>  <!--if chore.needs_approval && !chore.completed-->
           <tr>
-            <td><%= link_to chore.name, {:controller => "chores", :action => "complete", :id => chore.id, :child => chore.child_id } %> </td>
+            <td><%= link_to "Approve", {:controller => "chores", :action => "complete", :id => chore.id, :child => chore.child_id } %></td>
+            <td><%= link_to "Deny", {:controller => "chores", :action => "deny", :id => chore.id } %></td>
+            <td><%= chore.name  %> </td>
             <td><%= chore.coins %></td>
             <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>
             <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>

@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   post '/default/do_account'
    
   get '/chores/:id/complete', to: 'chores#complete'
+  get '/chores/:id/pending', to: 'chores#pending'
+  get '/chores/:id/deny', to: 'chores#deny'
    
   get '/rewards/:id/redeem', to: 'rewards#redeem'
   
