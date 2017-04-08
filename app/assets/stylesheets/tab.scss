@@ -56,24 +56,26 @@ $color: #800080;
 	}
 }
 
-.tabs_item {
-	display: none;
-	padding: 30px 0;
+// .tabs_item {
+// 	// display: none;
+// 	padding: 30px 0;
 
-	h4 {
-		font-weight: bold;
-		color: $color;
-    font-size: 20px;
-	}
+// 	h4 {
+// 		font-weight: bold;
+// 		color: $color;
+//     font-size: 20px;
+// 	}
 
-	img {
-		width: 200px;
-		float: left;
-		margin-right: 30px;
-	}
+// 	// img {
+// 	// 	width: 200px;
+// 	// 	float: left;
+// 	// 	margin-right: 30px;
+// 	// }
 
-	&:first-child {display: block;}
-}
+// 	&:first-child {display: block;}
+// }
+	
+
 
 .current a {
 	color: #fff;

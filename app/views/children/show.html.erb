@@ -123,6 +123,8 @@
 
             <!--dashboard-->
             <div class="tabs_item">
+                
+                
                 <%= @child.name %>
    
                 <%= total = Chore.where(:child_id => @child.id).count %>
@@ -133,13 +135,15 @@
                 <legend>
                   <h2>Total Chores</h2>
                 </legend>
-                <%= pie_chart [["To-Do", todo  ], ["Completed", total ]],colors: ["white","#3efd7a"],download: true, height: "400px" %>
                 
+                <div class="ignore-css">
+                  <%= pie_chart [["To-Do", todo  ], ["Completed", total ]],colors: ["white","#3efd7a"],download: true, height: "400px" %>
+                </div>
                 
                 <legend>
                   <h2>Daily Assigned Chores</h2>
                 </legend>
-                <%= area_chart Chore.where(:child_id => @child.id).group_by_day(:created_at).count, download: true %>
+                <%= area_chart Chore.where(:child_id => @child.id).group_by_day(:created_at).count, download: true, height: "400px" %>
 
                 
             </div>
@@ -154,5 +158,6 @@
       <%= link_to "Log in", '/parents/sign_in/' %><br />
     </center>
 <% end %>
+
 
 <% @chores = Chore.all.order("created_at DESC")%>
