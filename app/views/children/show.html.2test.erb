@@ -31,6 +31,7 @@
                 <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
                     <div class="index-wrapper">
                       <% if chore.completed == false %>
+                      
                           <div class="row chore">
                             <div class=".col-xs-6 col-md-1">
                               <p><%= link_to '<i class="fa fa-check fa-lg"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
@@ -125,14 +126,27 @@
             <div class="tabs_item">
               <legend>
                 <%= @child.name %>
-   
-                <%= total = Chore.where(:child_id => @child.id).count %>
-                <%= completeTotal = @chores.select(&:completed).size %>
-                
-                <%= todo = total - completeTotal %>
+                <%#if current_parent.id == @child.parent_id%>
 
+                <%# if current_parent.id == @child.parent_id %>
+
+                <%#= Child.childrenOf(current_parent.id).size %>
+                <%= Chore.where(:child_id => @child.id).count %>
+                <%= Chore.count(@child.id) %>
+                <%= Chore.count(current_parent.id) %>
+                <%= Chore.calculate(:count, :all) %>
+                <%# else %>
+                <%# end %>
+
+                <%= current_parent.children %>
+                <%#= Chore.count(current_parent.children) %>
+                <!--<span class='text-muted'><%= @child.chores%></span>-->
               </legend>
-                <%= pie_chart [["To-Do", todo  ], ["Completed", total ]] %>
+
+              <%#= pie_chart Yogurt.group(:flavor).count %>
+
+              <%#= column_chart Chore.count(:complete) %>
+
             </div>
           </div>
 
