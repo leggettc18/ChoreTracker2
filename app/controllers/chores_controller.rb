@@ -11,7 +11,10 @@ class ChoresController < ApplicationController
   # GET /chores/1
   # GET /chores/1.json
   def show
-    Notification.mark_read(params[:notif_id])
+    if params[:notif_id]
+      Notification.mark_read(params[:notif_id])
+      params[:notif_id] = nil
+    end
     @chore = Chore.find(params[:id])
   end
 
