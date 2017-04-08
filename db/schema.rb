@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402144305) do
+ActiveRecord::Schema.define(version: 20170408135927) do
 
   create_table "children", force: :cascade do |t|
     t.integer  "parent_id",            default: 0,     null: false
@@ -44,9 +44,10 @@ ActiveRecord::Schema.define(version: 20170402144305) do
     t.boolean  "unread",      default: true, null: false
     t.integer  "object_type"
     t.integer  "object_id"
-    t.integer  "parent_id"
+    t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "user_type"
   end
 
   create_table "parents", force: :cascade do |t|
