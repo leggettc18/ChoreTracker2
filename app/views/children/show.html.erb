@@ -54,10 +54,10 @@
                     <div class="index-wrapper">
                       <% if chore.completed == false %>
                           <div class="row chore">
-                            <div class=".col-xs-6 col-md-1">
-                              <p id="everybodydance"><%= link_to '<i class="fa fa-check fa-lg"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
+                            <div class=".col-xs-6 col-md-2">
+                              <p id="everybodydance"><%= link_to '<i class="fa fa-check fa-3x"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
                             </div>
-                            <div class=".col-xs-6 col-md-7">
+                            <div class=".col-xs-6 col-md-6">
                               <h2 class="chore-title" style="text-align: left;"><%=  chore.name %></h2>
                               <p class="item-sub-title item-desc"><%= chore.description %></p>
                               <p style="color: white" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
@@ -81,10 +81,10 @@
                     <div class="index-wrapper">
                       <% if chore.completed? %>
                           <div class="row chore">
-                            <div class=".col-xs-6 col-md-1">
-                              <p style="color: #3efd7a"><i class="fa fa-check fa-lg"></i></p>
+                            <div class=".col-xs-6 col-md-2">
+                              <p style="color: #3efd7a"><i class="fa fa-check fa-3x"></i></p>
                             </div>
-                            <div class=".col-xs-6 col-md-7">
+                            <div class=".col-xs-6 col-md-6">
                               <h2 class="chore-title" style="text-align: left;"><strike><%=  chore.name %></strike></h2>
                               <p class="item-sub-title item-desc"><%= chore.description %></p>
                               <p style="color: white" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
@@ -108,10 +108,10 @@
                     <div class="index-wrapper">
                       <% if chore.completed? %>
                           <div class="row chore">
-                            <div class=".col-xs-6 col-md-1">
-                              <p style="color: #3efd7a"><i class="fa fa-check fa-lg"></i></p>
+                            <div class=".col-xs-6 col-md-2">
+                              <p style="color: #3efd7a"><i class="fa fa-check fa-3x"></i></p>
                             </div>
-                            <div class=".col-xs-6 col-md-7">
+                            <div class=".col-xs-6 col-md-6">
                               <h2 class="chore-title" style="text-align: left;"><strike><%=  chore.name %></strike></h2>
                               <p class="item-sub-title item-desc"><%= chore.description %></p>
                               <p style="color: white;" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
@@ -124,10 +124,10 @@
                       <% else %>
 
                           <div class="row chore">
-                            <div class=".col-xs-6 col-md-1">
-                              <p><%= link_to '<i class="fa fa-check fa-lg"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
+                            <div class=".col-xs-6 col-md-2">
+                              <p><%= link_to '<i class="fa fa-check fa-3x"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
                             </div>
-                            <div class=".col-xs-6 col-md-7">
+                            <div class=".col-xs-6 col-md-6">
                               <h2 class="chore-title" style="text-align: left;"><%=  chore.name %></h2>
                               <p class="item-sub-title item-desc"><%= chore.description %></p>
                               <p style="color: white;" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
