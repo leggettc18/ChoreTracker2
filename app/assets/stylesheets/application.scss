@@ -127,9 +127,29 @@ table, th, td#chores {
     margin-right:auto;
 }
 
-a, a:active, a:visited { color: white; }
+/* unvisited link */
+a:link {
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
 
 /* mouse over link */
 a:hover {
-    color: hotpink;
+    color: #3efd7a;
 }
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+// a, a:visited { color: white; }
+
+// /* mouse over link */
+// a:hover {
+//     color: #3efd7a;
+// }

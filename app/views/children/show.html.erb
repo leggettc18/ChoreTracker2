@@ -123,25 +123,29 @@
 
             <!--dashboard-->
             <div class="tabs_item">
-                
-                
-                <%#= @child.name %>
-   
-                <%= total = Chore.where(:child_id => @child.id).count %>
-                <%= completeTotal = @chores.select(&:completed).size %>
-                
-                <%= todo = total - completeTotal %>
-                
-                <legend>
-                  <h2>Daily Assigned Chores</h2>
-                </legend>
-                <%= area_chart Chore.where(:child_id => @child.id).group_by_day(:created_at).count, download: true, width: "50%", id: "line-chart" %>
-                
-                       <legend>
-                  <h2>Total Chores</h2>
-                </legend>
-                  <%= pie_chart [["To-Do", todo  ], ["Completed", total ]],colors: ["white","#3efd7a"],download: true, width: "50%", id: "pie-chart" %>
-                
+              <div class="col-xs-12 col-md-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Daily Assigned Chores</h3>
+                  </div>
+                  <div class="panel-content text-center">
+                    <%= area_chart Chore.where(:child_id => @child.id).group_by_day(:created_at).count, download: true, width: "100%", id: "line-chart" %>
+                  </div>
+                  <div class="panel-footer">Muhahaha I am your father</div>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-md-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title" >Total Chores: <%= total = Chore.where(:child_id => @child.id).count %> - Completed: <%= completeTotal = @chores.select(&:completed).size %></h3>
+                  </div>
+                  <div class="panel-content text-center">
+                    <%= pie_chart [["To-Do", total-completeTotal], ["Completed", completeTotal ]], donut: true, colors: ["#ff0084","#3efd7a"],download: true, width: "100%", id: "pie-chart" %>
+                  </div>
+                  <div class="panel-footer">Work Hard Live Well!</div>
+                </div>
+              </div>
             </div>
           </div>
 
