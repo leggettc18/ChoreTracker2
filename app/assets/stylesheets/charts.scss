@@ -18,7 +18,20 @@
 canvas{
     height: 100%;
     width: 100%;
-    padding-top: 20px;
+}
+
+#pie-chart {
+	margin: auto;
+	  padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+#line-chart {
+	fontColor: 'rgb(255, 99, 132)';
+	margin: auto;
+	  padding-top: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
