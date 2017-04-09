@@ -1,6 +1,12 @@
 <% if parent_signed_in? %>
+
+<% user = getSubLoggedUser() #sublogin enforcement%>
+<%if user == false or user[:type] != "child" or user[:id] != @child.id #sublogin enforcement%>
+<h1>You must be logged in as the appropriate child to use this page</h1>
+<h2><a href="/sublogin">You can click here to fix that</a></h2>
+<%else #sublogin enforcement. Correct user type logged in%>
+
     <% if current_parent.id == @child.parent_id %>
-        <% trySubLogin("child", @child.id, "", false) %>
         <h1>Welcome <%= @child.name %>!<br></h1>
 
           <center>
@@ -188,6 +194,9 @@
     <% else %>
         <h2> Wtf not your kid bro</h2>
     <% end %>
+    
+    <%end #Sublogin enforcement. LEAVE A NEW LINE AFTER THIS%>
+    
 <% else %>
     <center>
       You must be logged in to see this page. <br />
