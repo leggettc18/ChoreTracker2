@@ -69,6 +69,10 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    fullcalendar-rails (3.2.0.0)
+      jquery-rails (>= 4.0.5, < 5.0.0)
+      jquery-ui-rails (>= 5.0.2)
+      momentjs-rails (>= 2.9.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     groupdate (3.2.0)
@@ -84,6 +88,8 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
+    jquery-ui-rails (6.0.1)
+      railties (>= 3.2.16)
     json (1.8.6)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -95,6 +101,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
@@ -189,10 +197,12 @@ DEPENDENCIES
   chartkick
   coffee-rails (~> 4.1.0)
   devise (~> 4.2)
+  fullcalendar-rails
   groupdate
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  momentjs-rails
   pg (= 0.18.4)
   rails (~> 5.0, >= 5.0.1)
   sass-rails (~> 5.0)

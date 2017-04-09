@@ -140,3 +140,19 @@
 // }
 
 // // END TAB ~~~~~~~~~~~~~~~ (.)(.)
+.fc-today {
+    background: rgba(121, 201, 252, .25) !important;
+    border: none !important;
+    border-top: 1px solid #ddd !important;
+    font-weight: bold;
+    opacity: 30%;
+} 
+
+.fc-day-top, .fc-day-header {
+    color: white;
+    
+}
+.fc-event {
+    background: #FF0084 !important;
+    border: 1px solid #800080 !important;
+}

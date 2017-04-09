@@ -1,2 +1,6 @@
-json.extract! chore, :id, :name, :description, :coins, :due_date, :repeat_type, :repeat_data, :needs_approval, :completed, :child_id, :parent_id, :created_at, :updated_at
-json.url chore_url(chore, format: :json)
+date_format = '%Y-%m-%d' 
+
+json.id chore.id
+json.title chore.name
+json.start chore.due_date.strftime(date_format)
+json.end chore.due_date.strftime(date_format)

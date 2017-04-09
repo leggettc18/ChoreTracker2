@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require fullcalendar
  *= require_tree .
  *= require_self
  */
@@ -93,6 +94,11 @@ body
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
+    
+    // hack some dark purple from bottom of image to hide the fact that
+    // bgimage is too small for high (tall) resolution phones  --joey
+    background-color: #272167;
 
     
     
@@ -103,29 +109,37 @@ label {
     color: #FFFFFF;
 }
 
- 
-table, th, td#separated {
-    text-align: center;
-    color: #FFFFFF;
-    table-layout:fixed;
-    width:40%;
-    border: 1px solid black;
-    background-color:#6495ED;
-    margin-left:auto; 
-    margin-right:auto;
+table, th, td{
+    
+     border: 2px solid black;
+       
 }
 
-table, th, td#chores {
-    color: #FFFFFF;
-    table-layout:fixed;
-    width:40%;
-    border: 1px solid black;
-    background-color:#6495ED;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left:auto; 
-    margin-right:auto;
-}
+ 
+
+ 
+// table, th, td#separated {
+//     text-align: center;
+//     color: #FFFFFF;
+//     table-layout:fixed;
+//     width:40%;
+//     border: 1px solid black;
+//     background-color:#6495ED;
+//     margin-left:auto; 
+//     margin-right:auto;
+// }
+
+// table, th, td#chores {
+//     color: #FFFFFF;
+//     table-layout:fixed;
+//     width:40%;
+//     border: 1px solid black;
+//     background-color:#6495ED;
+//     margin-top: 5px;
+//     margin-bottom: 5px;
+//     margin-left:auto; 
+//     margin-right:auto;
+// }
 
 /* unvisited link */
 a:link {

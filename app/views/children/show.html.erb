@@ -3,15 +3,19 @@
         <% trySubLogin("child", @child.id, "", false) %>
         <h1>Welcome <%= @child.name %>!<br></h1>
 
-        <table id="separated">
+          <center>
+          <table style="border: 0px solid black;" id="separated">
           <tbody>
           <tr>
-            <td><font size="4"><%= link_to 'Return Home', '/default/index' %></td>
-            <td><font size="4"><%= link_to 'Reward Store', rewards_store_path %></td>
-            <td><font size="4">Extra Chores</td>
+            
+            <td style="border: 0px solid black;"><font size="4"><%= button_to 'Return Home ', '/default/index', :method => :get %></td>
+            <td style="border: 0px solid black;">  </td>
+            <td style="border: 0px solid black;"><font size="4"><%= button_to ' Reward Store', rewards_store_path, :method => :get  %></td>
+           
           </tr>
           </tbody>
         </table>
+        </center>
         <h2>Current Balance <i class="fa fa-star fa-lg" style="color: gold"></i> <%= @child.balance %></h2>
 
         <div class="tab">
@@ -20,6 +24,7 @@
             <li><a href="#">Completed</a></li>
             <li><a href="#">Test All (Beta)</a></li>
             <li><a href="#">Dashboard (Beta)</a></li>
+            <li><a href="#">Calendar (Beta)</a></li>
           </ul>
 
           <!--chore tabs-->
@@ -147,7 +152,38 @@
                 </div>
               </div>
             </div>
+           
+          
+           <!-- calendar -->
+            
+          <!-- The hackiest shit I have ever done, this allows the above calendar to render appropriately inside of a hidden tab -->
+            
+            <!-- calendar hack shit starts here -->
+            <!-- i hardcode display to true so it can render (fullcalendar doesnt render if display:none) -->
+            <!-- but the opacity to zero so it IS there but invisible -->
+            <div id='calhack' class="tabs_item" style="display: block; opacity: 0.0">
+              
+              <!-- this renders the calender, yes just this line under here, the code is in child.coffee, also js2.coffee is dope af for transforming js to coffeescript -->
+              <div class="calendar"></div>
+              
+            </div>
           </div>
+          
+          <!-- calendar hack shit continues -->
+            <!-- with 0ms delay i now set display to none, but that gave FullCal enough time to see that it was there and render it -->
+            <!-- with a little longer delay i bring the opacity to 1, showing it fully, but its display: none property means you cant see it anyway-->
+            
+          <script type="text/javascript">
+          setTimeout(function () {
+            document.getElementById("calhack").style.display = 'none';
+          }, 0);
+          
+          setTimeout(function () {
+            document.getElementById("calhack").style.opacity = '1';
+          }, 100); 
+          </script>
+
+    <!-- RESUME NORMALITY -->
 
     <% else %>
         <h2> Wtf not your kid bro</h2>
