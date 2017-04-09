@@ -41,7 +41,6 @@ class RewardsController < ApplicationController
     decrementChild = Child.find(params[:child])
     decrementChild.balance = decrementChild.balance - redeemReward.cost
     decrementChild.save
-    
        
     redirect_to :back, notice: 'Reward was successfully redeemed.'
     
@@ -86,9 +85,11 @@ class RewardsController < ApplicationController
   end
   
   def store
-    @child_buyer = Child.find(getSubLoggedUser()[:id])
-    @child = Child.find(getSubLoggedUser()[:id])
-    @rewards = Reward.where(:child_id => @child.id)
+    if getSubLoggedUser()
+      @child_buyer = Child.find(getSubLoggedUser()[:id])
+      @child = Child.find(getSubLoggedUser()[:id])
+      @rewards = Reward.where(:child_id => @child.id)
+    end
   end
   
   def purchase

@@ -83,18 +83,18 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-
+<center>
 <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-
+</center>
 
 <div class="container">
- <% flash.each do |key, value| %>
-   <div class = " <% flash_class(key) %>">
+ <!--<#% flash.each do |key, value| %>-->
+ <!--  <div class = " <#% flash_class(key) %>">-->
      
-     <%= value %>
-     </div>
- <% end %>
+ <!--    <#%= value %>-->
+ <!--    </div>-->
+ <!--<#% end %>-->
  <%= yield %>
 
 </div>
