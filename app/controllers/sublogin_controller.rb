@@ -11,11 +11,19 @@ class SubloginController < ApplicationController
         
         #This would be better if we verified that the child belonged to the parent
         if (type == 'parent')
-            trySubLogin("parent", current_parent[:id], pin, false)
-            redirect_to "/sublogin/who"
+            result = trySubLogin("parent", current_parent[:id], pin, false)
+            if result == false #Sublogin failed
+                redirect_to "/sublogin/"
+            else #Sublogin successfull
+                redirect_to :back  
+            end
         elsif (type == 'child')
-            trySubLogin("child", id, pin, false)
-            redirect_to "/sublogin/who"
+            result = trySubLogin("child", id, pin, false)
+            if result == false #Sublogin failed
+                redirect_to "/sublogin/"
+            else #Sublogin successfull
+                redirect_to "/children/" + id.to_s
+            end
         else #Malformed input
             throw "invalid account type"
         
