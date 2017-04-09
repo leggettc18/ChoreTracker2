@@ -5,22 +5,22 @@ class Notification < ApplicationRecord
     
     
     def self.new_chore_approval(chore_id, parent_id)
-        Notification.create(:unread => true, :object_type => :chore, :object_id => chore_id, :user_type => :parents, :user_id => parent_id)
+        Notification.create(:unread => true, :object_type => :chore_approval, :object_id => chore_id, :user_type => :parent_user, :user_id => parent_id)
     end
     
     def self.new_reward_approval(reward_id, parent_id)
-        Notification.create(:unread => true, :object_type => :reward, :object_id => reward_id, :user_type => :parents, :user_id => parent_id)
+        Notification.create(:unread => true, :object_type => :reward_approval, :object_id => reward_id, :user_type => :parent_user, :user_id => parent_id)
     end
     
     def self.new_chore(chore_id, child_id)
-        Notification.create(:unread => true, :object_type => :chore, :object_id => chore_id, :user_type => :child, :user_id => child_id)
+        Notification.create(:unread => true, :object_type => :new_chore, :object_id => chore_id, :user_type => :child, :user_id => child_id)
     end
     
-    def self.notif_chore_approved(chore_id, child_id)
+    def self.chore_approved(chore_id, child_id)
         Notification.create(:unread => true, :object_type => :chore_approved, :object_id => chore_id, :user_type => :child, :user_id => child_id)
     end
     
-    def self.notif_reward_approved(reward_id, child_id)
+    def self.reward_approved(reward_id, child_id)
         Notification.create(:unread => true, :object_type => :reward_approved, :object_id => reward_id, :user_type => :child, :user_id => child_id)
     end
     
