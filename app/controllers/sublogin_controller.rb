@@ -13,14 +13,14 @@ class SubloginController < ApplicationController
         if (type == 'parent')
             result = trySubLogin("parent", current_parent[:id], pin, false)
             if result == false #Sublogin failed
-                redirect_to "/sublogin/"
+                redirect_to :back, notice: 'Specified parent pin was wrong'
             else #Sublogin successfull
-                redirect_to :back  
+                redirect_to "/", notice: "Parent sublogin successful"
             end
         elsif (type == 'child')
             result = trySubLogin("child", id, pin, false)
             if result == false #Sublogin failed
-                redirect_to "/sublogin/"
+                redirect_to :back, notice: 'Child pin incorrect'
             else #Sublogin successfull
                 redirect_to "/children/" + id.to_s
             end
@@ -48,11 +48,13 @@ class SubloginController < ApplicationController
                     parent[:pincode] = newpin
                     parent.save
                     puts "Successfully updated subaccount with new pin"
-                else
+                else #New pin mismatch
                     puts "Pin change failed for parent ID " + parent[:id].to_s + " because the new pin and confirmation were different"
+                    redirect_to :back, notice: 'New pin confirmation did not match'
                 end
-            else #It might be nice to let them know the pin change failed on the site
+            else #Wrong current pin
                 puts "Pin change failed for parent ID " + parent[:id].to_s + " because of invalid existing pin"
+                redirect_to :back, notice: 'Specified current pin was wrong'
             end
             
         elsif user[:type] == "child"
@@ -63,11 +65,14 @@ class SubloginController < ApplicationController
                     child[:childPin] = newpin
                     child.save
                     puts "Successfully updated subaccount with new pin"
-                else
+                    redirect_to "/children/" + id.to_s, notice: 'Pin successfully updated!'
+                else #New pin mismatch
                     puts "Pin change failed for child ID " + child[:id].to_s + " because the new pin and confirmation were different"
+                    redirect_to :back, notice: 'New pin confirmation did not match'
                 end
-            else #It might be nice to let them know the pin change failed on the site
+            else #Wrong current pin
                 puts "Pin change failed for child ID " + child[:id].to_s + " because of invalid existing pin"
+                redirect_to :back, notice: 'Specified current pin was wrong'
             end
             
         else #Aw crap
@@ -76,7 +81,7 @@ class SubloginController < ApplicationController
         #doSubLogout()
         #redirect_to "/sublogin/"
         #redirect_to "/sublogin/pin"
-        redirect_to :back, notice: 'BLEH'
+        redirect_to "/", notice: 'Uncaught redirect in chgpin'
         
     end
     
