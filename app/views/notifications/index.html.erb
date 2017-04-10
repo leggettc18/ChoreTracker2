@@ -34,6 +34,8 @@
                 <%= link_to "Approval Page" %> <%# Replace with Reward Approval Page Path %>
                 <% elsif notif.new_chore? %>
                 <%= link_to "Have a look!", chore_path(notif.object_id), {:notif_id => notif.id} %>
+                <% elsif notif.new_reward? %>
+                <%= link_to "Have a look!", reward_path(notif.object_id), {:notif_id => notif.id} %>
                 <% elsif notif.chore_approved? %>
                 <%= link_to "Have a look!" %> <%# Replace with link to Chore History Page %>
                 <% elsif notif.reward_approved? %>
