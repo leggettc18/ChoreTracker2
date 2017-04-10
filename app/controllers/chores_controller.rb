@@ -87,6 +87,10 @@ class ChoresController < ApplicationController
   # DELETE /chores/1
   # DELETE /chores/1.json
   def destroy
+    @notifications = Notification.where(object_id: @chore.id)
+    @notifications.each do |notif|
+      Notification.destroy(notif.id)
+    end
     @chore.destroy
     respond_to do |format|
       format.html { redirect_to chores_url, notice: 'Chore was successfully destroyed.' }
