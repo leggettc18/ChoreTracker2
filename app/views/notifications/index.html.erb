@@ -23,7 +23,7 @@
             <td>
                 <% if notif.chore_approval? || notif.new_chore? || notif.chore_approved? %>
                 <%= Chore.find(notif.object_id).name %>
-                <% elsif notif.reward_approval? || notif.reward_approved? %>
+                <% elsif notif.reward_approval? || notif.reward_approved? || notif.new_reward? %>
                 <%= Reward.find(notif.object_id).name %>
                 <% end %>
             </td>
