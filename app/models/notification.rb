@@ -1,5 +1,5 @@
 class Notification < ApplicationRecord
-    enum object_type: [:chore_approval, :reward_approval, :new_chore, :chore_approved, :reward_approved]
+    enum object_type: [:chore_approval, :reward_approval, :new_chore, :chore_approved, :reward_approved, :new_reward]
     enum user_type: [:parent_user, :child]
     
     
@@ -22,6 +22,10 @@ class Notification < ApplicationRecord
     
     def self.reward_approved(reward_id, child_id)
         Notification.create(:unread => true, :object_type => :reward_approved, :object_id => reward_id, :user_type => :child, :user_id => child_id)
+    end
+    
+    def self.new_reward(reward_id, child_id)
+        Notification.create(:unread => true, :object_type => :new_reward, :object_id => reward_id, :user_type => :child, :user_id => child_id)
     end
     
     def self.mark_read(notif_id)

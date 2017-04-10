@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170408135927) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "user_type"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "parents", force: :cascade do |t|
