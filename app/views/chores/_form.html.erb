@@ -26,13 +26,16 @@
   <div class="field"><%= f.check_box(:needs_approval) %> <br /></div>
   
   <%= f.label :due_date %><br />
-  <div class="field"><%= f.datetime_field(:due_date) %> <br /></div>
+  <div class="field"><%= f.date_field(:due_date) %> <br /></div>
        
   <%= f.label :repeat_type %><br />
   <div class="field"><%= f.select(:repeat_type, Chore.repeat_types.keys.to_a) %> <br /></div>
   
-  <%= f.label :repeat_data %><p>Select 1-7 for days of the week, 1-31 for days of the month</p>
-  <div class="field"><%= f.number_field(:repeat_data) %> <br /></div>
+  <%= f.label :repeat_until %><br />
+  <div class="field"><%= f.date_field(:repeat_until) %> <br /></div>
+  
+  <!--<#%= f.label :repeat_data %><p>Select 1-7 for days of the week, 1-31 for days of the month</p>-->
+  <!--<div class="field"><#%= f.number_field(:repeat_data) %> <br /></div>-->
   
   <%= f.label :child_id %><br />
   <div class="field"><%= f.collection_select(:child_id, current_parent.children, :id, :name, {:include_blank => true}) %> <br /></div>

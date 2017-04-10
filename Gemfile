@@ -58,3 +58,14 @@ group :development do
   gem 'spring'
 end
 
+gem 'simple_form'
+
+gem 'will_paginate', '~> 3.1', '>= 3.1.5'
+
+gem 'jquery-turbolinks'
+gem 'chartkick'
+gem 'groupdate'
+gem 'active_median'
+
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'

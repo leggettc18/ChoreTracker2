@@ -10,12 +10,52 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require fullcalendar
  *= require_tree .
  *= require_self
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,700|Merriweather:400,300);
+
+
+/* Mixins, variables, etc... */
+
+@mixin nav_link_hover {
+	transition: 0.4s;
+	color: lighten(#222, 30%);
+	text-decoration: none;
+}
+
+/* Navbar and navigation styles */
+
+.navbar {
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+}
+
+.navbar-default {
+
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #fff;
+
+	.navbar-nav > li > a {
+		color: #222;
+	}
+
+	.navbar-link {
+		color: #222;
+	}
+
+	.navbar-brand {
+		color: #222;
+		letter-spacing: 1.25px;
+	}
+
+}
 
 h1 {
     font-size: 70px;
@@ -40,31 +80,94 @@ h3 {
     font-size: 13px;
 }
 
-body {
-    background-color: #3f3f3f;
+p {
+    // color: #FFFFFF;
 }
 
-table, th, td#separated {
-    text-align: center;
+body 
+{
+//   background: linear-gradient(to right, #2a0845, #6441A5); //twitch
+//   background: linear-gradient(to left,#34e89e,#0f3443);
+    // background-color: #CC3366;
+    // background-image: url(http://static.tumblr.com/ee5a6a8beb8a02e2880c9a99d4ed008e/cxks3x1/OVqndv5ug/tumblr_static_9maai8qgqzwo0g08g8wwwoows.jpg) no-repeat center center fixed; 
+    background-image: url(http://static.tumblr.com/ee5a6a8beb8a02e2880c9a99d4ed008e/cxks3x1/OVqndv5ug/tumblr_static_9maai8qgqzwo0g08g8wwwoows.jpg);
+    height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+    // hack some dark purple from bottom of image to hide the fact that
+    // bgimage is too small for high (tall) resolution phones  --joey
+    background-color: #272167;
+
+    
+    
+    
+}
+
+label {
     color: #FFFFFF;
-    table-layout:fixed;
-    width:40%;
-    border: 1px solid black;
-    background-color:#6495ED;
-    margin-left:auto; 
-    margin-right:auto;
 }
 
-table, th, td#chores {
-    color: #FFFFFF;
-    table-layout:fixed;
-    width:40%;
-    border: 1px solid black;
-    background-color:#6495ED;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left:auto; 
-    margin-right:auto;
+table, th, td{
+    
+     border: 2px solid black;
+       
 }
 
-a, a:active, a:visited { color: white; }
+ 
+
+ 
+// table, th, td#separated {
+//     text-align: center;
+//     color: #FFFFFF;
+//     table-layout:fixed;
+//     width:40%;
+//     border: 1px solid black;
+//     background-color:#6495ED;
+//     margin-left:auto; 
+//     margin-right:auto;
+// }
+
+// table, th, td#chores {
+//     color: #FFFFFF;
+//     table-layout:fixed;
+//     width:40%;
+//     border: 1px solid black;
+//     background-color:#6495ED;
+//     margin-top: 5px;
+//     margin-bottom: 5px;
+//     margin-left:auto; 
+//     margin-right:auto;
+// }
+
+/* unvisited link */
+a:link {
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+a:hover {
+    color: #3efd7a;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+// a, a:visited { color: white; }
+
+// /* mouse over link */
+// a:hover {
+//     color: #3efd7a;
+// }

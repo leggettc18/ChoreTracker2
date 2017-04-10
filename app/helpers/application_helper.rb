@@ -38,7 +38,7 @@ module ApplicationHelper
                 }
             else #Normal cookie expiration time. Maybe this will can be changed later to have different times for parents and children
                 cookies[:sublogin] = {
-                  value: JSON.generate([type, 5.minutes.from_now, id, false]),
+                  value: JSON.generate([type, 1.hour.from_now, id, false]),
                   expires: 1.year.from_now
                 }
             end

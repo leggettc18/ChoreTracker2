@@ -1,0 +1,159 @@
+<% if parent_signed_in? %>
+    <% if current_parent.id == @child.parent_id %>
+        <% trySubLogin("child", @child.id, "", false) %>
+        <h1>Welcome <%= @child.name %>!<br></h1>
+
+        <table id="separated">
+          <tbody>
+          <tr>
+            <td><font size="4"><%= link_to 'Return Home', '/default/index' %></td>
+            <td><font size="4"><%= link_to 'Reward Store', rewards_store_path %></td>
+            <td><font size="4">Extra Chores</td>
+          </tr>
+          </tbody>
+        </table>
+        <h2>Current Balance <i class="fa fa-star fa-lg" style="color: gold"></i> <%= @child.balance %></h2>
+
+        <div class="tab">
+          <ul class="tabs" id="nav">
+            <li><a href="#">Chores</a></li>
+            <li><a href="#">Completed</a></li>
+            <li><a href="#">Test All (Beta)</a></li>
+            <li><a href="#">Dashboard (Beta)</a></li>
+          </ul>
+
+          <!--chore tabs-->
+          <div class="tab_content">
+
+            <!--chores-->
+            <div class="tabs_item">
+              <div class="col-md-6 col-md-offset-3">
+                <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
+                    <div class="index-wrapper">
+                      <% if chore.completed == false %>
+                          <div class="row chore">
+                            <div class=".col-xs-6 col-md-1">
+                              <p><%= link_to '<i class="fa fa-check fa-lg"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
+                            </div>
+                            <div class=".col-xs-6 col-md-7">
+                              <h2 class="chore-title" style="text-align: left;"><%=  chore.name %></h2>
+                              <p class="item-sub-title item-desc"><%= chore.description %></p>
+                              <p style="color: white" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+                            </div>
+                            <div class=".col-xs-6 col-md-4">
+                              <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                            </div>
+                          </div>
+                      <% else %>
+                      <% end %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+
+            <!--completed chores-->
+            <div class="tabs_item">
+              <div class="col-md-6 col-md-offset-3">
+                <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
+                    <div class="index-wrapper">
+                      <% if chore.completed? %>
+                          <div class="row chore">
+                            <div class=".col-xs-6 col-md-1">
+                              <p style="color: #3efd7a"><i class="fa fa-check fa-lg"></i></p>
+                            </div>
+                            <div class=".col-xs-6 col-md-7">
+                              <h2 class="chore-title" style="text-align: left;"><strike><%=  chore.name %></strike></h2>
+                              <p class="item-sub-title item-desc"><%= chore.description %></p>
+                              <p style="color: white" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+                            </div>
+                            <div class=".col-xs-6 col-md-4">
+                              <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                            </div>
+                          </div>
+                      <% else %>
+                      <% end %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+
+            <!--all-->
+            <div class="tabs_item">
+              <div class="col-md-6 col-md-offset-3">
+                <% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
+                    <div class="index-wrapper">
+                      <% if chore.completed? %>
+                          <div class="row chore">
+                            <div class=".col-xs-6 col-md-1">
+                              <p style="color: #3efd7a"><i class="fa fa-check fa-lg"></i></p>
+                            </div>
+                            <div class=".col-xs-6 col-md-7">
+                              <h2 class="chore-title" style="text-align: left;"><strike><%=  chore.name %></strike></h2>
+                              <p class="item-sub-title item-desc"><%= chore.description %></p>
+                              <p style="color: white;" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+                            </div>
+                            <div class=".col-xs-6 col-md-4">
+                              <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                            </div>
+                          </div>
+                      <% else %>
+
+                          <div class="row chore">
+                            <div class=".col-xs-6 col-md-1">
+                              <p><%= link_to '<i class="fa fa-check fa-lg"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
+                            </div>
+                            <div class=".col-xs-6 col-md-7">
+                              <h2 class="chore-title" style="text-align: left;"><%=  chore.name %></h2>
+                              <p class="item-sub-title item-desc"><%= chore.description %></p>
+                              <p style="color: white;" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+                            </div>
+                            <div class=".col-xs-6 col-md-4">
+                              <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                            </div>
+                          </div>
+                      <% end %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+
+            <!--dashboard-->
+            <div class="tabs_item">
+                
+                
+                <%#= @child.name %>
+   
+                <%= total = Chore.where(:child_id => @child.id).count %>
+                <%= completeTotal = @chores.select(&:completed).size %>
+                
+                <%= todo = total - completeTotal %>
+                
+                <legend>
+                  <h2>Daily Assigned Chores</h2>
+                </legend>
+                <%= area_chart Chore.where(:child_id => @child.id).group_by_day(:created_at).count, download: true, width: "50%", id: "line-chart" %>
+                
+                       <legend>
+                  <h2>Total Chores</h2>
+                </legend>
+                  <%= pie_chart [["To-Do", todo  ], ["Completed", total ]],colors: ["white","#3efd7a"],download: true, width: "50%", id: "pie-chart" %>
+                
+            </div>
+          </div>
+
+    <% else %>
+        <h2> Wtf not your kid bro</h2>
+    <% end %>
+<% else %>
+    <center>
+      You must be logged in to see this page. <br />
+      <%= link_to "Log in", '/parents/sign_in/' %><br />
+    </center>
+<% end %>
+
+
+<% @chores = Chore.all.order("created_at DESC")%>
