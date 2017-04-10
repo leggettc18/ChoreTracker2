@@ -145,7 +145,7 @@
 
             <!--dashboard-->
             <div class="tabs_item">
-              <div class="col-xs-12 col-md-6">
+              <div class="col-xs-12 col-md-4">
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h3 class="panel-title">Daily Assigned Chores</h3>
@@ -157,7 +157,8 @@
                 </div>
               </div>
 
-              <div class="col-xs-12 col-md-6">
+
+              <div class="col-xs-12 col-md-4">
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h3 class="panel-title" >Total Chores: <%= total = Chore.where(:child_id => @child.id).count %> - Completed: <%= completeTotal = @chores.select(&:completed).size %></h3>
@@ -168,6 +169,25 @@
                   <div class="panel-footer">Work Hard Live Well!</div>
                 </div>
               </div>
+              
+              
+              <div class="col-xs-12 col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title" > Balance: <%= total = @child.balance %></h3>
+                  </div>
+                  <div class="panel-content text-center">
+                    <%#= pie_chart [["Current Balance", total], ["Redeemed", Reward.select(&:cost).count ]], donut: true, colors: ["#ff0084","#3efd7a"],download: true, width: "100%", id: "pie-chart2" %>
+                    <%#= pie_chart [["Current Balance", total], ["Redeemed", Reward.select(&:redeemed).size ]], donut: true, colors: ["#ff0084","#3efd7a"],download: true, width: "100%", id: "pie-chart2" %>
+                    <%= pie_chart [["Current Balance", total], ["Redeemed", Reward.where(:child_id => @child.id, :redeemed => true).sum(:cost) ]], donut: true, colors: ["#ff0084","#3efd7a"],download: true, width: "100%", id: "reward-chart" %>
+                  </div>
+                  <div class="panel-footer">Work Hard Live Well!</div>
+                </div>
+              </div>
+            
+              
+              
+              
             </div>
            
           
