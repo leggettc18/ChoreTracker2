@@ -103,4 +103,20 @@ module ApplicationHelper
         cookies.delete :sublogin
     end
     
+    #Allow parents to view childen's pages
+    def authorizedViewerChild(id)
+        sublogin = getSubLoggedUser()
+        if sublogin == false
+            return false
+        elsif sublogin[:type] == 'parent'
+            return Child.find_by_id(id).parent_id == sublogin[:id] #Is this actually the parent for this child?
+        elsif sublogin[:type] == 'child'
+            return id == sublogin[:id]
+        else
+            throw "INVALID ACCOUNT TYPE RETURNED FOR GETSUBLOGGED USER. THIS IS REALLY BAD."
+        end
+            
+        
+    end
+    
 end

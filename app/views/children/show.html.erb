@@ -1,14 +1,14 @@
 <% if parent_signed_in? %>
 
 <% user = getSubLoggedUser() #sublogin enforcement%>
-<%if user == false or user[:type] != "child" or user[:id] != @child.id #sublogin enforcement.%>
+<%if !authorizedViewerChild(@child.id) #sublogin enforcement.%>
 
 
   <!--<#%= render :action => 'sublogin' %>-->
   
   <!--<#% redirect_to 'sublogin' %>-->
    <script type="text/javascript">
-     window.location.href="/sublogin"  // put your correct path in a string here
+     window.location.href="/sublogin/?type=child&id=<%= @child.id %>"  // put your correct path in a string here
   </script>
 
 
@@ -16,6 +16,9 @@
 <!--<h2><a href="/sublogin">You can click here to fix that</a></h2>-->
 
 <%else #sublogin enforcement. Correct user type logged in%>
+    <% if user[:type] == "parent" %>
+      <h2>Previewing child page as a parent</h2>
+    <% end %>
 
     <% if current_parent.id == @child.parent_id %>
         <h1>Welcome <%= @child.name %>!<br></h1>
