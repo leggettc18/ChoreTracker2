@@ -4,11 +4,23 @@ class ChoresController < ApplicationController
 
   # GET /chores
   # GET /chores.json
-  
   def index
+    
    # @chores = Chore.all
-     @chores = Chore.all.order("due_date ASC")
+   
+   
+    user = helpers.getSubLoggedUser
+    if user == false
+      redirect_to :root, notice: "Please log in first"
+    elsif user[:type] == 'parent'
+      @chores = Chore.where(:parent_id => user[:id], :completed => false).order("due_date ASC")
+    else
+      @chores = Chore.where(:child_id => user[:id], :completed => false).order("due_date ASC")
+    end
+    
   end
+  
+  
 
   # GET /chores/1
   # GET /chores/1.json
