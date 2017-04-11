@@ -2,9 +2,9 @@
 
   <% if params[:type] == nil %>
     <%= f.label :type %><br />
-    <b>Are you a 'parent' or a 'child'</b>
+    <b>Are you a 'parent' or a 'child'?</b>
   <% elsif params[:type] == 'parent' %>
-    <h2>Welcome parent, enter your pin<h2>
+    <h2>Welcome parent, enter your pin</h2>
   <% elsif params[:type] == 'child' and (Child.find_by_id(params[:id]).parent_id == current_parent.id)%>
     <h2>Welcome, <%= Child.find_by_id(params[:id]).name %>. Enter your pin</h2>
   <% else %>
@@ -18,8 +18,7 @@
   <% if params[:type] != "parent"%>
     <%= if params[:id] == nil
     f.label :child_id 
-    end
-    %>
+    end %>
 
     <div class="field"><%= f.collection_select :child_id, current_parent.children, :id, :name, {:include_blank => true, :selected => params[:id]}, :hidden => params[:id] != nil %> <br /></div>
     <br>
