@@ -16,7 +16,7 @@
 
 <%else #sublogin enforcement. Correct user type logged in%>
 <% if user[:type] == "parent" %>
-   <h2>Previewing child page as a parent</h2>
+   <h2>Impersonating <%= @child.name %>'s page as a parent</h2>
 <% end %>
 
     <% if current_parent.id == @child.parent_id %>
