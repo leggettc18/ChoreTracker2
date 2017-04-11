@@ -17,7 +17,7 @@ class ChoresController < ApplicationController
       @chores = Chore.where(:parent_id => user[:id], :completed => false).order("due_date ASC")
     else
       #if child sublogged, show all child's chores AND unassigned chores 
-      @chores = Chore.where(:child_id => [nil, user[:id]]).where(:completed => false).order("due_date ASC")
+      @chores = Chore.where(:parent_id => current_parent.id).where(:child_id => [nil, user[:id]]).where(:completed => false).order("due_date ASC")
     end
     
   end
