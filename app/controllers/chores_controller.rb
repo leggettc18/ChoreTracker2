@@ -61,6 +61,15 @@ class ChoresController < ApplicationController
   def create
     @chore = Chore.new(chore_params)
    # msg1 = ''
+   
+   
+         #this conditional checks if we even have records to be able to grab the next, if NOT, use id of 1
+    if (Chore.all.length != 0)
+      @next_choreid = Chore.maximum(:id).next
+    else
+      @next_choreid = 1
+    end
+    
     
     
     # Grabbing control here if our new chore has repeat data
@@ -69,20 +78,27 @@ class ChoresController < ApplicationController
          @modDue = @chore.due_date
          @i = 0
          
-         #this conditional checks if we even have records to be able to grab the next, if NOT, use id of 1
-        if (Chore.all.length != 0)
-            @nextid = Chore.maximum(:id).next
-           else
-             @nextid = 1
-        end
-         
          
          
          while(@modDue <= @chore.repeat_until)
           # msg1 = msg1 + "\n" + (@modDue + 1.days).to_s
           
           #creating new instances of each repeat tasks, using same information as default chore but updated dueDate with modDue
-          @chores[@i] = Chore.new(child_id: @chore.child_id, coins: @chore.coins, name: @chore.name, description: @chore.description, parent_id: @chore.parent_id, needs_approval: @chore.needs_approval, repeat_type: @chore.repeat_type, repeat_data: @chore.repeat_data, due_date: @modDue, completed: @chore.completed, repeat_until: @chore.repeat_until, group_id: @nextid)
+          @chores[@i] = Chore.new(
+                                    child_id: @chore.child_id,
+                                    coins: @chore.coins,
+                                    name: @chore.name,
+                                    description: @chore.description,
+                                    parent_id: @chore.parent_id,
+                                    needs_approval: @chore.needs_approval,
+                                    repeat_type: @chore.repeat_type,
+                                    repeat_data: @chore.repeat_data,
+                                    due_date: @modDue,
+                                    completed: @chore.completed,
+                                    repeat_until: @chore.repeat_until,
+                                    group_id: @next_choreid
+                                  )
+          
           if @chore.repeat_type == "Daily"
             @modDue = @modDue + 1.days
           elsif @chore.repeat_type == "Weekly"
@@ -94,10 +110,28 @@ class ChoresController < ApplicationController
           
          end
      
+     
+     #flag to only send one notification per repeat chore
+     only_once = false
+     
+     
       respond_to do |format|
         if @chores.each(&:save)
           format.html { redirect_to @chore, notice: 'Chores were successfully created.' }
           format.json { render :show, status: :created, location: @chore }
+          
+          if only_once == false
+            #do a loop on all family's children since there's no assigned child
+            if @chore.child_id == nil
+              current_parent.children.each do |kid|
+                Notification.new_chore(@next_choreid, kid.id)
+              end
+            #otherwise notify the assigned child 
+            else
+              Notification.new_chore(@next_choreid, @chore.child_id)
+            end
+            only_once == true
+          end
         else
           format.html { render :new }
           format.json { render json: @chore.errors, status: :unprocessable_entity }
@@ -113,12 +147,25 @@ class ChoresController < ApplicationController
         if @chore.save
           format.html { redirect_to @chore, notice: 'Chore was successfully created.' }
           format.json { render :show, status: :created, location: @chore }
+          
+             #do a loop on all family's children since there's no assigned child
+          if @chore.child_id == nil
+              current_parent.children.each do |kid|
+                Notification.new_chore(@next_choreid, kid.id)
+              end
+            #otherwise notify the assigned child 
+          else
+              Notification.new_chore(@next_choreid, @chore.child_id)
+          end
         else
           format.html { render :new }
           format.json { render json: @chore.errors, status: :unprocessable_entity }
         end
       end
+      
+      
     end
+    
   end
   
 
