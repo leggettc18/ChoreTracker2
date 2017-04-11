@@ -36,7 +36,7 @@
         
         
           <% if controller_name.include?('child') %><li class="active"><% else %><li><% end %>
-          <a href="/default/child_door">Children <span class="sr-only">(current)</span></a></li>
+          <a href="/children">Children <span class="sr-only">(current)</span></a></li>
        
         
           <% if controller_name.include?('chore') %><li class="active"><% else %><li><% end %>
@@ -45,6 +45,10 @@
         
           <% if controller_name.include?('reward') %><li class="active"><% else %><li><% end %>
           <a href="/rewards">Rewards <span class="sr-only">(current)</span></a></li>
+          
+          
+          <% if controller_name.include?('notifications') %><li class="active"><% else %><li><% end %>
+          <a href="/notifications">Notifications <span class="sr-only">(current)</span></a></li>
         
         
         <% end %>
@@ -62,7 +66,7 @@
        <% end %>
        
        <% if controller_name.include?('registrations') %><li class="active"><% else %><li><% end %>
-        <a href="/default/account_door">Account <span class="sr-only">(current)</span></a></li>  
+        <a href="/parents/edit">Account <span class="sr-only">(current)</span></a></li>  
         
           <li><%= link_to "Log out", destroy_parent_session_path, :method => :delete %>  </li>
           

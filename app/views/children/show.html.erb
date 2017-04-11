@@ -3,12 +3,11 @@
 <% user = getSubLoggedUser() #sublogin enforcement%>
 <%if !authorizedViewerChild(@child.id) #sublogin enforcement.%>
 
-
   <!--<#%= render :action => 'sublogin' %>-->
   
   <!--<#% redirect_to 'sublogin' %>-->
-   <script type="text/javascript">
-     window.location.href="/sublogin/?type=child&id=<%= @child.id %>"  // put your correct path in a string here
+  <script type="text/javascript">
+    window.location.href="/sublogin/?type=child&id=<%= @child.id %>"  // put your correct path in a string here
   </script>
 
 
@@ -16,9 +15,9 @@
 <!--<h2><a href="/sublogin">You can click here to fix that</a></h2>-->
 
 <%else #sublogin enforcement. Correct user type logged in%>
-    <% if user[:type] == "parent" %>
-      <h2>Previewing child page as a parent</h2>
-    <% end %>
+<% if user[:type] == "parent" %>
+   <h2>Impersonating <%= @child.name %>'s page as a parent</h2>
+<% end %>
 
     <% if current_parent.id == @child.parent_id %>
         <h1>Welcome <%= @child.name %>!<br></h1>
@@ -154,7 +153,13 @@
                     <h3 class="panel-title">Daily Assigned Chores</h3>
                   </div>
                   <div class="panel-content text-center">
-                    <%= area_chart Chore.where(:child_id => @child.id).group_by_day(:created_at).count, download: true, width: "100%", id: "line-chart" %>
+                    <%= area_chart Chore.where(:child_id => @child.id).group_by_day(:due_date).count, download: true, width: "100%", id: "line-chart" %>
+                    
+                    
+                    
+                    <!-- This grabs filters down for just the next week by adding .where("due_date < ?", DateTime.now + 1.week) -->
+                    <%#= area_chart Chore.where(:child_id => @child.id).where("due_date < ?", DateTime.now + 1.week).group_by_day(:due_date).count, download: true, width: "100%", id: "line-chart" %>
+                    
                   </div>
                   <div class="panel-footer">Muhahaha I am your father</div>
                 </div>
@@ -203,8 +208,11 @@
             <!-- but the opacity to zero so it IS there but invisible -->
             <div id='calhack' class="tabs_item" style="display: block; opacity: 0.0">
               
-              <!-- this renders the calender, yes just this line under here, the code is in child.coffee, also js2.coffee is dope af for transforming js to coffeescript -->
-              <div class="calendar"></div>
+              
+                <center>
+              <!-- this renders the calender, yes just this line under here, the code is in child.coffee,|||||||||| also the website js2.coffee is dope af for transforming js to coffeescript -->
+              <div class="calendar" style="width:70%"></div>
+              </center>
               
             </div>
           </div>
@@ -220,7 +228,7 @@
           
           setTimeout(function () {
             document.getElementById("calhack").style.opacity = '1';
-          }, 100); 
+          }, 600); 
           </script>
 
     <!-- RESUME NORMALITY -->

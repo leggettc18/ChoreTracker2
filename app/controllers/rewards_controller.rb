@@ -109,6 +109,10 @@ class RewardsController < ApplicationController
   # DELETE /rewards/1
   # DELETE /rewards/1.json
   def destroy
+    @notifications = Notification.where(object_id: @reward.id)
+    @notifications.each do |notif|
+      Notification.destroy(notif.id)
+    end
     @reward.destroy
     respond_to do |format|
       format.html { redirect_to rewards_url, notice: 'Reward was successfully destroyed.' }
