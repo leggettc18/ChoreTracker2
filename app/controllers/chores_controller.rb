@@ -83,7 +83,6 @@ class ChoresController < ApplicationController
           
           #creating new instances of each repeat tasks, using same information as default chore but updated dueDate with modDue
           @chores[@i] = Chore.new(child_id: @chore.child_id, coins: @chore.coins, name: @chore.name, description: @chore.description, parent_id: @chore.parent_id, needs_approval: @chore.needs_approval, repeat_type: @chore.repeat_type, repeat_data: @chore.repeat_data, due_date: @modDue, completed: @chore.completed, repeat_until: @chore.repeat_until, group_id: @nextid)
-          
           if @chore.repeat_type == "Daily"
             @modDue = @modDue + 1.days
           elsif @chore.repeat_type == "Weekly"
