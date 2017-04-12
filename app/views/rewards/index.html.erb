@@ -1,9 +1,3 @@
-<% user = getSubLoggedUser() #sublogin enforcement%>
-<%if user == false or user[:type] != "parent" #sublogin enforcement%>
-<h1>You must be logged in as the parent to use this page</h1>
-<h2><a href="/sublogin/?type=parent">You can click here to fix that</a></h2>
-<%else #sublogin enforcement. Correct user type logged in%>
-
 <div class="col-md-6 col-md-offset-3">
   <button type="button" class="btn btn-warning"><%= link_to "New Reward", new_reward_path %></button>
 
@@ -77,5 +71,3 @@
 
     <!--end block comment-->
 <% end %>
-
-<%end #Sublogin enforcement. LEAVE A NEW LINE AFTER THIS%>
