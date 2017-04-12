@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '/chores/:id/complete', to: 'chores#complete'
   get '/chores/:id/pending', to: 'chores#pending'
   get '/chores/:id/deny', to: 'chores#deny'
+  get '/chores/:id/associateChild', to: 'chores#associateChild'
    
   get '/rewards/:id/redeem', to: 'rewards#redeem'
   

@@ -50,7 +50,7 @@ class ChoresController < ApplicationController
     pendingChore.pending_approval = true
     pendingChore.save
     
-    redirect_to :back, notice: 'Chore is now waiting for parent approval'
+    redirect_to :back, notice: 'Chore is now waiting for parent approval.'
   end
   
   # Conner having a moment of partial genius 
@@ -60,6 +60,19 @@ class ChoresController < ApplicationController
     denyChore.save
     
     redirect_to :back, notice: 'Chore was successfully denied. Your child may try again.'
+  end
+  
+  # associateChild adds child.id to chore.child_id and marks chore as pending because Conner is lazy...
+  def associateChild
+    choreFind = Chore.find(params[:id])
+    childFind = Child.find(params[:child])
+    choreFind.child_id = childFind.id
+    
+    choreFind.pending_approval=true
+    choreFind.save
+    
+    redirect_to :back
+    
   end
   
   # Conner is done having his moment of partial genius

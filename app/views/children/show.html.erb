@@ -22,7 +22,7 @@
 <h2>Your Assigned Chores...</h2>
 <h3>Click to Complete</h3>
 
-<% @chores = Chore.where(:child_id => @child.id).each do |chore| %>
+<% @chores = Chore.where(:child_id => [nil,@child.id]).each do |chore| %>
 
   <!--please don't shoot me for doing this logic in a view...forgive me-->
   <!--added second part to this if statement so instances that are pending approval do not get displayed-->
@@ -32,10 +32,16 @@
       <tr>
         <!--if a chore does not need approval, continue as before.-->
         <% if chore.needs_approval == false %>
+        
           <td align="left"><font size="4" color=white><%= link_to chore.name, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id } %></td>
         
-        <!--if a chore requires approval, switch pending_approval to true-->
-        <% else %>
+        <!--if a chore needing approval has no child_id associated with it. We need to associate a child_id with it.-->
+        <% elsif chore.child_id == nil %>
+        
+          <td align="left"><font size="4" color=white><%= link_to chore.name, {:controller => "chores", :action => "associateChild", :id => chore.id, :child => @child.id } %></td>
+        
+        <!--if a chore needs approval and has a child associated with it. Mark as pending-->
+        <%else%>
           <td align="left"><font size="4" color=white><%= link_to chore.name, {:controller => "chores", :action => "pending", :id => chore.id } %></td>
         <% end %>
         
