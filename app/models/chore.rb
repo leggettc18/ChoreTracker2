@@ -1,5 +1,6 @@
 class Chore < ApplicationRecord
     validates  :name, :coins, :due_date, :presence => true
+    #validates :repeat_until, :presence => true, unless: :repeat_type == "No Repeat"
     belongs_to :child
     belongs_to :parent
     scope :overdue, -> { where('due_date < ?', DateTime.now) }

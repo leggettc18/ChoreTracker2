@@ -84,6 +84,15 @@ class ChoresController < ApplicationController
       @next_choreid = 1
     end
     
+    puts @chore.repeat_until
+    puts @chore.repeat_type
+    
+    if @chore.repeat_type != nil and @chore.repeat_until == nil
+      redirect_to :back, notice: 'You must specify an end repeat date for repeating chores'
+      return
+    end
+      
+      
     
     
     # Grabbing control here if our new chore has repeat data
