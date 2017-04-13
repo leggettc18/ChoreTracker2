@@ -5,7 +5,7 @@
 <%else #sublogin enforcement. Correct user type logged in%>
 
 <div class="col-md-6 col-md-offset-3">
-  <button type="button" class="btn btn-warning"><%= link_to "New Chore", new_chore_path %></button>
+  <%= button_to "New Chore", {action: "new"}, {class: 'btn btn-warning', :method => :get }%>
 
   
   <% @chores.made_by_parent(current_parent).each do |chore|%>

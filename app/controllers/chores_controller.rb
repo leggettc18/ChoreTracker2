@@ -9,9 +9,9 @@ class ChoresController < ApplicationController
    # @chores = Chore.all
    
    
-    user = helpers.getSubLoggedUser
+    user = getSubLoggedUser
     if user == false
-      redirect_to :root, notice: "Please log in first"
+      #redirect_to :root, notice: "Please log in first"
     elsif user[:type] == 'parent'
       #if parent sublogged, show all familys chores 
       @chores = Chore.where(:parent_id => user[:id], :completed => false).order("due_date ASC")
