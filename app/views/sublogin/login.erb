@@ -1,4 +1,9 @@
 <h1>Child/Parent login page</h1>
 
+<!--UGLY HAX ALERT-->
+<!--Never redirect them back to a sublogin page unless it's the pin page-->
+<% if !request.referer.include? "/sublogin/" or request.referer.include? "sublogin/pin" %> 
 <%session[:return_to] = request.referer%>
+<%end%>
+<%puts request.referer%>
 <%= render 'formLogin' %>
