@@ -13,7 +13,7 @@ class ChildrenController < ApplicationController
   # GET /children/1
   # GET /children/1.json
   def show
-    
+
   end
 
   # GET /children/new

@@ -1,72 +1,276 @@
 <% if parent_signed_in? %>
 
-<% if current_parent.id == @child.parent_id %>
-<% trySubLogin("child", @child.id, "", false) %>
-<h1>Welcome <%= @child.name %>!<br></h1>
+<% user = getSubLoggedUser() #sublogin enforcement%>
+<%if !authorizedViewerChild(@child.id) #sublogin enforcement.%>
 
-<table id="separated">
-<tbody>
-      <tr>
-        <td><font size="4"><%= link_to 'Return Home', '/default/index' %></td>
-        <td><font size="4"><%= link_to 'Reward Store', rewards_store_path %></td>
-        <td><font size="4">Extra Chores</td>
-      </tr>
-  </tbody>
-</table>
 
-</br>
-<h2>Current Balance: <img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="" height=25width=25></img>x <%= @child.balance %></h2>
+  <!--<#%= render :action => 'sublogin' %>-->
+  
+  <!--<#% redirect_to 'sublogin' %>-->
+   <script type="text/javascript">
+     window.location.href="/sublogin/?type=child&id=<%= @child.id %>"  // put your correct path in a string here
+  </script>
 
-</br>
 
-<h2>Your Assigned Chores...</h2>
-<h3>Click to Complete</h3>
+<!--<h1>You must be logged in as the appropriate child or parent to use this page</h1>-->
+<!--<h2><a href="/sublogin">You can click here to fix that</a></h2>-->
 
-<% @chores = Chore.where(:child_id => [nil,@child.id]).each do |chore| %>
+<%else #sublogin enforcement. Correct user type logged in%>
+    <% if user[:type] == "parent" %>
+      <h2>Previewing child page as a parent</h2>
+    <% end %>
 
-  <!--please don't shoot me for doing this logic in a view...forgive me-->
-  <!--added second part to this if statement so instances that are pending approval do not get displayed-->
-  <% if chore.completed == false && chore.pending_approval == false %>
-<table id="chores">
-<tbody>
-      <tr>
-        <!--if a chore does not need approval, continue as before.-->
-        <% if chore.needs_approval == false %>
-        
-          <td align="left"><font size="4" color=white><%= link_to chore.name, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id } %></td>
-        
-        <!--if a chore needing approval has no child_id associated with it. We need to associate a child_id with it.-->
-        <% elsif chore.child_id == nil %>
-        
-          <td align="left"><font size="4" color=white><%= link_to chore.name, {:controller => "chores", :action => "associateChild", :id => chore.id, :child => @child.id } %></td>
-        
-        <!--if a chore needs approval and has a child associated with it. Mark as pending-->
-        <%else%>
-          <td align="left"><font size="4" color=white><%= link_to chore.name, {:controller => "chores", :action => "pending", :id => chore.id } %></td>
-        <% end %>
-        
-        <td align="right"><font color=white>Due: <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></td>
-      </tr>
-      <tr>
-        <td align="left"><font size='2' color=white><%= chore.description %></td>
-        <td align="right"><font size="4" color=white><img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="" height=25width=25></img>x <%= chore.coins %></td>
-      </tr>
-  <% end %>  
-      
-<% end %>
-  </tbody>
-</table>
 
+    <% if current_parent.id == @child.parent_id %>
+        <h1>Welcome <%= @child.name %>!<br></h1>
+
+          <center>
+          <table style="border: 0px solid black;" id="separated">
+          <tbody>
+          <tr>
+            
+            <td style="border: 0px solid black;"><font size="4"><%= button_to 'Return Home ', '/default/index', :method => :get %></td>
+            <td style="border: 0px solid black;">  </td>
+            <td style="border: 0px solid black;"><font size="4"><%= button_to ' Reward Store', rewards_store_path, :method => :get  %></td>
+           
+          </tr>
+          </tbody>
+        </table>
+        </center>
+        <h2>Current Balance <i class="fa fa-star fa-lg" style="color: gold"></i> <%= @child.balance %></h2>
+
+        <div class="tab">
+          <ul class="tabs" id="nav">
+            <li><a href="#">Chores</a></li>
+            <li><a href="#">Completed</a></li>
+            <li><a href="#">Test All (Beta)</a></li>
+            <li><a href="#">Dashboard (Beta)</a></li>
+            <li><a href="#">Calendar (Beta)</a></li>
+          </ul>
+
+          <!--chore tabs-->
+          <div class="tab_content">
+
+            <!--chores-->
+            <div class="tabs_item">
+              <div class="col-md-6 col-md-offset-3">
+                <% @chores = Chore.where(:child_id => @child.id).order(due_date: :asc).each do |chore| %>
+                    <div class="index-wrapper">
+                      <% if chore.completed == false %>
+                          <div class="row chore">
+                            <div class=".col-xs-6 col-md-2">
+                              <p id="everybodydance"><%= link_to '<i class="fa fa-check fa-3x"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
+                            </div>
+                            <div class=".col-xs-6 col-md-6">
+                              <h2 class="chore-title" style="text-align: left;"><%=  chore.name %></h2>
+                              <p class="item-sub-title item-desc"><%= chore.description %></p>
+                              <p style="color: white" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+                            </div>
+                            <div class=".col-xs-6 col-md-4">
+                              <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                            </div>
+                          </div>
+                        <% else %>
+                      <% end %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+
+            <!--completed chores-->
+            <div class="tabs_item">
+              <div class="col-md-6 col-md-offset-3">
+                <% @chores = Chore.where(:child_id => @child.id).order(created_at: :desc).each do |chore| %>
+                    <div class="index-wrapper">
+                      <% if chore.completed? %>
+                          <div class="row chore">
+                            <div class=".col-xs-6 col-md-2">
+                              <p style="color: #3efd7a"><i class="fa fa-check fa-3x"></i></p>
+                            </div>
+                            <div class=".col-xs-6 col-md-6">
+                              <h2 class="chore-title" style="text-align: left;"><strike><%=  chore.name %></strike></h2>
+                              <p class="item-sub-title item-desc"><%= chore.description %></p>
+                              <p style="color: white" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+                            </div>
+                            <div class=".col-xs-6 col-md-4">
+                              <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                            </div>
+                          </div>
+                      <% else %>
+                      <% end %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+
+            <!--all-->
+            <div class="tabs_item">
+              <div class="col-md-6 col-md-offset-3">
+                <% @chores = Chore.where(:child_id => @child.id).order(created_at: :desc).each do |chore| %>
+                    <div class="index-wrapper">
+                      <% if chore.completed? %>
+                          <div class="row chore">
+                            <div class=".col-xs-6 col-md-2">
+                              <p style="color: #3efd7a"><i class="fa fa-check fa-3x"></i></p>
+                            </div>
+                            <div class=".col-xs-6 col-md-6">
+                              <h2 class="chore-title" style="text-align: left;"><strike><%=  chore.name %></strike></h2>
+                              <p class="item-sub-title item-desc"><%= chore.description %></p>
+                              <p style="color: white;" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+                            </div>
+                            <div class=".col-xs-6 col-md-4">
+                              <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                            </div>
+                          </div>
+                      <% else %>
+
+                          <div class="row chore">
+                            <div class=".col-xs-6 col-md-2">
+                              <p><%= link_to '<i class="fa fa-check fa-3x"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
+                            </div>
+                            <div class=".col-xs-6 col-md-6">
+                              <h2 class="chore-title" style="text-align: left;"><%=  chore.name %></h2>
+                              <p class="item-sub-title item-desc"><%= chore.description %></p>
+                              <p style="color: white;" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+                            </div>
+                            <div class=".col-xs-6 col-md-4">
+                              <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                            </div>
+                          </div>
+                      <% end %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+
+            <!--dashboard-->
+            <div class="tabs_item">
+              <div class="col-xs-12 col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Daily Assigned Chores</h3>
+                  </div>
+                  <div class="panel-content text-center">
+                    <%= area_chart Chore.where(:child_id => @child.id).group_by_day(:created_at).count, download: true, width: "100%", id: "line-chart" %>
+                  </div>
+                  <div class="panel-footer">Muhahaha I am your father</div>
+                </div>
+              </div>
+
+
+              <div class="col-xs-12 col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title" >Total Chores: <%= total = Chore.where(:child_id => @child.id).count %> - Completed: <%= completeTotal = @chores.select(&:completed).size %></h3>
+                  </div>
+                  <div class="panel-content text-center">
+                    <%= pie_chart [["To-Do", total-completeTotal], ["Completed", completeTotal ]], donut: true, colors: ["#ff0084","#3efd7a"],download: true, width: "100%", id: "pie-chart" %>
+                  </div>
+                  <div class="panel-footer">Work Hard Live Well!</div>
+                </div>
+              </div>
+              
+              
+              <div class="col-xs-12 col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title" > Balance: <%= total = @child.balance %></h3>
+                  </div>
+                  <div class="panel-content text-center">
+                    <%#= pie_chart [["Current Balance", total], ["Redeemed", Reward.select(&:cost).count ]], donut: true, colors: ["#ff0084","#3efd7a"],download: true, width: "100%", id: "pie-chart2" %>
+                    <%#= pie_chart [["Current Balance", total], ["Redeemed", Reward.select(&:redeemed).size ]], donut: true, colors: ["#ff0084","#3efd7a"],download: true, width: "100%", id: "pie-chart2" %>
+                    <%= pie_chart [["Current Balance", total], ["Redeemed", Reward.where(:child_id => @child.id, :redeemed => true).sum(:cost) ]], donut: true, colors: ["#ff0084","#3efd7a"],download: true, width: "100%", id: "reward-chart" %>
+                  </div>
+                  <div class="panel-footer">Work Hard Live Well!</div>
+                </div>
+              </div>
+            
+              
+              
+              
+            </div>
+           
+          
+           <!-- calendar -->
+            
+          <!-- The hackiest shit I have ever done, this allows the above calendar to render appropriately inside of a hidden tab -->
+            
+            <!-- calendar hack shit starts here -->
+            <!-- i hardcode display to true so it can render (fullcalendar doesnt render if display:none) -->
+            <!-- but the opacity to zero so it IS there but invisible -->
+            <div id='calhack' class="tabs_item" style="display: block; opacity: 0.0">
+              
+              <!-- this renders the calender, yes just this line under here, the code is in child.coffee, also js2.coffee is dope af for transforming js to coffeescript -->
+              <div class="calendar"></div>
+              
+            </div>
+          </div>
+          
+          <!-- calendar hack shit continues -->
+            <!-- with 0ms delay i now set display to none, but that gave FullCal enough time to see that it was there and render it -->
+            <!-- with a little longer delay i bring the opacity to 1, showing it fully, but its display: none property means you cant see it anyway-->
+            
+          <script type="text/javascript">
+          setTimeout(function () {
+            document.getElementById("calhack").style.display = 'none';
+          }, 0);
+          
+          setTimeout(function () {
+            document.getElementById("calhack").style.opacity = '1';
+          }, 100); 
+          </script>
+
+    <!-- RESUME NORMALITY -->
+
+    <% else %>
+        <h2> Wtf not your kid bro</h2>
+    <% end %>
+    
+    <%end #Sublogin enforcement. LEAVE A NEW LINE AFTER THIS%>
+    
 <% else %>
-
-<h2> Wtf not your kid bro</h2>
-
+    <center>
+      You must be logged in to see this page. <br />
+      <%= link_to "Log in", '/parents/sign_in/' %><br />
+    </center>
 <% end %>
 
-<% else %>
-<center>
-You must be logged in to see this page. <br />
-<%= link_to "Log in", '/parents/sign_in/' %><br />
-</center>
+<% @chores = Chore.all.order("created_at DESC")%>
 
-<% end %>
+<script>
+var contextClass = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);
+var dance = document.getElementById("everybodydance");
+if (contextClass) {
+  var context = new contextClass();
+} else {
+  onError;
+}
+var request = new XMLHttpRequest();
+request.open('GET', "https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/gonna-make-you-sweat.mp3", true);
+request.responseType = 'arraybuffer';
+request.onload = function() {
+ context.decodeAudioData(request.response, function(theBuffer) {
+  buffer = theBuffer;
+  }, onError);
+}
+request.send();
+
+function onError() { console.log("Bad browser! No Web Audio API for you"); }
+
+function unpress() { dance.classList.remove("pressed"); }
+
+function playSound() {
+ dance.classList.add("pressed");
+  var source = context.createBufferSource();
+  source.buffer = buffer;
+ source.connect(context.destination);
+  source.start(0);
+  var delay = 2000;
+  setTimeout(unpress,delay);
+}
+dance.addEventListener('click', function(event) { playSound(); });
+</script>

@@ -5,6 +5,9 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="HandheldFriendly" content="true">
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -46,28 +49,7 @@
         
         <% end %>
         
-        <!--<li class="dropdown">-->
-        <!--  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
-        <!--  <ul class="dropdown-menu">-->
-        <!--    <li><a href="#">Action</a></li>-->
-        <!--    <li><a href="#">Another action</a></li>-->
-        <!--    <li><a href="#">Something else here</a></li>-->
-        <!--    <li role="separator" class="divider"></li>-->
-        <!--    <li><a href="#">Separated link</a></li>-->
-        <!--    <li role="separator" class="divider"></li>-->
-        <!--    <li><a href="#">One more separated link</a></li>-->
-        <!--  </ul>-->
-        <!--</li>-->
-        
       </ul>
-      <!--<form class="navbar-form navbar-left">-->
-      <!--  <div class="form-group">-->
-      <!--    <input type="text" class="form-control" placeholder="Search">-->
-      <!--  </div>-->
-      <!--  <button type="submit" class="btn btn-default">Submit</button>-->
-      <!--</form>-->
-      
-      
       
       <ul class="nav navbar-nav navbar-right">
         <%if parent_signed_in? %>
@@ -78,8 +60,9 @@
              <% else %>
         <li>
        <% end %>
+       
        <% if controller_name.include?('registrations') %><li class="active"><% else %><li><% end %>
-        <a href="/default/account_door">Account <span class="sr-only">(current)</span></a></li>
+        <a href="/default/account_door">Account <span class="sr-only">(current)</span></a></li>  
         
           <li><%= link_to "Log out", destroy_parent_session_path, :method => :delete %>  </li>
           
@@ -95,33 +78,23 @@
           <% end %>
         
         
-        
-        
-        
-        <!--<li class="dropdown">-->
-        <!--  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
-        <!--  <ul class="dropdown-menu">-->
-        <!--    <li><a href="#">Action</a></li>-->
-        <!--    <li><a href="#">Another action</a></li>-->
-        <!--    <li><a href="#">Something else here</a></li>-->
-        <!--    <li role="separator" class="divider"></li>-->
-        <!--    <li><a href="#">Separated link</a></li>-->
-        <!--  </ul>-->
-        <!--</li>-->
-        
-        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
+<center>
+<p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</center>
+
 <div class="container">
- <% flash.each do |key, value| %>
-   <div class = " <% flash_class(key) %>">
+ <!--<#% flash.each do |key, value| %>-->
+ <!--  <div class = " <#% flash_class(key) %>">-->
      
-     <%= value %>
-     </div>
- <% end %>
+ <!--    <#%= value %>-->
+ <!--    </div>-->
+ <!--<#% end %>-->
  <%= yield %>
 
 </div>

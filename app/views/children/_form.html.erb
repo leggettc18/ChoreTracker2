@@ -1,6 +1,6 @@
 <% if parent_signed_in? %>
 
-<%= form_for(@child) do |f| %>
+<%= simple_form_for(@child) do |f| %>
 
   <% if child.errors.any? %>
     <div id="error_explanation">

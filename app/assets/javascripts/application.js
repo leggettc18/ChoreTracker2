@@ -14,6 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require Chart.bundle
+//= require chartkick
+//= require moment
+//= require fullcalendar 
+//= require full_calendar
 //= require_tree .
 
 //Override the default confirm dialog by rails
