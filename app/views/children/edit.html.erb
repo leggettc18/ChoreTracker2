@@ -1,6 +1,14 @@
+<% user = getSubLoggedUser() #sublogin enforcement%>
+<%if user == false or user[:type] != "parent" #sublogin enforcement%>
+<h1>You must be logged in as the parent to use this page</h1>
+<h2><a href="/sublogin">You can click here to fix that</a></h2>
+<%else #sublogin enforcement. Correct user type logged in%>
+
 <h1>Editing Child</h1>
 
 <%= render 'form', child: @child %>
 
 <%= link_to 'Show', @child %> |
 <%= link_to 'Back', children_path %>
+
+<%end #Sublogin enforcement. LEAVE A NEW LINE AFTER THIS%>
