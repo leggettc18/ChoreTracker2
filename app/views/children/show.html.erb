@@ -1,25 +1,12 @@
+<% if parent_signed_in? %>
 <% user = getSubLoggedUser() #sublogin enforcement%>
 <%if !authorizedViewerChild(@child.id) #sublogin enforcement.%>
-
-
-  <!--<#%= render :action => 'sublogin' %>-->
-  
-  <!--<#% redirect_to 'sublogin' %>-->
    <script type="text/javascript">
      window.location.href="/sublogin/?type=child&id=<%= @child.id %>"  // put your correct path in a string here
   </script>
-
-
-<!--<h1>You must be logged in as the appropriate child or parent to use this page</h1>-->
-<!--<h2><a href="/sublogin">You can click here to fix that</a></h2>-->
-
 <%else #sublogin enforcement. Allow%>
-    <% if user[:type] == "parent" %>
-      <h2>Previewing child page as a parent</h2>
-    <% end %>
 
-
-    <% if current_parent.id == @child.parent_id %>
+    <%if current_parent.id == @child.parent_id %>
         <h1>Welcome <%= @child.name %>!<br></h1>
 
           <center>
@@ -230,14 +217,20 @@
     
     <%end #Sublogin enforcement. LEAVE A NEW LINE AFTER THIS%>
     
-<% else %>
-    <center>
-      You must be logged in to see this page. <br />
-      <%= link_to "Log in", '/parents/sign_in/' %><br />
-    </center>
 <% end %>
 
 <% @chores = Chore.all.order("created_at DESC")%>
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
 var contextClass = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);

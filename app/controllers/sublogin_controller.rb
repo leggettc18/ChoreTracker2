@@ -58,6 +58,7 @@ class SubloginController < ApplicationController
                 if (newpin == newpinconfirm)
                     parent[:pincode] = newpin
                     parent.save
+                    redirect_to "/", notice: 'Parent pin successfully updated'
                     puts "Successfully updated subaccount with new pin"
                 else #New pin mismatch
                     puts "Pin change failed for parent ID " + parent[:id].to_s + " because the new pin and confirmation were different"
@@ -92,7 +93,6 @@ class SubloginController < ApplicationController
         #doSubLogout()
         #redirect_to "/sublogin/"
         #redirect_to "/sublogin/pin"
-        redirect_to "/", notice: 'Uncaught redirect in chgpin'
         
     end
     

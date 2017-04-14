@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 20170413151207) do
     t.integer  "repeat_type",                 default: 0
     t.integer  "repeat_data",      limit: 31, default: 0
     t.datetime "due_date"
-    t.boolean  "completed",                 default: false
+    t.boolean  "completed",                   default: false
+    t.boolean  "pending_approval",            default: false
     t.datetime "repeat_until"
     t.integer  "group_id"
-    t.boolean  "pending_approval",            default: false
     t.index ["child_id"], name: "index_chores_on_child_id"
     t.index ["parent_id"], name: "index_chores_on_parent_id"
   end
