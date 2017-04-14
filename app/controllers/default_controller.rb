@@ -3,26 +3,26 @@ class DefaultController < ApplicationController
   def index
     if parent_signed_in?
     render('home')
-   else
+    else
     render('index')
-   end
+    end
   end
   
   def child_door
     if parent_signed_in?
     render('child_door')
-   else
+    else
     render('index')
-   end
-     end
+    end
+  end
   
-    def account_door
+  def account_door
     if parent_signed_in?
     render('account_door')
-   else
+    else
     render('index')
-   end
-     end
+    end
+  end
   
   
 
@@ -39,12 +39,13 @@ class DefaultController < ApplicationController
     
     
     
-       def do_account
+    def do_account
         pin = params[:pin]
   
         if pin == current_parent.pincode
             redirect_to("/parents/edit")
-         else
+            cookies[:logged] = "logged"
+        else
             redirect_to("/default/account_door")
         end
     end
@@ -60,7 +61,7 @@ class DefaultController < ApplicationController
       parent.pincode = newpin
       parent.save
       redirect_to('/children')
-    end
+  end
   
   
 end

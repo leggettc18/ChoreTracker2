@@ -22,7 +22,9 @@
   <%= f.label :child_id %><br />
       <div class="field"><%= f.collection_select(:child_id, current_parent.children, :id, :name, {:include_blank => true}) %> <br /></div>
       
-     
+  <%= f.label :auto_approve %><br />
+  <div class="field"><%= f.check_box(:auto_approve) %> <br /></div>  
+  
   <div class="actions">
     <%= f.submit %>
   </div>

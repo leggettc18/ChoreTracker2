@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'approval/index'
+
   get 'rewards/store'
 
   get 'rewards_controller/store'
@@ -32,6 +34,9 @@ Rails.application.routes.draw do
   get '/chores/:id/complete', to: 'chores#complete'
    
   get '/rewards/:id/redeem', to: 'rewards#redeem'
+  get '/rewards/:id/pending', to: 'rewards#pending'
+  get '/rewards/:id/approve', to: 'rewards#approve'
+  get '/rewards/:id/deny', to: 'rewards#deny'
   
   root 'default#index'
   
