@@ -90,7 +90,7 @@
           <% if !user %>
           <li><%= link_to "Log out", destroy_parent_session_path, data: { confirm: "Are you sure want to log out of ChoreTracker?", method: :delete} %>  </li>
           <% else %>
-           <li><%= link_to "Log out", "/sublogin/logout" %></li>
+           <li><%= link_to "Log out", "/sublogin/logout", data:{ notice: "Successfully logged out."} %></li>
           <% end %>
           
           <% else %>
