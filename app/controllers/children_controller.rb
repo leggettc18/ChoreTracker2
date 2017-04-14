@@ -32,15 +32,12 @@ class ChildrenController < ApplicationController
   # POST /children.json
   def create
     @child = Child.new(child_params)
-    if @child.avatar.file.nil?
-      img = LetterAvatar.generate(@child.name, 200)
-      File.open(img) do |f|
-        @child.avatar = f
-      end
-    end
 
     respond_to do |format|
       if @child.save
+         if @child.avatar.file.nil?
+          @child.set_default_avatar
+         end
         format.html { redirect_to @child, notice: 'Child was successfully created.' }
         format.json { render :show, status: :created, location: @child }
       else
@@ -53,20 +50,10 @@ class ChildrenController < ApplicationController
   # PATCH/PUT /children/1
   # PATCH/PUT /children/1.json
   def update
-    if @child.avatar.file.nil?
-      img = LetterAvatar.generate(@child.name, 200)
-      File.open(img) do |f|
-        @child.avatar = f
-      end
-    end
     respond_to do |format|
       if @child.update(child_params)
         if @child.avatar.file.nil?
-          img = LetterAvatar.generate(@child.name, 200)
-          File.open(img) do |f|
-            @child.avatar = f
-          end
-          @child.save
+          @child.set_default_avatar
         end
         format.html { redirect_to @child, notice: 'Child was successfully updated.' }
         format.json { render :show, status: :ok, location: @child }

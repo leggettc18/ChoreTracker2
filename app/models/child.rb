@@ -14,6 +14,14 @@ class Child < ApplicationRecord
   super
 end
 
+def set_default_avatar
+    img = LetterAvatar.generate(self.name, 200)
+          File.open(img) do |f|
+           self.avatar = f
+          end
+          self.save
+end
+
 
 #defining some shortcuts ?
     

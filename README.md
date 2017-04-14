@@ -13,6 +13,7 @@ To get started, just do the following:
 
 1. $ sudo apt-get update
 2. $ sudo apt-get install imagemagick
+3. $ sudo apt-get install libmagick++-dev
 3. $ bundle install
 4. $ rails db:migrate  OPTIONAL: 'rails db:seed' to get sample data, check seeds.rb
 5. Run the project with the "Run Project" button in the menu bar on top of the IDE.

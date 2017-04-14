@@ -42,6 +42,8 @@ gem 'avatarly'
 
 gem 'letter_avatar'
 
+gem 'mini_magick'
+
 
 gem 'seed_dump'
 
