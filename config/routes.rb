@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  get 'approval/index'
-
+  resources :approval
+  
   get 'rewards/store'
 
   get 'rewards_controller/store'
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   end
 
   resources :chores
+  
+  get 'notifications', to: 'notifications#index', as: 'notifications'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -32,6 +34,9 @@ Rails.application.routes.draw do
   post '/default/do_account'
    
   get '/chores/:id/complete', to: 'chores#complete'
+  get '/chores/:id/pending', to: 'chores#pending'
+  get '/chores/:id/deny', to: 'chores#deny'
+  get '/chores/:id/associateChild', to: 'chores#associateChild'
    
   get '/rewards/:id/redeem', to: 'rewards#redeem'
   get '/rewards/:id/pending', to: 'rewards#pending'

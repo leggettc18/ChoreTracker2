@@ -1,5 +1,11 @@
 <% if parent_signed_in? %>
 
+<% user = getSubLoggedUser() #sublogin enforcement%>
+<%if user == false or user[:type] != "parent" #sublogin enforcement%>
+<h1>You must be logged in as the parent to use this page</h1>
+<h2><a href="/sublogin/?type=parent">You can click here to fix that</a></h2>
+<%else #sublogin enforcement. Correct user type logged in%>
+
 <h1>Children</h1>
 
 <table>
@@ -18,5 +24,7 @@
 <br>
 
 <%= link_to 'New Child', new_child_path %> | <%= link_to 'Change Family PIN', 'default/change' %>
+
+<%end #Sublogin enforcement. LEAVE A NEW LINE AFTER THIS%>
 
 <% end %>

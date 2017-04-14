@@ -1,4 +1,6 @@
 class Chore < ApplicationRecord
+    validates  :name, :coins, :due_date, :presence => true
+    #validates :repeat_until, :presence => true, unless: :repeat_type == "No Repeat"
     belongs_to :child
     belongs_to :parent
     scope :overdue, -> { where('due_date < ?', DateTime.now) }
@@ -7,4 +9,8 @@ class Chore < ApplicationRecord
     enum repeat_type: ["No Repeat", "Daily", "Weekly", "Monthly"]
     enum repeat_weekday: ["None", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     attr_accessor :repeat_weekday
+
+
+
 end
+

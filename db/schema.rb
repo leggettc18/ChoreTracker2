@@ -25,19 +25,33 @@ ActiveRecord::Schema.define(version: 20170413151207) do
 
   create_table "chores", force: :cascade do |t|
     t.integer  "child_id"
-    t.integer  "coins",                     default: 0,     null: false
-    t.string   "name",                                      null: false
+    t.integer  "coins",                       default: 0,     null: false
+    t.string   "name",                                        null: false
     t.text     "description"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.integer  "parent_id"
-    t.boolean  "needs_approval",            default: false
-    t.integer  "repeat_type",               default: 0
-    t.integer  "repeat_data",    limit: 31, default: 0
+    t.boolean  "needs_approval",              default: false
+    t.integer  "repeat_type",                 default: 0
+    t.integer  "repeat_data",      limit: 31, default: 0
     t.datetime "due_date"
     t.boolean  "completed",                 default: false
+    t.datetime "repeat_until"
+    t.integer  "group_id"
+    t.boolean  "pending_approval",            default: false
     t.index ["child_id"], name: "index_chores_on_child_id"
     t.index ["parent_id"], name: "index_chores_on_parent_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.boolean  "unread",      default: true, null: false
+    t.integer  "object_type"
+    t.integer  "object_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "user_type"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "parents", force: :cascade do |t|

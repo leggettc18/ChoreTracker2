@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Inbox</h1>
+
+<table style="width:100%">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    
+    
+    <tbody>
+        <% @notifications.each do |notif| %>
+        <% if notif.unread == true %>
+        <tr class="unread">
+        <% else %>
+        <tr>
+        <% end %>
+            <td><%= notif.object_type.humanize %></td>
+            <td>
+                <% if notif.chore_approval? || notif.new_chore? || notif.chore_approved? %>
+                <%= Chore.find(notif.object_id).name %>
+                <% elsif notif.reward_approval? || notif.reward_approved? || notif.new_reward? %>
+                <%= Reward.find(notif.object_id).name %>
+                <% end %>
+            </td>
+            <td>
+                <% if notif.chore_approval? %>
+                <%= link_to "Approval Page" %> <%# Replace with Chore Approval Page Path %>
+                <% elsif notif.reward_approval? %>
+                <%= link_to "Approval Page" %> <%# Replace with Reward Approval Page Path %>
+                <% elsif notif.new_chore? %>
+                <%= link_to "Have a look!", chore_path(notif.object_id), {:notif_id => notif.id} %>
+                <% elsif notif.new_reward? %>
+                <%= link_to "Have a look!", reward_path(notif.object_id), {:notif_id => notif.id} %>
+                <% elsif notif.chore_approved? %>
+                <%= link_to "Have a look!" %> <%# Replace with link to Chore History Page %>
+                <% elsif notif.reward_approved? %>
+                <%= link_to "Have a look!" %> <%# Replace with link to Redeemed Rewards %>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

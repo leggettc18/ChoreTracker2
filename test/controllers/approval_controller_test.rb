@@ -5,5 +5,4 @@ class ApprovalControllerTest < ActionDispatch::IntegrationTest
     get approval_index_url
     assert_response :success
   end
-
 end

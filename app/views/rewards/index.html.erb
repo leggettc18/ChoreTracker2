@@ -1,38 +1,74 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-6 col-md-offset-3">
+  <%= button_to "New Reward", {action: "new"}, {class: 'btn btn-warning', :method => :get }%>
 
-<h1>Rewards</h1>
+
+  <% @rewards.each do |reward| %>
+      <div class="index-wrapper">
+        <%# if chore.completed == false %>
+        <div class="row chore">
 
 
-<table style = "width:100%">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Assigned</th>
-      <th>Cost</th>
-      <th>Approval?</th>
-      <th colspan="3">Options</th>
-    </tr>
-  </thead>
+          <div class="col-md-1" style="padding-top: 5px">
+            <%= link_to reward, method: :delete, data: {confirm: "Are you sure?"} do %>
+                <i class="fa fa-trash fa-lg"></i>
+            <% end %>
+          </div>
 
-  <tbody>
-    <% @rewards.each do |reward| %>
+
+          <div class=" col-md-6">
+            <h2 class="chore-title" style="text-align: left;"><%= link_to reward.name, reward %></h2>
+          </div>
+
+          <div class=" col-md-4">
+            <p style="color: white">
+              <i class="fa fa-child fa-lg"></i> <%= reward.child_id ? Child.find(reward.child_id).name : 'Unassigned' %>
+            </p>
+            <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= reward.cost %></p>
+          </div>
+
+          <div class=" col-md-1">
+            <%= link_to '<i class="fa fa-cog fa-lg"></i>'.html_safe, edit_reward_path(reward) %>
+          </div>
+
+        </div>
+      </div>
+  <% end %>
+</div>
+
+<!--block comment-->
+<% if false %>
+    <p id="notice"><%= notice %></p>
+
+    <h1>Rewards</h1>
+
+
+    <table style="width:90%">
+      <thead>
       <tr>
-        <td><%= reward.name %> &nbsp&nbsp</td>
-        <td><%= reward.child_id ? Child.find(reward.child_id).name : 'Unassigned' %>&nbsp&nbsp</td>
-        <td><%= reward.cost %> &nbsp&nbsp</td>
-        <td><%= if reward.auto_approve?
-                  "No"
-                else
-                  "Yes"
-                end%>&nbsp&nbsp</td>
-        <td><%= link_to 'Show', reward %>  </td>
-        <td><%= link_to 'Edit', edit_reward_path(reward) %> </td>
-        <td><%= link_to 'Destroy', reward, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Assigned</th>
+        <th>Cost</th>
+        <th colspan="3">Options</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @rewards.each do |reward| %>
+          <tr>
+            <td><%= reward.name %> &nbsp&nbsp</td>
+            <td><%= reward.child_id ? Child.find(reward.child_id).name : 'Unassigned' %>&nbsp&nbsp</td>
+            <td><%= reward.cost %> &nbsp&nbsp</td>
+            <td><%= link_to 'Show', reward %>  </td>
+            <td><%= link_to 'Edit', edit_reward_path(reward) %> </td>
+            <td><%= link_to 'Destroy', reward, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Reward', new_reward_path %>
+    <br>
+
+    <%= link_to 'New Reward', new_reward_path %>
+
+    <!--end block comment-->
+<% end %>

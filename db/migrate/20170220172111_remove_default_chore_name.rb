@@ -1,8 +1,5 @@
 class RemoveDefaultChoreName < ActiveRecord::Migration[5.0]
-  def up
-    change_column_default(:chores, :name, nil)
-  end
-  def down
-    change_column_default(:chores, :name, :default=> "")
+  def change
+    change_column_default(:chores, :name, :from => "", :to => nil)
   end
 end

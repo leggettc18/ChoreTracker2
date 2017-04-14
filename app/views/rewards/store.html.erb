@@ -1,3 +1,8 @@
+<% user = getSubLoggedUser() #sublogin enforcement%>
+<%if user == false or user[:type] != "child" #sublogin enforcement%>
+<h1>You must be logged in as the parent to use this page</h1>
+<h2><a href="/sublogin">You can click here to fix that</a></h2>
+<%else #sublogin enforcement. Correct user type logged in%>
 
 <h1>Welcome to the Rewards Store, <%= @child_buyer.name %></h1>
 <h2>Current Balance: <img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="" height=25width=25></img>x <%= @child.balance %></h2>
@@ -20,20 +25,28 @@
       <tr>
         <td><%= reward.name %></td>
         <td><%= reward.cost %></td>
-        <td><%= if reward.auto_approve?
-                  "Yes" 
-                else  
-                  "No" 
-                end %></td>
-        <td><%= if reward.pending_approval?
-                  "Pending"
-                elsif reward.auto_approve?
-                  link_to 'Redeem',{:controller => "rewards", :action => "redeem", :id => reward.id, :child => reward.child_id},data: {confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } 
+        <td>
+        
+        
+        <%= if reward.auto_approve?
+                #if 1
+                  if reward.cost <= @child.balance
+                    link_to 'Request',{:controller => "rewards", :action => "store"},data: { confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } 
+                  else
+                    "Too Poor"
+                  end
                 else
-                  link_to 'Submit',{:controller => "rewards", :action => "pending", :id => reward.id, :child => reward.child_id} 
+                  #this is buying straight upppp
+                  if reward.cost <= @child.balance
+                    link_to 'Buy',{:controller => "rewards", :action => "redeem", :id => reward.id, :child => @child.id},data: { confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } 
+                  else
+                    "Too Poor"
+                end
                 end%></td>
       </tr>
     <% end %>
     <% end %>
   </tbody>
 </table>
+
+<%end #Sublogin enforcement. LEAVE A NEW LINE AFTER THIS%>

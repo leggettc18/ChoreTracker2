@@ -38,7 +38,7 @@ module ApplicationHelper
                 }
             else #Normal cookie expiration time. Maybe this will can be changed later to have different times for parents and children
                 cookies[:sublogin] = {
-                  value: JSON.generate([type, 5.minutes.from_now, id, false]),
+                  value: JSON.generate([type, 1.hour.from_now, id, false]),
                   expires: 1.year.from_now
                 }
             end
@@ -101,6 +101,23 @@ module ApplicationHelper
     #This logs parents or children out if they are logged in. If nobody is sub logged in this does nothing.
     def doSubLogout()
         cookies.delete :sublogin
+    end
+    
+    #Allow parents to view childen's pages
+    def authorizedViewerChild(id)
+        sublogin = getSubLoggedUser()
+        if sublogin == false
+            return false
+        elsif sublogin[:type] == 'parent'
+            return false
+            #Child.find_by_id(id).parent_id == sublogin[:id] #Is this actually the parent for this child?
+        elsif sublogin[:type] == 'child'
+            return id == sublogin[:id]
+        else
+            throw "INVALID ACCOUNT TYPE RETURNED FOR GETSUBLOGGED USER. THIS IS REALLY BAD."
+        end
+            
+        
     end
     
 end

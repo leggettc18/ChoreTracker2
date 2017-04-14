@@ -1,39 +1,100 @@
-<p id="notice"><%= notice %></p>
+<% user = getSubLoggedUser() #sublogin enforcement%>
+<%if user == false or user[:type] != "parent" #sublogin enforcement%>
+<h1>You must be logged in as the parent to use this page</h1>
+<h2><a href="/sublogin/?type=parent">You can click here to fix that</a></h2>
+<%else #sublogin enforcement. Correct user type logged in%>
 
-<h1>Chores</h1>
+<div class="col-md-6 col-md-offset-3">
+  <%= button_to "New Chore", {action: "new"}, {class: 'btn btn-warning', :method => :get }%>
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Coins</th>
-      <th>Due Date</th>
-      <th>Repeat?</th>
-      <th>Parent</th>
-      <th>Child</th>
-      <th>Show</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
+  
+  <% @chores.made_by_parent(current_parent).each do |chore|%>
+      <div class="index-wrapper">
+        <%# if chore.completed == false %>
+            <div class="row chore">
+              
+              <!--<div class=".col-xs-6 col-md-1">-->
+                <!--<p id="everybodydance"><%#= link_to '<i class="fa fa-check fa-lg"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>-->
+              <!--</div>-->
+            <div class="col-md-1" style="padding-top: 5px">
+							<%= link_to chore, method: :delete, data: { confirm: "Are you sure?" } do %>
+								<i class="fa fa-trash fa-lg"></i>
+							<% end %>
+						</div>
+      
+						  
+              <div class=" col-md-6">
+                <h2 class="chore-title" style="text-align: left;"><%= link_to chore.name, chore %></h2>
+                <p class="item-sub-title item-desc"><%= chore.description %></p>
+                <p style="color: white" class="time-created-at item-sub-title">Created <%= time_ago_in_words(chore.created_at) %> ago</p>
+              </div>
+              
+              <div class=" col-md-4">
+                <p style="color: white"><i class="fa fa-child fa-lg"></i> <%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></p>
+                <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
+              </div>
+              
+              <div class=" col-md-1">
+               <%= link_to '<i class="fa fa-cog fa-lg"></i>'.html_safe, edit_chore_path(chore) %>
+						  </div>
+						  
+            </div>
+      </div>
+  <% end %>
+</div>
 
-  <tbody>
-    <% @chores.made_by_parent(current_parent).each do |chore| %>
+
+
+
+
+
+
+
+
+<!--block comment-->
+<% if false %>
+  <p id="notice"><%= notice %></p>
+  
+  <h1>Chores</h1>
+  
+  <table style="width:100%">
+    <thead>
       <tr>
-        <td><%= chore.name %></td>
-        <td><%= chore.coins %></td>
-        <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>
-        <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>
-        <td><%= Parent.find(chore.parent_id).id %></td>
-        <td><%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></td>
-        <td><%= link_to 'Show', chore %></td>
-        <td><%= link_to 'Edit', edit_chore_path(chore) %></td>
-        <td><%= link_to 'Delete', chore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Coins</th>
+        <th>Due Date</th>
+        <th>Repeat?</th>
+        <th>Parent</th>
+        <th>Child</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+  
+    <tbody>
+      <% @chores.made_by_parent(current_parent).each do |chore| %>
+        <tr>
+          <td><%= chore.name %></td>
+          <td><%= chore.coins %></td>
+          <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>
+          <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>
+          <td><%= Parent.find(chore.parent_id).id %></td>
+          <td><%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></td>
+          <td><%= link_to 'Show', chore %></td>
+          <td><%= link_to 'Edit', edit_chore_path(chore) %></td>
+          <td><%= link_to 'Delete', chore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+  
+  <%= link_to 'New Chore', new_chore_path %>
+  
+<% end %>
 
-<br>
+<%end #Sublogin enforcement. LEAVE A NEW LINE AFTER THIS%>
 
-<%= link_to 'New Chore', new_chore_path %>
