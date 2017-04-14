@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   get '/chores/:id/associateChild', to: 'chores#associateChild'
    
   get '/rewards/:id/redeem', to: 'rewards#redeem'
+  get '/rewards/:id/pending', to: 'rewards#pending'
+  get '/rewards/:id/approve', to: 'rewards#approve'
+  get '/rewards/:id/deny', to: 'rewards#deny'
   
   root 'default#index'
   

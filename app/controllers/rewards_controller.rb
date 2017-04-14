@@ -23,29 +23,63 @@ class RewardsController < ApplicationController
   # GET /rewards/1/edit
   def edit
   end
-  
-  
     
-  
+  def pending
     
-  ####    STARTING TO FUCK SOME SHIT UP HERE  #####
-  
+    pendingReward = Reward.find(params[:id])
+    decrementChild = Child.find(params[:child])
+    
+    if decrementChild.balance > pendingReward.cost
+      pendingReward.pending_approval = true
+      pendingReward.save
+   
+      decrementChild.balance = decrementChild.balance - pendingReward.cost
+      decrementChild.save
+      
+      redirect_to :back, notice: 'Reward is now waiting for parent approval'
+    else
+      redirect_to rewards_store_path, notice: 'NOT ENOUGH COINS!!!'
+    end
+  end
   
   def redeem
     redeemReward = Reward.find(params[:id])
-    redeemReward.redeemed = true
-    redeemReward.save
- 
-    
-    
     decrementChild = Child.find(params[:child])
-    decrementChild.balance = decrementChild.balance - redeemReward.cost
-    decrementChild.save
-       
-    redirect_to :back, notice: 'Reward was successfully redeemed.'
+    
+    if decrementChild.balance > redeemReward.cost
+      redeemReward.pending_approval = false
+      redeemReward.redeemed = true
+      redeemReward.save
+      decrementChild.balance = decrementChild.balance - redeemReward.cost
+      decrementChild.save
+      
+      redirect_to :back, notice: 'Reward was successfully redeemed.'
+    else
+      redirect_to :back, notice: 'Not enough coins bud!!!'
+    end
     
   end
   
+  def approve
+    approvedReward = Reward.find(params[:id])
+    approvedReward.pending_approval = false
+    approvedReward.redeemed = true
+    approvedReward.save
+    
+    redirect_to :back, notice: 'Reward was successfully approved.'
+  end
+  
+  def deny
+    deniedReward = Reward.find(params[:id])
+    deniedReward.pending_approval = false;
+    deniedReward.save
+    
+    incrementChild = Child.find(params[:child])
+    incrementChild.balance += deniedReward.cost
+    incrementChild.save
+    
+    redirect_to :back, notice: 'Reward was successfully denied.'
+  end
   
   ####   resume normality ####
   
@@ -128,6 +162,6 @@ class RewardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reward_params
-      params.fetch(:reward, {}).permit(:cost, :name, :child_id, :parent_id)
+      params.fetch(:reward, {}).permit(:cost, :name, :child_id, :parent_id, :auto_approve)
     end
 end

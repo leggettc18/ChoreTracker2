@@ -1,5 +1,3 @@
-<% if parent_signed_in? %>
-
 <% user = getSubLoggedUser() #sublogin enforcement%>
 <%if !authorizedViewerChild(@child.id) #sublogin enforcement.%>
 

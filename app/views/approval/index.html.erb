@@ -1,3 +1,31 @@
+<h2>Approval Page</h2>
+
+<table style ="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Child</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <% @rewards.made_by_parent(current_parent).each do |reward| %>
+            <%if reward.pending_approval? %>
+                <tr>
+                    <td><%= reward.name %></td>
+                    <td><%= reward.cost %></td>
+                    <td><%= reward.child_id ? Child.find(reward.child_id).name : 'Unassigned' %></td>
+                    <td colspan ="2"><%= link_to "Approve", {:controller => "rewards", :action => "approve", :id => reward.id} %>&nbsp-&nbsp
+                                     <%= link_to "Deny", {:controller => "rewards", :action => "deny", :id => reward.id, :child => reward.child_id }%></td>
+                </tr>
+            <% end %>
+        <% end %>
+    </tbody>
+</table>
+
+
 <p id="notice"><%= notice %></p>
 
 <h1>Approve your kids work</h1>
@@ -36,5 +64,6 @@
 </table>
 
 <br>
+
 
 
