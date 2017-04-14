@@ -21,6 +21,7 @@
     <% end %>
 
     <% if current_parent.id == @child.parent_id %>
+    <%= image_tag(@child.avatar.thumb.url) %>
         <h1>Welcome <%= @child.name %>!<br></h1>
 
           <center>

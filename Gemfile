@@ -36,6 +36,12 @@ gem 'devise', '~> 4.2'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
+gem 'carrierwave', '~> 1.0'
+
+gem 'avatarly'
+
+gem 'letter_avatar'
+
 
 gem 'seed_dump'
 

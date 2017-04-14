@@ -32,6 +32,12 @@ class ChildrenController < ApplicationController
   # POST /children.json
   def create
     @child = Child.new(child_params)
+    if @child.avatar.file.nil?
+      img = LetterAvatar.generate(@child.name, 200)
+      File.open(img) do |f|
+        @child.avatar = f
+      end
+    end
 
     respond_to do |format|
       if @child.save
@@ -47,8 +53,21 @@ class ChildrenController < ApplicationController
   # PATCH/PUT /children/1
   # PATCH/PUT /children/1.json
   def update
+    if @child.avatar.file.nil?
+      img = LetterAvatar.generate(@child.name, 200)
+      File.open(img) do |f|
+        @child.avatar = f
+      end
+    end
     respond_to do |format|
       if @child.update(child_params)
+        if @child.avatar.file.nil?
+          img = LetterAvatar.generate(@child.name, 200)
+          File.open(img) do |f|
+            @child.avatar = f
+          end
+          @child.save
+        end
         format.html { redirect_to @child, notice: 'Child was successfully updated.' }
         format.json { render :show, status: :ok, location: @child }
       else
@@ -76,7 +95,7 @@ class ChildrenController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def child_params
-      params.fetch(:child, {}).permit(:name, :balance, :parent_id)
+      params.fetch(:child, {}).permit(:name, :balance, :parent_id, :avatar, :remove_avatar)
       
           # params.fetch(:user, {}).permit(:first_name, :last_name, :email, :phone, 
     end

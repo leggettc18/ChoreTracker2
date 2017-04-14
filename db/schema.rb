@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408232118) do
+ActiveRecord::Schema.define(version: 20170412162519) do
 
   create_table "children", force: :cascade do |t|
     t.integer  "parent_id",            default: 0,     null: false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170408232118) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.string   "childPin",   limit: 5, default: ""
+    t.string   "avatar"
     t.index ["parent_id"], name: "index_children_on_parent_id"
   end
 
