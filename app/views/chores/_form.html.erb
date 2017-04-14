@@ -26,7 +26,7 @@
   <div class="field"><%= f.check_box(:needs_approval) %> <br /></div>
   
   <%= f.label :due_date %><br />
-  <div class="field"><%= f.date_field(:due_date) %> <br /></div>
+  <div class="field"><%= f.date_field :due_date, :required => true %> <br /></div>
        
   <%= f.label :repeat_type %><br />
   <div class="field"><%= f.select(:repeat_type, Chore.repeat_types.keys.to_a) %> <br /></div>

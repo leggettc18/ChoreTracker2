@@ -109,7 +109,8 @@ module ApplicationHelper
         if sublogin == false
             return false
         elsif sublogin[:type] == 'parent'
-            return Child.find_by_id(id).parent_id == sublogin[:id] #Is this actually the parent for this child?
+            return false
+            #Child.find_by_id(id).parent_id == sublogin[:id] #Is this actually the parent for this child?
         elsif sublogin[:type] == 'child'
             return id == sublogin[:id]
         else

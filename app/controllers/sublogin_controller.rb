@@ -15,14 +15,25 @@ class SubloginController < ApplicationController
             if result == false #Sublogin failed
                 redirect_to :back, notice: 'Specified parent pin was wrong'
             else #Sublogin successfull
-                redirect_to "/", notice: "Parent sublogin successful"
+                returnplace = session.delete(:return_to)
+                if returnplace != nil
+                    redirect_to returnplace
+                else
+                    redirect_to "/", notice: "Parent sublogin successful"
+                end
             end
+            
         elsif (type == 'child')
             result = trySubLogin("child", id, pin, false)
             if result == false #Sublogin failed
                 redirect_to :back, notice: 'Child pin incorrect'
             else #Sublogin successfull
-                redirect_to "/children/" + id.to_s
+                returnplace = session.delete(:return_to)
+                if returnplace != nil
+                    redirect_to returnplace
+                else
+                    redirect_to "/children/" + id.to_s
+                end
             end
         else #Malformed input
             throw "invalid account type"

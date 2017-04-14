@@ -6,6 +6,6 @@ class RewardsAddChildid < ActiveRecord::Migration[5.0]
   
   def down
     remove_column(:rewards, :child_id)
-    remove_index(:rewards, :child_id)
+    
   end
 end
