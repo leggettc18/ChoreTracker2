@@ -49,9 +49,13 @@ class ChoresController < ApplicationController
   
   def complete
     completeChore = Chore.find(params[:id])
+    
     completeChore.completed = true
+    completeChore.completed_at = DateTime.now
+    
     # flop pending_approval to false because it technically isn't pending approval. This also eases some searching done elsewhere.
     completeChore.pending_approval = false
+    
     completeChore.save
  
     

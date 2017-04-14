@@ -48,8 +48,12 @@ class RewardsController < ApplicationController
     
     if decrementChild.balance > redeemReward.cost
       redeemReward.pending_approval = false
+      
       redeemReward.redeemed = true
+      redeemReward.redeemed_at = DateTime.now
+      
       redeemReward.save
+      
       decrementChild.balance = decrementChild.balance - redeemReward.cost
       decrementChild.save
       

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413151207) do
+ActiveRecord::Schema.define(version: 20170414053445) do
 
   create_table "children", force: :cascade do |t|
     t.integer  "parent_id",            default: 0,     null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170413151207) do
     t.boolean  "pending_approval",            default: false
     t.datetime "repeat_until"
     t.integer  "group_id"
+    t.datetime "completed_at"
     t.index ["child_id"], name: "index_chores_on_child_id"
     t.index ["parent_id"], name: "index_chores_on_parent_id"
   end
@@ -91,6 +92,7 @@ ActiveRecord::Schema.define(version: 20170413151207) do
     t.integer  "child_id"
     t.boolean  "redeemed",         default: false
     t.boolean  "pending_approval", default: false
+    t.datetime "redeemed_at"
     t.index ["child_id"], name: "index_rewards_on_child_id"
     t.index ["parent_id"], name: "index_rewards_on_parent_id"
   end
