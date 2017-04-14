@@ -62,6 +62,20 @@ class ChildrenController < ApplicationController
   # DELETE /children/1.json
   def destroy
     @child.destroy
+    @chores = Chore.where(child_id: @child.id)
+    @chores.each do |chore|
+      Chore.destroy(chore.id)
+    end
+    
+    @rewards = Reward.where(child_id: @child.id)
+    @rewards.each do |reward|
+      Reward.destroy(reward.id)
+    end
+    
+    @notifications = Notification.where(user_type: :child, user_id: @child.id)
+    @notifications.each do |notif|
+      Notification.destroy(notif.id)
+    end
     respond_to do |format|
       format.html { redirect_to children_url, notice: 'Child was successfully destroyed.' }
       format.json { head :no_content }
