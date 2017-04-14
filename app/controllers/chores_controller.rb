@@ -116,13 +116,25 @@ class ChoresController < ApplicationController
     puts @chore.repeat_until
     puts @chore.repeat_type
     
-    if @chore.repeat_type != nil and @chore.repeat_until == nil
-      redirect_to :back, notice: 'You must specify an end repeat date for repeating chores'
+    # if @chore.repeat_type != nil and @chore.repeat_until == nil
+    #   redirect_to :back, notice: 'You must specify an end repeat date for repeating chores'
+    #   return
+    # end
+    
+        
+    if @chore.repeat_type != "No Repeat" and @chore.repeat_until == nil
+      respond_to do |format|
+        if @chore.save(chore_params)
+          format.html { redirect_to @chore, notice: 'Chore was successfully updated.' }
+          format.json { render :show, status: :ok, location: @chore }
+        else
+          format.html { render :edit }
+          format.json { render json: @chore.errors, status: :unprocessable_entity }
+        end
+      end
       return
     end
       
-      
-    
     
     # Grabbing control here if our new chore has repeat data
     if @chore.repeat_type != "No Repeat"
