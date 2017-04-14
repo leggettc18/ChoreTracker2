@@ -23,8 +23,6 @@ class ChoresController < ApplicationController
   def edit
   end
   
-  
-  
     
   ####    STARTING TO FUCK SOME SHIT UP HERE  #####
   
@@ -32,6 +30,8 @@ class ChoresController < ApplicationController
   def complete
     completeChore = Chore.find(params[:id])
     completeChore.completed = true
+    # flop pending_approval to false because it technically isn't pending approval. This also eases some searching done elsewhere.
+    completeChore.pending_approval = false
     completeChore.save
  
     
@@ -45,12 +45,41 @@ class ChoresController < ApplicationController
     
   end
   
+  def pending 
+    pendingChore = Chore.find(params[:id])
+    pendingChore.pending_approval = true
+    pendingChore.save
+    
+    redirect_to :back, notice: 'Chore is now waiting for parent approval.'
+  end
+  
+  # Conner having a moment of partial genius 
+  def deny
+    denyChore = Chore.find(params[:id])
+    denyChore.pending_approval = false
+    denyChore.save
+    
+    redirect_to :back, notice: 'Chore was successfully denied. Your child may try again.'
+  end
+  
+  # associateChild adds child.id to chore.child_id and marks chore as pending because Conner is lazy...
+  def associateChild
+    choreFind = Chore.find(params[:id])
+    childFind = Child.find(params[:child])
+    choreFind.child_id = childFind.id
+    
+    choreFind.pending_approval=true
+    choreFind.save
+    
+    redirect_to :back
+    
+  end
+  
+  # Conner is done having his moment of partial genius
   
   ####   resume normality ####
-  
-  
 
-  # POST /chores
+   # POST /chores
   # POST /chores.json
   def create
     @chore = Chore.new(chore_params)

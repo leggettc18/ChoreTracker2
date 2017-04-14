@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Approve your kids work</h1>
+
+<table style="width:100%">
+  <thead>
+    <tr>
+      <th>Approve</th>
+      <th>Deny</th>
+      <th>Name</th>
+      <th>Coins</th>
+      <th>Due Date</th>
+      <th>Repeat?</th>
+      <th>Child</th>
+    </tr>
+  </thead>
+  
+  
+<!--pending approval bool value. Child must first submit "completed" chore for parent to review-->
+
+  <tbody>
+    <% @chores.made_by_parent(current_parent).each do |chore| %>
+      <%if chore.pending_approval%>  <!--if chore.needs_approval && !chore.completed-->
+          <tr>
+            <td><%= link_to "Approve", {:controller => "chores", :action => "complete", :id => chore.id, :child => chore.child_id } %></td>
+            <td><%= link_to "Deny", {:controller => "chores", :action => "deny", :id => chore.id } %></td>
+            <td><%= chore.name  %> </td>
+            <td><%= chore.coins %></td>
+            <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>
+            <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>
+            <td><%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></td>
+          </tr>
+       <% end %>  
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
