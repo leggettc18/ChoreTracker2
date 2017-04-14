@@ -12,11 +12,11 @@
           <center>
           <table style="border: 0px solid black;" id="separated">
           <tbody>
-          <tr>
+          <!--<tr>-->
             
-            <td style="border: 0px solid black;"><font size="4"><%= button_to 'Return Home ', '/default/index', :method => :get %></td>
-            <td style="border: 0px solid black;">  </td>
-            <td style="border: 0px solid black;"><font size="4"><%= button_to ' Reward Store', rewards_store_path, :method => :get  %></td>
+          <!--  <td style="border: 0px solid black;"><font size="4"><#%= button_to 'Return Home ', '/default/index', :method => :get %></td>-->
+          <!--  <td style="border: 0px solid black;">  </td>-->
+          <!--  <td style="border: 0px solid black;"><font size="4"><#%= button_to ' Reward Store', rewards_store_path, :method => :get  %></td>-->
            
           </tr>
           </tbody>
@@ -44,7 +44,13 @@
                       <% if chore.completed == false %>
                           <div class="row chore">
                             <div class=".col-xs-6 col-md-2">
-                              <p id="everybodydance"><%= link_to '<i class="fa fa-check fa-3x"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %></p>
+                              <p id="everybodydance">
+                                <% if chore.needs_approval == true %>
+                                <%= link_to '<i class="fa fa-check fa-3x"></i>'.html_safe, {:controller => "chores", :action => "pending", :id => chore.id, :child => @child.id} %>
+                                <% else %>
+                                <%= link_to '<i class="fa fa-check fa-3x"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %>
+                                <% end %>
+                              </p>
                             </div>
                             <div class=".col-xs-6 col-md-6">
                               <h2 class="chore-title" style="text-align: left;"><%=  chore.name %></h2>

@@ -27,12 +27,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         
-     
-        <% if controller_name.include?('default') %><li class="active"><% else %><li><% end %>
-       <a href="/default/index">Home <span class="sr-only">(current)</span></a></li>
+       <% user = getSubLoggedUser() %>
       
        
-        <%if cookies().key?("logged") %>
+        <%if user and user[:type] == "parent" %>
+        
+        <% if controller_name.include?('default') %><li class="active"><% else %><li><% end %>
+       <a href="/default/index">Home <span class="sr-only">(current)</span></a></li>
         
         
           <% if controller_name.include?('child') %><li class="active"><% else %><li><% end %>
@@ -46,13 +47,23 @@
           <% if controller_name.include?('reward') %><li class="active"><% else %><li><% end %>
           <a href="/rewards">Rewards <span class="sr-only">(current)</span></a></li>
           
+          <% if controller_name.include?('approval') %><li class="active"><% else %><li><% end %>
+          <a href="/approval">Approval <span class="sr-only">(current)</span></a></li>
           
-          <% if controller_name.include?('notifications') %><li class="active"><% else %><li><% end %>
-          <a href="/notifications">Notifications <span class="sr-only">(current)</span></a></li>
+          
+          
         
+        <% elsif user and user[:type] == "child" %>
+        
+        <% url = "/children/" + user[:id].to_s %>
+        
+        <% if controller_name.include?('default') %><li class="active"><% else %><li><% end %>
+       <a href=<%= url %>>Home <span class="sr-only">(current)</span></a></li>
+       
+          <% if controller_name.include?('store') %><li class="active"><% else %><li><% end %>
+          <a href="/rewards/store">Store <span class="sr-only">(current)</span></a></li>
         
         <% end %>
-        
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -62,17 +73,28 @@
           <% if controller_name.include?('edit') %>
        <li class="active">
              <% else %>
-        <li>
+        
        <% end %>
        
        <% if controller_name.include?('registrations') %><li class="active"><% else %><li><% end %>
-        <a href="/default/account_door"><i class="fa fa-cogs" aria-hidden="true"></i> <span class="sr-only">(current)</span></a></li>
-        <a href="/parents/edit">Account <span class="sr-only">(current)</span></a></li>  
         
-          <li><%= link_to "Log out", destroy_parent_session_path, :method => :delete %>  </li>
+        <!--<a href="/parents/edit">Account <span class="sr-only">(current)</span></a></li>  -->
+          <% if user %>
+          <% if controller_name.include?('notifications') %><li class="active"><% else %><li><% end %>
+          <a href="/notifications"><i class="fa fa-bell" aria-hidden="true"></i> <span class="sr-only">(current)</span></a></li>
+          <% end %>
+          <li>
+          <a href="/parents/edit"><i class="fa fa-cogs" aria-hidden="true"></i> <span class="sr-only">(current)</span></a></li>
+        
           
+          <% if !user %>
+          <li><%= link_to "Log out", destroy_parent_session_path, :method => :delete %>  </li>
+          <% else %>
+           <li><%= link_to "Log out", "/sublogin/logout" %></li>
+          <% end %>
           
           <% else %>
+          
           
           <% if controller_name.include?('registrations') %><li class="active"><% else %><li><% end %>
           <a href="/parents/sign_up">Sign Up <span class="sr-only">(current)</span></a></li>

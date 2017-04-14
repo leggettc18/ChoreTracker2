@@ -206,7 +206,8 @@ class ChoresController < ApplicationController
     
     
     #Run this if single chore, repeat_type == "No Repeat"
-
+      @chore.group_id = @next_choreid
+      
       respond_to do |format|
         if @chore.save
           format.html { redirect_to @chore, notice: 'Chore was successfully created.' }
