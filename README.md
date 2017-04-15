@@ -11,11 +11,11 @@ Welcome to your Rails project on Cloud9 IDE!
 
 To get started, just do the following:
 
-1. $ sudo apt-get update
-2. $ sudo apt-get install imagemagick
-3. $ sudo apt-get install libmagick++-dev
-3. $ bundle install
-4. $ rails db:migrate  OPTIONAL: 'rails db:seed' to get sample data, check seeds.rb
+1. `$ sudo apt-get update`
+2. `$ sudo apt-get install imagemagick`
+3. `$ sudo apt-get install libmagick++-dev`
+3. `$ bundle install`
+4. `$ rails db:migrate`  OPTIONAL: `rails db:seed` to get sample data, check seeds.rb
 5. Run the project with the "Run Project" button in the menu bar on top of the IDE.
 6. Preview your new app by clicking on the URL that appears in the Run panel below (https://chore-tracker-2-leggettc13.c9users.io/).
 
