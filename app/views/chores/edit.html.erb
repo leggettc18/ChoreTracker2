@@ -1,7 +1,9 @@
 <% user = getSubLoggedUser() #sublogin enforcement%>
 <%if user == false or user[:type] != "parent" #sublogin enforcement%>
 <h1>You must be logged in as the parent to use this page</h1>
-<h2><a href="/sublogin/?type=parent">You can click here to fix that</a></h2>
+   <script type="text/javascript">
+     window.location.href="/sublogin/?type=parent"  // put your correct path in a string here
+   </script>
 <%else #sublogin enforcement. Correct user type logged in%>
 
 <h1>Editing Chore</h1>

@@ -5,5 +5,4 @@
 <% if !request.referer.include? "/sublogin/" or request.referer.include? "sublogin/pin" or request.referer.include? "sublogin/resetpin" %> 
 <%session[:return_to] = request.referer%>
 <%end%>
-<%puts request.referer%>
 <%= render 'formLogin' %>

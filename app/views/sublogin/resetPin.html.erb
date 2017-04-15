@@ -4,7 +4,10 @@
 
 <% if(!loginstatus or loginstatus[:type] != "parent") %>
    <h2>You must be logged in as a parent to use this page</h2>
-   <h2><a href="/sublogin?type=parent">Click here to fix that</a></h2>
+   <script type="text/javascript">
+     window.location.href="/sublogin/?type=parent"  // put your correct path in a string here
+   </script>
+   
 <% else %>
    <%= render 'formResetPinChild' %>
 <% end %>

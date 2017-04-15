@@ -21,9 +21,9 @@
     <%= f.label :balance %><br />
      <div class="field"> <%= f.text_field(:balance) %> <br /></div>
      
-    <%= f.label :parent_id %><b> ID</b><br />
+    <% f.label :parent_id %><b> </b><br />
     
-     <%= f.number_field :parent_id, :value => current_parent.id, :readonly => true %><br />
+     <%= f.number_field :parent_id, :value => current_parent.id, :readonly => true, :hidden => true %><br />
      
      <%=f.label :avatar %><br />
      <%= image_tag(@child.avatar_url) if @child.avatar? %>

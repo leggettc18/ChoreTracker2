@@ -1,5 +1,12 @@
-<h1>New Child</h1>
-
-<%= render 'form', child: @child %>
-
-<%= link_to 'Back', children_path %>
+<% loginstatus = getSubLoggedUser() %>
+<% if(!loginstatus or loginstatus[:type] != "parent") %>
+   <h2>You must be logged in as a parent to use this page</h2>
+   <script type="text/javascript">
+     window.location.href="/sublogin/?type=parent"  // put your correct path in a string here
+   </script>
+   
+<% else %>
+   <h1>New Child</h1>
+    <%= render 'form', child: @child %>
+    <%= link_to 'Back', children_path %>
+<% end %>

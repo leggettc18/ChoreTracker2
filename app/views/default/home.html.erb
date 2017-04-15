@@ -6,6 +6,8 @@
     <center>
   <h1>Let's get started!</h1>
   <p>Let's start by Adding a Child to your family...</p>
+  <p>Your pin is 0000 by default</p>
+  <p>Children pins are blank by default</p>
   <br />
   <p><a class="btn btn-primary btn-lg" href='/children/new' role="button">Add Child</a></p>
   </center>
@@ -32,10 +34,10 @@
   <td class="home">
     <table class="home">
       <tr class="home">
-        <td class="home"><%= link_to current_parent.display_avatar_standard, "/parents/edit" %></td>
+        <td class="home"><%= link_to current_parent.display_avatar_standard, "/approval" %></td>
       </tr>
       <tr class="home">
-        <td class="home"><%= link_to current_parent.email, "/parents/edit" %></td>
+        <td class="home"><%= link_to current_parent.email, "/approval" %></td>
       </tr>
     </table>
   </td>
