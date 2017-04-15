@@ -1,13 +1,21 @@
 <% user = getSubLoggedUser() #sublogin enforcement%>
 <%if user == false or user[:type] != "parent" #sublogin enforcement%>
 <h1>You must be logged in as the parent to use this page</h1>
-<h2><a href="/sublogin?type=parent">You can click here to fix that</a></h2>
+<h2>You should be redirected shortly</a></h2>
+
+  <script type="text/javascript">
+     window.location.href="/sublogin?type=parent"  // put your correct path in a string here
+  </script>
+
 <%else #sublogin enforcement. Correct user type logged in%>
 
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
   <%= devise_error_messages! %>
+  
+  <!--Invisible password field to eat autofiled password-->
+  <input type="password" name="password" id="password_fake" class="hidden" autocomplete="off" style="display: none;">
 
   <div class="field">
     <%= f.label :email %><br />
@@ -17,10 +25,12 @@
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
+  
+  <br>
+  
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.label :New_password%> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete:"new-password" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -29,13 +39,10 @@
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete:"new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+  <br>
   
   <div class="field">
     <%= current_parent.display_avatar_standard %>
@@ -46,6 +53,15 @@
     <%= f.file_field :avatar %>
     <%= f.hidden_field :avatar_cache %>
   </div>
+  
+  <br>
+  
+  <div class="field">
+    <%= f.label :current_password %> <i>(You need to enter your current password to make any changes here)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+  
+  <br>
   
   <div class="actions">
     <%= f.submit "Update" %>

@@ -2,7 +2,7 @@
 
 <!--UGLY HAX ALERT-->
 <!--Never redirect them back to a sublogin page unless it's the pin page-->
-<% if !request.referer.include? "/sublogin/" or request.referer.include? "sublogin/pin" %> 
+<% if !request.referer.include? "/sublogin/" or request.referer.include? "sublogin/pin" or request.referer.include? "sublogin/resetpin" %> 
 <%session[:return_to] = request.referer%>
 <%end%>
 <%puts request.referer%>

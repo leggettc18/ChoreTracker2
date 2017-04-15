@@ -19,6 +19,9 @@ To get started, just do the following:
 5. Run the project with the "Run Project" button in the menu bar on top of the IDE.
 6. Preview your new app by clicking on the URL that appears in the Run panel below (https://chore-tracker-2-leggettc13.c9users.io/).
 
+
+Lazy one liner: sudo apt-get update && sudo apt-get install imagemagick libmagick++-dev -y && bundle install && rails db:migrate
+
 Happy coding!
 The Cloud9 IDE team
 

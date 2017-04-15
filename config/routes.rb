@@ -64,6 +64,8 @@ Rails.application.routes.draw do
   post '/sublogin/', to: 'sublogin#sublogin'
   get '/sublogin/pin/', to: 'sublogin#changePin'
   post '/sublogin/pin', to: 'sublogin#chgPin' #Controller function
+  get 'sublogin/resetpin/', to: 'sublogin#resetPin'
+  post 'sublogin/resetpin/', to: 'sublogin#rstPin' #Controller function
   
   
   # You can have the root of your site routed with "root"

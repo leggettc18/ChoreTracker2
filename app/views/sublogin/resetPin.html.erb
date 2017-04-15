@@ -1,0 +1,10 @@
+<% loginstatus = getSubLoggedUser() %>
+
+<h1>Child pin reset page</h1>
+
+<% if(!loginstatus or loginstatus[:type] != "parent") %>
+   <h2>You must be logged in as a parent to use this page</h2>
+   <h2><a href="/sublogin?type=parent">Click here to fix that</a></h2>
+<% else %>
+   <%= render 'formResetPinChild' %>
+<% end %>

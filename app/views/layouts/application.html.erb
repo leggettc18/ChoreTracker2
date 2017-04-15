@@ -50,18 +50,24 @@
           <% if controller_name.include?('approval') %><li class="active"><% else %><li><% end %>
           <a href="/approval">Approval <span class="sr-only">(current)</span></a></li>
           
+          <li><a href="/sublogin/pin">Change pin <span class="sr-only">(current)</span></a></li>
+          
+          <li><a href="/sublogin/resetpin">Reset child pin <span class="sr-only">(current)</span></a></li>
+          
           
           
         
         <% elsif user and user[:type] == "child" %>
         
-        <% url = "/children/" + user[:id].to_s %>
+          <% url = "/children/" + user[:id].to_s %>
         
-        <% if controller_name.include?('default') %><li class="active"><% else %><li><% end %>
-       <a href=<%= url %>>Home <span class="sr-only">(current)</span></a></li>
+          <% if controller_name.include?('default') %><li class="active"><% else %><li><% end %>
+             <a href=<%= url %>>Home <span class="sr-only">(current)</span></a></li>
        
           <% if controller_name.include?('store') %><li class="active"><% else %><li><% end %>
           <a href="/rewards/store">Store <span class="sr-only">(current)</span></a></li>
+          
+          <li><a href="/sublogin/pin">Change pin <span class="sr-only">(current)</span></a></li>
         
         <% end %>
       </ul>

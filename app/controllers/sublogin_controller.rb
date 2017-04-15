@@ -96,4 +96,19 @@ class SubloginController < ApplicationController
         
     end
     
+    def rstPin
+        id = params[:sublogin][:child_id]
+        child = Child.find_by_id(id.to_i)
+        if(child[:parent_id] != current_parent.id)
+            redirect_to "/", notice:"FAILURE: Attempt to change pin on someone else's child"
+        else
+            child[:childPin] = params[:sublogin][:pin]
+            child.save
+            redirect_to "/", notice: "Pin for "+child[:name]+" successfully changed."
+        end
+        
+        
+        
+    end
+    
 end

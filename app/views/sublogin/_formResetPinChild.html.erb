@@ -1,0 +1,14 @@
+<center>
+<%= form_for(:sublogin) do |f| %>
+    <%= f.label :child_id %>
+    <div class="field"><%= f.collection_select :child_id, current_parent.children, :id, :name, {:include_blank => false}%> <br /></div>
+    <br>
+    <%= f.label :pin %><br />
+    <div class="field"><%= f.text_field(:pin) %> <br /></div>
+    Leave blank for no pin
+    <br><br>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>
+</center>
