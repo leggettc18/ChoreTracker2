@@ -1,69 +1,79 @@
-<h2>Approval Page</h2>
+<% loginstatus = getSubLoggedUser() %>
 
-<table style ="width:100%">
+
+<% if(!loginstatus or loginstatus[:type] != "parent") %>
+  <h1>Chore/Reward approval page</h1>
+  <h2>You must be logged in as the parent to use this page</h2>
+  <h2>You should be redirected shortly</a></h2>
+  <script type="text/javascript">
+     window.location.href="/sublogin?type=parent"  // put your correct path in a string here
+  </script>
+
+<% else %>
+   
+  <h2>Approval Page</h2>
+  
+  <table style ="width:100%">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Cost</th>
+              <th>Child</th>
+              <th>Options</th>
+          </tr>
+      </thead>
+      
+      <tbody>
+          <% @rewards.made_by_parent(current_parent).each do |reward| %>
+              <%if reward.pending_approval? %>
+                  <tr>
+                      <td><%= reward.name %></td>
+                      <td><%= reward.cost %></td>
+                      <td><%= reward.child_id ? Child.find(reward.child_id).name : 'Unassigned' %></td>
+                      <td colspan ="2"><%= link_to "Approve", {:controller => "rewards", :action => "approve", :id => reward.id} %>&nbsp-&nbsp
+                                       <%= link_to "Deny", {:controller => "rewards", :action => "deny", :id => reward.id, :child => reward.child_id }%></td>
+                  </tr>
+              <% end %>
+          <% end %>
+      </tbody>
+  </table>
+  
+  
+  <p id="notice"><%= notice %></p>
+  
+  <h1>Approve your kids work</h1>
+  
+  <table style="width:100%">
     <thead>
-        <tr>
-            <th>Name</th>
-            <th>Cost</th>
-            <th>Child</th>
-            <th>Options</th>
-        </tr>
+      <tr>
+        <th>Approve</th>
+        <th>Deny</th>
+        <th>Name</th>
+        <th>Coins</th>
+        <th>Due Date</th>
+        <th>Repeat?</th>
+        <th>Child</th>
+      </tr>
     </thead>
     
+    
+  <!--pending approval bool value. Child must first submit "completed" chore for parent to review-->
+  
     <tbody>
-        <% @rewards.made_by_parent(current_parent).each do |reward| %>
-            <%if reward.pending_approval? %>
-                <tr>
-                    <td><%= reward.name %></td>
-                    <td><%= reward.cost %></td>
-                    <td><%= reward.child_id ? Child.find(reward.child_id).name : 'Unassigned' %></td>
-                    <td colspan ="2"><%= link_to "Approve", {:controller => "rewards", :action => "approve", :id => reward.id} %>&nbsp-&nbsp
-                                     <%= link_to "Deny", {:controller => "rewards", :action => "deny", :id => reward.id, :child => reward.child_id }%></td>
-                </tr>
-            <% end %>
-        <% end %>
+      <% @chores.made_by_parent(current_parent).each do |chore| %>
+        <%if chore.pending_approval%>  <!--if chore.needs_approval && !chore.completed-->
+            <tr>
+              <td><%= link_to "Approve", {:controller => "chores", :action => "complete", :id => chore.id, :child => chore.child_id } %></td>
+              <td><%= link_to "Deny", {:controller => "chores", :action => "deny", :id => chore.id } %></td>
+              <td><%= chore.name  %> </td>
+              <td><%= chore.coins %></td>
+              <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>
+              <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>
+              <td><%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></td>
+            </tr>
+         <% end %>  
+      <% end %>
     </tbody>
-</table>
-
-
-<p id="notice"><%= notice %></p>
-
-<h1>Approve your kids work</h1>
-
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th>Approve</th>
-      <th>Deny</th>
-      <th>Name</th>
-      <th>Coins</th>
-      <th>Due Date</th>
-      <th>Repeat?</th>
-      <th>Child</th>
-    </tr>
-  </thead>
-  
-  
-<!--pending approval bool value. Child must first submit "completed" chore for parent to review-->
-
-  <tbody>
-    <% @chores.made_by_parent(current_parent).each do |chore| %>
-      <%if chore.pending_approval%>  <!--if chore.needs_approval && !chore.completed-->
-          <tr>
-            <td><%= link_to "Approve", {:controller => "chores", :action => "complete", :id => chore.id, :child => chore.child_id } %></td>
-            <td><%= link_to "Deny", {:controller => "chores", :action => "deny", :id => chore.id } %></td>
-            <td><%= chore.name  %> </td>
-            <td><%= chore.coins %></td>
-            <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>
-            <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>
-            <td><%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></td>
-          </tr>
-       <% end %>  
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-
-
+  </table>
+  <br>
+<% end %>
