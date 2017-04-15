@@ -15,3 +15,7 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore Images
+public/system/letter_avatars/*
+public/uploads/

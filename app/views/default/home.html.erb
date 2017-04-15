@@ -18,7 +18,7 @@
 
 <% cookies.delete :logged %>
 
-<div class="jumbotron">
+<div class="jumbotron" style="overflow: auto">
     <center>
   <h1>YOU GOT KIDS!</h1>
   <p>you got kids</p>
@@ -27,11 +27,36 @@
   
   <% @childs = Child.childrenOf(current_parent.id) %>
   
-  <% @childs.each do |child| %>
+  <table class="home" id="sublog">
+<tr class="home">
+  <td class="home">
+    <table class="home">
+      <tr class="home">
+        <td class="home"><%= link_to current_parent.display_avatar_standard, "/parents/edit" %></td>
+      </tr>
+      <tr class="home">
+        <td class="home"><%= link_to current_parent.email, "/parents/edit" %></td>
+      </tr>
+    </table>
+  </td>
+<% @childs.each do |child| %>
+ 
+     
+          <td class="home">
+              <table class="home">
+                  <tr class="home">
+                    <td class="home"><%= link_to image_tag(child.avatar.standard), child_path(child.id) %></td>
+                  </tr>
+                  <tr class="home">
+                      <td class="home"><%= link_to child.name, child_path(child.id) %></td>
+                  </tr>
+              </table>
+          </td>
+      
+<% end %>
+</tr>
+</table>
   
-  <a class="btn btn-primary btn-lg" href='/children/<%= child.id %>' role="button"><%= child.name %></a>
-  
-  <% end %>
   </center>
   <br />
   

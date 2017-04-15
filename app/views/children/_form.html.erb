@@ -1,6 +1,6 @@
 <% if parent_signed_in? %>
 
-<%= simple_form_for(@child) do |f| %>
+<%= simple_form_for(@child, html: { multipart: true} ) do |f| %>
 
   <% if child.errors.any? %>
     <div id="error_explanation">
@@ -23,7 +23,17 @@
      
     <%= f.label :parent_id %><b> ID</b><br />
     
-     <%= f.number_field :parent_id, :value => current_parent.id, :readonly => true %>
+     <%= f.number_field :parent_id, :value => current_parent.id, :readonly => true %><br />
+     
+     <%=f.label :avatar %><br />
+     <%= image_tag(@child.avatar_url) if @child.avatar? %>
+     <%= f.file_field(:avatar) %>
+     <%= f.hidden_field(:avatar_cache) %>
+     <br />
+     <label>
+     <%= f.check_box :remove_avatar %>
+     Use Default Avatar
+     </label>
     
   <div class="actions">
     <% if @child.new_record? == true %>

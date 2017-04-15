@@ -8,6 +8,7 @@
 
     <%if current_parent.id == @child.parent_id %>
         <h1>Welcome <%= @child.name %>!<br></h1>
+        <%= image_tag(@child.avatar.standard.url) %>
 
           <center>
           <table style="border: 0px solid black;" id="separated">

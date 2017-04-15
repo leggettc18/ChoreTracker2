@@ -8,6 +8,8 @@
 	    <%= f.input :email, required: true, autofocus: true %>
 	    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
 	    <%= f.input :password_confirmation, required: true %>
+	    <%= f.file_field :avatar %>
+	    <%= f.hidden_field :avatar_cache %>
 	  </div>
 
 	  <div class="form-actions">
