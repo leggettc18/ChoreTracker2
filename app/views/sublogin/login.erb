@@ -2,7 +2,10 @@
 
 <!--UGLY HAX ALERT-->
 <!--Never redirect them back to a sublogin page unless it's the pin page-->
-<% if !request.referer.include? "/sublogin/" or request.referer.include? "sublogin/pin" or request.referer.include? "sublogin/resetpin" %> 
+<% puts session[:return_to] %>
+<% puts "Referer: " + request.referer %>
+<% if !request.referer.include? "/sublogin" or request.referer.include? "sublogin/pin" or request.referer.include? "sublogin/resetpin" %> 
 <%session[:return_to] = request.referer%>
 <%end%>
+<% puts "redirect after: " + session[:return_to] %>
 <%= render 'formLogin' %>
