@@ -36,9 +36,13 @@ class RewardsController < ApplicationController
       decrementChild.balance = decrementChild.balance - pendingReward.cost
       decrementChild.save
       
+      Notification.new_reward_approval(pendingReward.id, pendingReward.parent_id)
+      
       redirect_to :back, notice: 'Reward is now waiting for parent approval'
     else
       redirect_to rewards_store_path, notice: 'NOT ENOUGH COINS!!!'
+      
+      
     end
   end
   
@@ -70,7 +74,10 @@ class RewardsController < ApplicationController
     approvedReward.redeemed = true
     approvedReward.save
     
+    Notification.notif_reward_approved(approvedReward.id, approvedReward.child_id)
+    
     redirect_to :back, notice: 'Reward was successfully approved.'
+    
   end
   
   def deny

@@ -64,6 +64,7 @@ class ChoresController < ApplicationController
     incrementChild.balance = incrementChild.balance + completeChore.coins
     incrementChild.save
     
+    Notification.notif_chore_approved(completeChore.id, completeChore.child_id)   
        
     redirect_to :back, notice: 'Chore was successfully completed.'
     
@@ -73,6 +74,8 @@ class ChoresController < ApplicationController
     pendingChore = Chore.find(params[:id])
     pendingChore.pending_approval = true
     pendingChore.save
+    
+    Notification.new_chore_approval(pendingChore.id, pendingChore.parent_id)
     
     redirect_to :back, notice: 'Chore is now waiting for parent approval.'
   end
