@@ -35,10 +35,10 @@ class ChildrenController < ApplicationController
 
     respond_to do |format|
       if @child.save
-         if @child.avatar.file.nil?
+         if @child.reload.avatar.file.nil?
           @child.set_default_avatar
          end
-        format.html { redirect_to "/children/", notice: 'Child was successfully created.' }
+        format.html { redirect_to @child, notice: 'Child was successfully created.' }
         format.json { render :show, status: :created, location: @child }
       else
         format.html { render :new }
@@ -52,10 +52,10 @@ class ChildrenController < ApplicationController
   def update
     respond_to do |format|
       if @child.update(child_params)
-        if @child.avatar.file.nil?
+        if @child.reload.avatar.file.nil?
           @child.set_default_avatar
         end
-        format.html { redirect_to "/children", notice: 'Child was successfully updated.' }
+        format.html { redirect_to @child, notice: 'Child was successfully updated.' }
         format.json { render :show, status: :ok, location: @child }
       else
         format.html { render :edit }
