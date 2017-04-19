@@ -1,4 +1,11 @@
 <% if parent_signed_in? %>
+
+<!-- Pass through if blank pin and log in -->
+<% if @child.childPin == "" %>
+  <% trySubLogin("child", @child.id, "", false) %>
+  <h3>Automatically logged in since you have no pin</h3>
+<% end %>
+
 <% user = getSubLoggedUser() #sublogin enforcement%>
 <%if !authorizedViewerChild(@child.id) #sublogin enforcement.%>
    <script type="text/javascript">
