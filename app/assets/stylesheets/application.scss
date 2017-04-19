@@ -121,16 +121,43 @@ table, th, td{
        
 }
 
-.home {
-    text-align: center; 
-    border: 0px solid #dddddd; 
-    border-collapse: collapse;
-    padding: 10px;
+.jumbotron{
+    text-align: center;
+}
+
+.jumbotron a:link{
+    color: purple;
+}
+
+.jumbotron ul{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.jumbotron li{
+    position: relative;
+    display: inline-block;
+    padding: 2px 5px;
+    border: 0px solid black;
+}
+
+.jumbotron table{
+    border: none;
+}
+
+.jumbotron li table td{
+    border: 0px;
+}
+
+.jumbotron li table tr td{
+    text-align: center;
 }
 
 #sublog {
     display: block;
 }
+
 #sublog td {
     display: inline-block;
 }

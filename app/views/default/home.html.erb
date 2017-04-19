@@ -20,7 +20,7 @@
 
 <% cookies.delete :logged %>
 
-<div class="jumbotron" style="overflow: auto">
+<div class="jumbotron">
     <center>
   <h1>YOU GOT KIDS!</h1>
   <p>you got kids</p>
@@ -28,37 +28,23 @@
   <!--<%= current_parent.id %>-->
   
   <% @childs = Child.childrenOf(current_parent.id) %>
-  
-  <table class="home" id="sublog">
-<tr class="home">
-  <td class="home">
-    <table class="home">
-      <tr class="home">
-        <td class="home"><%= link_to current_parent.display_avatar_standard, "/approval" %></td>
-      </tr>
-      <tr class="home">
-        <td class="home"><%= link_to current_parent.email, "/approval" %></td>
-      </tr>
+  <ul>
+    <li>
+      <table>
+        <tr><th><%= link_to current_parent.display_avatar_standard, approval_index_path %></th></tr>
+        <tr><td><%= link_to current_parent.email, approval_index_path %></td></tr>
+      </table>
+    </li>
+  <% @childs.each do |child| %>
+  <li>
+    <table>
+      <tr><th><%= link_to(image_tag(child.avatar.standard.url), child_path(child.id)) %></th></tr>
+      <tr><td><%= link_to child.name, child_path(child.id) %></td></tr>
     </table>
-  </td>
-<% @childs.each do |child| %>
- 
-     
-          <td class="home">
-              <table class="home">
-                  <tr class="home">
-                    <td class="home"><%= link_to image_tag(child.avatar.standard), child_path(child.id) %></td>
-                  </tr>
-                  <tr class="home">
-                      <td class="home"><%= link_to child.name, child_path(child.id) %></td>
-                  </tr>
-              </table>
-          </td>
-      
-<% end %>
-</tr>
-</table>
-  
+  </li>
+  <% end %>
+  </ul>
+
   </center>
   <br />
   
