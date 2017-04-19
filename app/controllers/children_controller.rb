@@ -38,7 +38,7 @@ class ChildrenController < ApplicationController
          if @child.reload.avatar.file.nil?
           @child.set_default_avatar
          end
-        format.html { redirect_to @child, notice: 'Child was successfully created.' }
+        format.html { redirect_to "/children", notice: 'Child was successfully created.' }
         format.json { render :show, status: :created, location: @child }
       else
         format.html { render :new }
@@ -55,7 +55,7 @@ class ChildrenController < ApplicationController
         if @child.reload.avatar.file.nil?
           @child.set_default_avatar
         end
-        format.html { redirect_to @child, notice: 'Child was successfully updated.' }
+        format.html { redirect_to "/children", notice: 'Child was successfully updated.' }
         format.json { render :show, status: :ok, location: @child }
       else
         format.html { render :edit }
