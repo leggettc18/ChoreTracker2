@@ -111,4 +111,10 @@ class SubloginController < ApplicationController
         
     end
     
+    def autoLoginIfPossible
+        puts "Thingsaohoidhj;saodhas;doifhsad;ofijsa;ofijasdf;oiajsdf;oasijdf;odsajfasd;oifjasdfo"
+        
+        
+    end
+    
 end
