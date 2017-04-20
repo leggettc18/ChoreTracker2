@@ -4,7 +4,7 @@
 <% user = getSubLoggedUser()%>
 <% if (!user and @child.childPin == "") or (user and ((user[:type] == "parent" or user[:id] != @child.id) and @child.childPin == ""))%>
   <% trySubLogin("child", @child.id, "", false) %>
-  <h3>Automatically logged in since you have no pin</h3>
+  <!--<h3>Automatically logged in since you have no pin</h3>-->
 <% end %>
 
 <% user = getSubLoggedUser() #sublogin enforcement%>
@@ -16,7 +16,7 @@
 
     <%if current_parent.id == @child.parent_id %>
         <h1>Welcome <%= @child.name %>!<br></h1>
-        <%= image_tag(@child.avatar.standard.url) %>
+        <center></center>
 
           <center>
           <table style="border: 0px solid black;" id="separated">
@@ -31,7 +31,7 @@
           </tbody>
         </table>
         </center>
-        <h2>Current Balance <i class="fa fa-star fa-lg" style="color: gold"></i> <%= @child.balance %></h2>
+        <h2> <%= image_tag(@child.avatar.standard.url, :size => "64x64") %> Current Balance  <img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="Coins" height="28" width="28"> x <%= @child.balance %> </h2>
 
         <div class="tab">
           <ul class="tabs" id="nav">
@@ -68,7 +68,7 @@
                             </div>
                             <div class=".col-xs-6 col-md-4">
                               <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
-                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                              <p style="color: white"> <img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="Coins" height="28" width="28"> x <%= chore.coins %></p>
                             </div>
                           </div>
                         <% else %>
@@ -95,7 +95,7 @@
                             </div>
                             <div class=".col-xs-6 col-md-4">
                               <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
-                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                              <p style="color: white"> <img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="Coins" height="28" width="28"> x <%= chore.coins %></p>
                             </div>
                           </div>
                       <% else %>
@@ -122,7 +122,7 @@
                             </div>
                             <div class=".col-xs-6 col-md-4">
                               <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
-                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                              <p style="color: white"> <img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="Coins" height="28" width="28"> x <%= chore.coins %></p>
                             </div>
                           </div>
                       <% else %>
@@ -138,7 +138,7 @@
                             </div>
                             <div class=".col-xs-6 col-md-4">
                               <p style="color: white"><i class="fa fa-calendar-o fa-lg"></i> <%= chore.due_date ? chore.due_date.strftime("%A") : "None" %></p>
-                              <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i> <%= chore.coins %></p>
+                              <p style="color: white"> <img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="Coins" height="28" width="28"> x <%= chore.coins %></p>
                             </div>
                           </div>
                       <% end %>
@@ -155,9 +155,9 @@
                     <h3 class="panel-title">Daily Assigned Chores</h3>
                   </div>
                   <div class="panel-content text-center">
-                    <%= area_chart Chore.where(:child_id => @child.id).group_by_day(:created_at).count, download: true, width: "100%", id: "line-chart" %>
+                    <%= area_chart Chore.where(:child_id => @child.id).group_by_day(:due_date).count, download: true, width: "100%", id: "line-chart" %>
                   </div>
-                  <div class="panel-footer">Muhahaha I am your father</div>
+                  <div class="panel-footer">Knowing is half the battle</div>
                 </div>
               </div>
 
@@ -185,7 +185,7 @@
                     <%#= pie_chart [["Current Balance", total], ["Redeemed", Reward.select(&:redeemed).size ]], donut: true, colors: ["#ff0084","#3efd7a"],download: true, width: "100%", id: "pie-chart2" %>
                     <%= pie_chart [["Current Balance", total], ["Redeemed", Reward.where(:child_id => @child.id, :redeemed => true).sum(:cost) ]], donut: true, colors: ["#ff0084","#3efd7a"],download: true, width: "100%", id: "reward-chart" %>
                   </div>
-                  <div class="panel-footer">Work Hard Live Well!</div>
+                  <div class="panel-footer">Saving up for a rainy day</div>
                 </div>
               </div>
             
