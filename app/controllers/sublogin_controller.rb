@@ -13,20 +13,20 @@ class SubloginController < ApplicationController
         if (type == 'parent')
             result = trySubLogin("parent", current_parent[:id], pin, false)
             if result == false #Sublogin failed
-                redirect_to :back, notice: 'Specified parent pin was wrong'
+                redirect_to :back, notice: 'Specified parent PIN was wrong'
             else #Sublogin successfull
                 returnplace = session.delete(:return_to)
                 if returnplace != nil
                     redirect_to returnplace
                 else
-                    redirect_to "/", notice: "Parent sublogin successful"
+                    redirect_to "/", notice: "Parent login successful"
                 end
             end
             
         elsif (type == 'child')
             result = trySubLogin("child", id, pin, false)
             if result == false #Sublogin failed
-                redirect_to :back, notice: 'Child pin incorrect'
+                redirect_to :back, notice: 'Child PIN incorrect'
             else #Sublogin successfull
                 returnplace = session.delete(:return_to)
                 if returnplace != nil
@@ -58,15 +58,15 @@ class SubloginController < ApplicationController
                 if (newpin == newpinconfirm)
                     parent[:pincode] = newpin
                     parent.save
-                    redirect_to "/", notice: 'Parent pin successfully updated'
-                    puts "Successfully updated subaccount with new pin"
+                    redirect_to "/", notice: 'Parent PIN successfully updated'
+                    puts "Successfully updated subaccount with new PIN"
                 else #New pin mismatch
-                    puts "Pin change failed for parent ID " + parent[:id].to_s + " because the new pin and confirmation were different"
-                    redirect_to :back, notice: 'New pin confirmation did not match'
+                    puts "Pin change failed for parent ID " + parent[:id].to_s + " because the new PIN and confirmation were different"
+                    redirect_to :back, notice: 'New PIN confirmation did not match'
                 end
             else #Wrong current pin
                 puts "Pin change failed for parent ID " + parent[:id].to_s + " because of invalid existing pin"
-                redirect_to :back, notice: 'Specified current pin was wrong'
+                redirect_to :back, notice: 'Specified current PIN was wrong'
             end
             
         elsif user[:type] == "child"
@@ -77,14 +77,14 @@ class SubloginController < ApplicationController
                     child[:childPin] = newpin
                     child.save
                     puts "Successfully updated subaccount with new pin"
-                    redirect_to "/children/" + id.to_s, notice: 'Pin successfully updated!'
+                    redirect_to "/children/" + id.to_s, notice: 'PIN successfully updated!'
                 else #New pin mismatch
                     puts "Pin change failed for child ID " + child[:id].to_s + " because the new pin and confirmation were different"
-                    redirect_to :back, notice: 'New pin confirmation did not match'
+                    redirect_to :back, notice: 'New PIN confirmation did not match'
                 end
             else #Wrong current pin
                 puts "Pin change failed for child ID " + child[:id].to_s + " because of invalid existing pin"
-                redirect_to :back, notice: 'Specified current pin was wrong'
+                redirect_to :back, notice: 'Specified current PIN was wrong'
             end
             
         else #Aw crap
@@ -100,7 +100,7 @@ class SubloginController < ApplicationController
         id = params[:sublogin][:child_id]
         child = Child.find_by_id(id.to_i)
         if(child[:parent_id] != current_parent.id)
-            redirect_to "/", notice:"FAILURE: Attempt to change pin on someone else's child"
+            redirect_to "/", notice:"FAILURE: Attempt to change PIN on someone else's child"
         else
             child[:childPin] = params[:sublogin][:pin]
             child.save

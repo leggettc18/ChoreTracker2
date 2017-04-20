@@ -1,17 +1,24 @@
+<center>
 <%= form_for(:sublogin) do |f| %>
-
-  <%= f.label :curpin %><br />
+</br>
+</br>
+  <h3 style="font-weight: bold;">Current PIN</h3>
   <div class="field"><%= f.text_field(:pin) %> <br /></div>
   
-  <%= f.label :newpin %><br />
+  </br>
+  </br>
+  </br>
+  <h3 style="font-weight: bold;">New PIN</h3>
   <div class="field"><%= f.text_field(:newpin) %> <br /></div>
-  
-  <%= f.label :newpin2 %><br />
+  </br>
+  <h3 style="font-weight: bold;">New PIN Confirmation</h3>
   <div class="field"><%= f.text_field(:newpin2) %> <br /></div>
   
      
-     
+     </br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Change my PIN" %>
   </div>
 <% end %>
+
+</center>

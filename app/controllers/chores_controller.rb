@@ -64,7 +64,7 @@ class ChoresController < ApplicationController
     incrementChild.balance = incrementChild.balance + completeChore.coins
     incrementChild.save
     
-    Notification.notif_chore_approved(completeChore.id, completeChore.child_id)   
+    #Notification.chore_approved(completeChore.id, completeChore.child_id)   
        
     redirect_to :back, notice: 'Chore was successfully completed.'
     

@@ -8,45 +8,90 @@
 <h2>Current Balance: <img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="" height=25width=25></img>x <%= @child.balance %></h2>
 
 </br>
-<table style="width:90%">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Cost</th>
-      <th>Auto Approve?</th>
-      <th>Options</th>
-    </tr>
-  </thead>
+<!--<table style="width:90%">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>Name</th>-->
+<!--      <th>Cost</th>-->
+<!--      <th>Redeem</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
 
-  <tbody>
+<!--  <tbody>-->
+
+<div class="col-md-6 col-md-offset-3">
     <% @rewards.each do |reward| %>
-    
-  <% if reward.redeemed == false %>
-      <tr>
-        <td><%= reward.name %></td>
-        <td><%= reward.cost %></td>
-        <td>
+     <div class="index-wrapper">
+        <%# if chore.completed == false %>
+        <div class="row chore">
+
+
+
+          <% if reward.redeemed == false %>
+   <div class=" col-md-6">
+            <h2 class="chore-title" style="text-align: left;"><%=  reward.name %></h2>
+          </div>
         
+           <div class=" col-md-6">
+             <p style="color: white" ><img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="Coins" height="28" width="28"> x <%=  reward.cost %></p>
+          </div>
         
-        <%= if reward.auto_approve?
-                #if 1
-                  if reward.cost <= @child.balance
-                    link_to 'Request',{:controller => "rewards", :action => "store"},data: { confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } 
-                  else
+        <% if reward.auto_approve? %>
+               
+                  <% if reward.cost <= @child.balance %>
+                  <div class=" col-md-6">
+                    </br>
+                    <%= link_to 'Request',{:controller => "rewards", :action => "store"},data: { confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } %>
+                    </div>
+                  <% else %>
                     "Too Poor"
-                  end
-                else
-                  #this is buying straight upppp
-                  if reward.cost <= @child.balance
-                    link_to 'Buy',{:controller => "rewards", :action => "redeem", :id => reward.id, :child => @child.id},data: { confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } 
-                  else
+                  <% end %>
+            <% else %>
+                  <!--this is buying straight upppp-->
+                  <% if reward.cost <= @child.balance %>
+                  <div class=" col-md-6">
+                    </br>
+                    <%= link_to 'Buy',{:controller => "rewards", :action => "redeem", :id => reward.id, :child => @child.id},data: { confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } %>
+                    </div>
+                  <% else %>
                     "Too Poor"
-                end
-                end%></td>
+                <% end %>
+        <% end%></td>
       </tr>
     <% end %>
-    <% end %>
-  </tbody>
-</table>
+         
+
+          <!--<div class=" col-md-4">-->
+          <!--  <p style="color: white">-->
+          <!--    <i class="fa fa-child fa-lg"></i> -->
+          <!--  </p>-->
+          <!--  <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i></p>-->
+          <!--</div>-->
+          <div class=" col-md-1">
+            </div>
+            
+          <div class=" col-md-1">
+            </div>
+            
+          <div class=" col-md-1">
+            </div>
+          <div class=" col-md-1">
+            
+          </div>
+          
+          
+          <div class="col-md-1" style="padding-top: 0px">
+    
+         
+          </div>
+
+        </div>
+      </div>
+ 
+    
+    
+    <% end %> 
+<!--  </tbody>-->
+<!--</table>-->
 
 <%end #Sublogin enforcement. LEAVE A NEW LINE AFTER THIS%>

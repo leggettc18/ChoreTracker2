@@ -1,9 +1,9 @@
 <% loginstatus = getSubLoggedUser() %>
 
-<h1>Child pin reset page</h1>
+<h1>Child PIN Reset</h1>
 
 <% if(!loginstatus or loginstatus[:type] != "parent") %>
-   <h2>You must be logged in as a parent to use this page</h2>
+   <h2>You must be logged in as a parent to use this page.</h2>
    <script type="text/javascript">
      window.location.href="/sublogin/?type=parent"  // put your correct path in a string here
    </script>

@@ -1,12 +1,12 @@
 <% loginstatus = getSubLoggedUser() %>
 <% if(!loginstatus) %>
-   <h1>You must be logged in as a parent or child to use this page</h1>
+   <h1>You must be logged in as a parent or child to use this page.</h1>
    <h2><a href="/sublogin/">You may login here!</a></h2>
 <% else %>
     <% if loginstatus[:type] == "parent" %>
-        <h1>Pin change page for the parent</h1>
+        <h1>PIN change for Parent</h1>
     <% elsif loginstatus[:type] == "child"%>
-        <h1>Pin change page for <%= Child.find_by_id(loginstatus[:id].to_i).name %></h1>
+        <h1>PIN change for <%= Child.find_by_id(loginstatus[:id].to_i).name %></h1>
     <% else %>
     <% throw "invalidAccountTypeException"%>
     <% end %>
