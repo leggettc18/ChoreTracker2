@@ -10,6 +10,8 @@
   </script>
 
 <% else %>
+
+<div class="col-md-6 col-md-offset-3">
   <h1>Approval Page</h1> 
    
   <div class="tab">
@@ -19,67 +21,183 @@
     </ul>
  
   <div class = "tab_content">
-  <div class = "tabs_item">
-   <table style="width:100%">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Coins</th>
-      <th>Due Date</th>
-      <th>Repeat?</th>
-      <th>Child</th>
-      <th>Options</th>
-    </tr>
-  </thead>
+    
+  <div class = "tabs_item"> <!-- chore approvals -->
+  <!-- <table style="width:100%">-->
+  <!--<thead>-->
+  <!--  <tr>-->
+  <!--    <th>Name</th>-->
+  <!--    <th>Coins</th>-->
+  <!--    <th>Due Date</th>-->
+  <!--    <th>Repeat?</th>-->
+  <!--    <th>Child</th>-->
+  <!--    <th>Options</th>-->
+  <!--  </tr>-->
+  <!--</thead>-->
 
 <!--pending approval bool value. Child must first submit "completed" chore for parent to review-->
 
-  <tbody>
-    <% @chores.made_by_parent(current_parent).each do |chore| %>
-      <%if chore.pending_approval%>  <!--if chore.needs_approval && !chore.completed-->
-          <tr>
-  <td><%= chore.name  %> </td>
-  <td><%= chore.coins %></td>
-  <td><%= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>
-  <td><%= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>
-  <td><%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></td>
-  <td colspan="2"><%= link_to "Approve", {:controller => "chores", :action => "complete", :id => chore.id, :child => chore.child_id } %>
-  &nbsp-&nbsp<%= link_to "Deny", {:controller => "chores", :action => "deny", :id => chore.id } %></td>
-          </tr>
-       <% end %>  
-    <% end %>
-  </tbody>
-</table>
+  <!--<tbody>-->
+  <% if @chores.made_by_parent(current_parent).where(:pending_approval => true).count > 0 %>
+    <% @chores.made_by_parent(current_parent).where(:pending_approval => true).each do |chore| %>
+    
+      <%#if chore.pending_approval%>   
+      
+    <div class="index-wrapper">
+        <%# if chore.completed == false %>
+        <div class="row chore">
+
+
+
+
+          <div class=" col-md-4">
+            <h2 class="chore-title" style="text-align: left;"><%=  chore.name %></h2>
+          </div>
+
+          <!--<div class=" col-md-4">-->
+          <!--  <p style="color: white">-->
+          <!--    <i class="fa fa-child fa-lg"></i> -->
+          <!--  </p>-->
+          <!--  <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i></p>-->
+          <!--</div>-->
+           <div class=" col-md-1" style="padding-top: 10px;">
+            <h3> <%= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></h3>
+            </div>
+           
+          <div class=" col-md-3" style="padding-top: 5px;">
+            <p style="color: white" ><img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="Coins" height="28" width="28"> x <%=  chore.coins %></p>
+            </div>
+            
+         
+          <div class=" col-md-2" style="padding-top: 10px;">
+            <%= link_to "Approve", {:controller => "chores", :action => "complete", :id => chore.id, :child => chore.child_id } %>
+          </div>
+          
+          
+          <div class="col-md-1" style="padding-top: 10px;">
+            <%= link_to "Deny", {:controller => "chores", :action => "deny", :id => chore.id } %>
+          </div>
+
+        </div>
+      </div>
+    
+     <!--if chore.needs_approval && !chore.completed-->
+      
+    
+      
+  <!--        <tr>-->
+  <!--<td><%#= chore.name  %> </td>-->
+  <!--<td><%#= chore.coins %></td>-->
+  <!--<td><%#= chore.due_date ? chore.due_date.to_formatted_s(:long_ordinal) : "None" %></td>-->
+  <!--<td><%#= chore.repeat_type != "No Repeat" ? 'Yes' : 'No' %></td>-->
+  <!--<td><%#= chore.child_id ? Child.find(chore.child_id).name : 'Unassigned' %></td>-->
+  <!--<td colspan="2"><%#= link_to "Approve", {:controller => "chores", :action => "complete", :id => chore.id, :child => chore.child_id } %>-->
+  <!--&nbsp-&nbsp<%#= link_to "Deny", {:controller => "chores", :action => "deny", :id => chore.id } %></td>-->
+  <!--        </tr>-->
+       <%# end %>  
+    <% end %>  <!-- end do loop -->
+   <% else %>
+   <h2> You have no pending Chore approvals.</h2>
+   <% end %>
+<!--  </tbody>-->
+<!--</table>-->
 
   </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <div class = "tabs_item" >
-    <table style="width:100%">
-        <thead>
-          <tr>
-              <th>Name</th>
-              <th>Cost</th>
-              <th>Child</th>
-              <th>Options</th>
-          </tr>
-        </thead>
+    <!--<table style="width:100%">-->
+    <!--    <thead>-->
+    <!--      <tr>-->
+    <!--          <th>Name</th>-->
+    <!--          <th>Cost</th>-->
+    <!--          <th>Child</th>-->
+    <!--          <th>Options</th>-->
+    <!--      </tr>-->
+    <!--    </thead>-->
       
-        <tbody>
-          <% @rewards.made_by_parent(current_parent).each do |reward| %>
-              <%if reward.pending_approval? %>
-                <tr>
-  <td><%= reward.name %></td>
-  <td><%= reward.cost %></td>
-  <td><%= reward.child_id ? Child.find(reward.child_id).name : 'Unassigned' %></td>
-  <td colspan="2"><%= link_to "Approve", {:controller => "rewards", :action => "approve", :id => reward.id} %>&nbsp-&nbsp
-  <%= link_to "Deny", {:controller => "rewards", :action => "deny", :id => reward.id, :child => reward.child_id }%></td>
-                </tr>
-              <% end %>
+    <!--    <tbody>-->
+      <% if @rewards.made_by_parent(current_parent).where(:pending_approval => true).count > 0 %>
+          <% @rewards.made_by_parent(current_parent).where(:pending_approval => true).each do |reward| %>
+          
+          
+          
+          
+           <div class="index-wrapper">
+        <%# if chore.completed == false %>
+        <div class="row chore">
+
+
+
+
+          <div class=" col-md-4">
+            <h2 class="chore-title" style="text-align: left;"><%= reward.name %></h2>
+          </div>
+
+          <!--<div class=" col-md-4">-->
+          <!--  <p style="color: white">-->
+          <!--    <i class="fa fa-child fa-lg"></i> -->
+          <!--  </p>-->
+          <!--  <p style="color: white"><i class="fa fa-star fa-lg" style="color: gold"></i></p>-->
+          <!--</div>-->
+           <div class=" col-md-1" style="padding-top: 10px;">
+            <h3><%= reward.child_id ? Child.find(reward.child_id).name : 'Unassigned' %></h3>
+            </div>
+           
+          <div class=" col-md-3" style="padding-top: 5px;">
+            <p style="color: white" ><img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="Coins" height="28" width="28"> x <%=  reward.cost %></p>
+            </div>
+            
+         
+          <div class=" col-md-2" style="padding-top: 10px;">
+            <%= link_to "Approve", {:controller => "rewards", :action => "approve", :id => reward.id} %>
+          </div>
+          
+          
+          <div class="col-md-1" style="padding-top: 10px;">
+            <%= link_to "Deny", {:controller => "rewards", :action => "deny", :id => reward.id, :child => reward.child_id }%>
+          </div>
+
+        </div>
+      </div>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+             
+  <!--              <tr>-->
+  <!--<td><%#= reward.name %></td>-->
+  <!--<td><%#= reward.cost %></td>-->
+  <!--<td><%#= reward.child_id ? Child.find(reward.child_id).name : 'Unassigned' %></td>-->
+  <!--<td colspan="2"><%#= link_to "Approve", {:controller => "rewards", :action => "approve", :id => reward.id} %>&nbsp-&nbsp-->
+  <!--<%#= link_to "Deny", {:controller => "rewards", :action => "deny", :id => reward.id, :child => reward.child_id }%></td>-->
+  <!--              </tr>-->
+              
           <% end %>
-        </tbody>
-      </table>
+          <% else %>
+            <h2>You have no pending Reward approvals.</h2>
+          <% end %><!-- end do loop -->
+      <!--  </tbody>-->
+      <!--</table>-->
       
 
-  <p id="notice"><%= notice %></p>
+  <!--<p id="notice"><%#= notice %></p>-->
   
     </div>
 </div> 

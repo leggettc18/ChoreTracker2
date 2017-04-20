@@ -126,7 +126,10 @@ table, th, td{
 }
 
 .jumbotron a:link{
-    color: purple;
+    color: black;
+}
+.jumbotron a:visited{
+    color: black;
 }
 
 .jumbotron ul{
@@ -199,12 +202,12 @@ a:link {
 
 /* visited link */
 a:visited {
-    color: green;
+    color: white;
 }
 
 /* mouse over link */
 a:hover {
-    color: #3efd7a;
+    color: green;
 }
 
 /* selected link */
