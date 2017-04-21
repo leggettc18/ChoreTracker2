@@ -21,13 +21,14 @@
 
 <div class="col-md-6 col-md-offset-3">
     <% @rewards.each do |reward| %>
+    <% if reward.redeemed == false %>
      <div class="index-wrapper">
         <%# if chore.completed == false %>
         <div class="row chore">
 
 
 
-          <% if reward.redeemed == false %>
+          
    <div class=" col-md-6">
             <h2 class="chore-title" style="text-align: left;"><%=  reward.name %></h2>
           </div>
