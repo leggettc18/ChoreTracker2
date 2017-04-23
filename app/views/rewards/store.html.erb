@@ -37,12 +37,16 @@
              <p style="color: white" ><img src="http://opengameart.org/sites/default/files/styles/medium/public/Coin_0.png" alt="Coins" height="28" width="28"> x <%=  reward.cost %></p>
           </div>
         
-        <% if reward.auto_approve? %>
-               
-                  <% if reward.cost <= @child.balance %>
+        <% if reward.approval? %>
+                  <% if reward.pending_approval? %>
                   <div class=" col-md-6">
                     </br>
-                    <%= link_to 'Request',{:controller => "rewards", :action => "store"},data: { confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } %>
+                    "Pending"
+                    </div>
+                  <% elsif reward.cost <= @child.balance %>
+                  <div class=" col-md-6">
+                    </br>
+                    <%= link_to 'Submit',{:controller => "rewards", :action => "pending", :id => reward.id, :child => @child.id},data: { confirm: "After purchase your balance will be: #{@child.balance - reward.cost}" } %>
                     </div>
                   <% else %>
                     "Too Poor"

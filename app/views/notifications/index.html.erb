@@ -29,9 +29,9 @@
             </td>
             <td>
                 <% if notif.chore_approval? %>
-                <%= link_to "Approval Page" %> <%# Replace with Chore Approval Page Path %>
+                <%= link_to "Approval Page", approval_index_path %> 
                 <% elsif notif.reward_approval? %>
-                <%= link_to "Approval Page" %> <%# Replace with Reward Approval Page Path %>
+                <%= link_to "Approval Page", approval_index_path %>
                 <% elsif notif.new_chore? %>
                 <%= link_to "Have a look!", chore_path(notif.object_id), {:notif_id => notif.id} %>
                 <% elsif notif.new_reward? %>

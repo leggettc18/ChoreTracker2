@@ -74,7 +74,7 @@ class RewardsController < ApplicationController
     approvedReward.redeemed = true
     approvedReward.save
     
-    Notification.notif_reward_approved(approvedReward.id, approvedReward.child_id)
+    Notification.reward_approved(approvedReward.id, approvedReward.child_id)
     
     redirect_to :back, notice: 'Reward was successfully approved.'
     
@@ -113,6 +113,8 @@ class RewardsController < ApplicationController
         format.json { render json: @reward.errors, status: :unprocessable_entity }
       end
     end
+    
+    Notification.new_reward(@reward.id, @reward.child_id)
   end
 
   # PATCH/PUT /rewards/1
@@ -173,6 +175,6 @@ class RewardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reward_params
-      params.fetch(:reward, {}).permit(:cost, :name, :child_id, :parent_id, :auto_approve)
+      params.fetch(:reward, {}).permit(:cost, :name, :child_id, :parent_id, :approval)
     end
 end

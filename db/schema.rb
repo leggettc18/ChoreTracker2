@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20170414202612) do
 
   create_table "rewards", force: :cascade do |t|
     t.integer  "cost",             default: 0,     null: false
-    t.boolean  "auto_approve",     default: false, null: false
+    t.boolean  "approval",         default: false, null: false
     t.integer  "parent_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
