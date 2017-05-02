@@ -54,7 +54,9 @@
                           <div class="row chore">
                             <div class=".col-xs-6 col-md-2">
                               <p id="everybodyDONTdance">
-                                <% if chore.needs_approval == true %>
+                                <% if chore.pending_approval == true %>
+                                <%= '<i class="fa fa-clock-o fa-3x"></i>'.html_safe %>
+                                <% elsif chore.needs_approval == true %>
                                 <%= link_to '<i class="fa fa-check fa-3x"></i>'.html_safe, {:controller => "chores", :action => "pending", :id => chore.id, :child => @child.id} %>
                                 <% else %>
                                 <%= link_to '<i class="fa fa-check fa-3x"></i>'.html_safe, {:controller => "chores", :action => "complete", :id => chore.id, :child => @child.id} %>
