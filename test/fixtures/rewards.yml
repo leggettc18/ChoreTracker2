@@ -1,11 +1,99 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+Reward_1:
+  id: 1
+  cost: 0
+  parent_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-04-26 14:36:53.628929000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 22:02:47.369611000 Z
+    zone: *2
+    time: *3
+  name: Test
+  child_id: 1
+  redeemed: true
+  redeemed_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-02 22:02:47.368387000 Z
+    zone: *2
+    time: *4
+
+
+Reward_2:
+  id: 2
+  cost: 100
+  parent_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:45:43.692402000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:57:10.129875000 Z
+    zone: *2
+    time: *3
+  name: Xbox Time
+  child_id: 1
+  redeemed: true
+  redeemed_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-02 18:57:10.128879000 Z
+    zone: *2
+    time: *4
+
+
+Reward_3:
+  id: 3
+  cost: 50
+  approval: true
+  parent_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:46:40.801355000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:46:40.801355000 Z
+    zone: *2
+    time: *3
+  name: "$20 Allowance"
+  child_id: 2
+
+
+Reward_4:
+  id: 4
+  cost: 50
+  approval: true
+  parent_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:47:04.141295000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 22:03:52.798392000 Z
+    zone: *2
+    time: *3
+  name: "$20 Allowance"
+  child_id: 2
+  redeemed: true
+
+
+Reward_5:
+  id: 5
+  cost: 150
+  approval: true
+  parent_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:47:26.990090000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:47:26.990090000 Z
+    zone: *2
+    time: *3
+  name: New Videogame
+  child_id: 1
+

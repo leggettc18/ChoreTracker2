@@ -1,39 +1,2463 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+ 
+Chore_1:
+  id: 1
+  child_id: 2
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:56.893668000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:43:37.069832000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-05 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: 
-    coins: 10
-    description: test
-    needs_approval: false
-    repeat_type: 0
-    repeat_data: 0
-    due_date: <%= DateTime.now.tomorrow %>
-    child_id: 1
-    parent_id: 1
-    id: 1
-# column: value
-#
-two:
-    coins: 10
-    description: test
-    needs_approval: true
-    repeat_type: 1
-    repeat_data: 0
-    due_date: <%= 2.weeks.ago %>
-    child_id: 1
-    parent_id: 1
-    id: 2
-# column: value
-three:
-    coins: 5
-    description: test
-    needs_approval: true
-    repeat_type: 2
-    repeat_data: 5
-    due_date: <%= DateTime.now %>
-    child_id: 2
-    parent_id: 2
-    id: 3
+ 
+Chore_2:
+  id: 2
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:56.905733000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:56.905733000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-06 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_3:
+  id: 3
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:56.915593000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:56.915593000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-07 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_4:
+  id: 4
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.012300000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.012300000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-08 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_5:
+  id: 5
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.021070000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.021070000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-09 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_6:
+  id: 6
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.029722000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.029722000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-10 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_7:
+  id: 7
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.039759000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.039759000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-11 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_8:
+  id: 8
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.048447000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.048447000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-12 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_9:
+  id: 9
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.057515000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.057515000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-13 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_10:
+  id: 10
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.069018000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.069018000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-14 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_11:
+  id: 11
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.077376000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.077376000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-15 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_12:
+  id: 12
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.087135000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.087135000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-16 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_13:
+  id: 13
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.095708000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.095708000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-17 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_14:
+  id: 14
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.104193000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.104193000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-18 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_15:
+  id: 15
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.112008000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.112008000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-19 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_16:
+  id: 16
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.119762000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.119762000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-20 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+
+Chore_17:
+  id: 17
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.127633000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.127633000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-21 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_18:
+  id: 18
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.135477000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.135477000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-22 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_19:
+  id: 19
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.143659000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.143659000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-23 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_20:
+  id: 20
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.152167000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.152167000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-24 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_21:
+  id: 21
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.159936000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.159936000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-25 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_22:
+  id: 22
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.167804000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.167804000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-26 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_23:
+  id: 23
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.175581000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.175581000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-27 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_24:
+  id: 24
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.183721000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.183721000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-28 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_25:
+  id: 25
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.192214000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.192214000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-29 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_26:
+  id: 26
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.199851000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.199851000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-30 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_27:
+  id: 27
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.208138000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.208138000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 1
+
+ 
+Chore_28:
+  id: 28
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.003541000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:49:30.850653000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-03 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  completed: true
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+  completed_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2017-05-02 18:49:30.849723000 Z
+    zone: *2
+    time: *6
+
+ 
+Chore_29:
+  id: 29
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.015143000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.015143000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-10 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_30:
+  id: 30
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.024940000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.024940000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-17 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_31:
+  id: 31
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.036632000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.036632000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-24 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_32:
+  id: 32
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.050478000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.050478000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_33:
+  id: 33
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.059690000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.059690000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-06-07 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_34:
+  id: 34
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.067974000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.067974000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-06-14 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_35:
+  id: 35
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.076327000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.076327000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-06-21 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_36:
+  id: 36
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.088293000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.088293000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-06-28 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_37:
+  id: 37
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.096330000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.096330000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-07-05 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_38:
+  id: 38
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.109633000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.109633000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-07-12 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_39:
+  id: 39
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.120271000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.120271000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-07-19 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_40:
+  id: 40
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.145947000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.145947000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-07-26 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_41:
+  id: 41
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.157326000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.157326000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-08-02 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_42:
+  id: 42
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.170289000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.170289000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-08-09 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_43:
+  id: 43
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.182339000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.182339000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-08-16 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_44:
+  id: 44
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.194147000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.194147000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-08-23 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_45:
+  id: 45
+  child_id: 2
+  coins: 75
+  name: Scoop the Litterbox
+  description: This cat smells really bad
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.206668000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.206668000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-08-30 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 28
+
+ 
+Chore_46:
+  id: 46
+  child_id: 1
+  coins: 100
+  name: Take out the Trash
+  description: Trash needs to be taken out every Thursday by 5:00
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:45:18.380392000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 22:03:25.526320000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  needs_approval: true
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-04 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  completed: true
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-01 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 46
+  completed_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2017-05-02 22:03:25.525197000 Z
+    zone: *2
+    time: *6
+
+ 
+Chore_47:
+  id: 47
+  child_id: 1
+  coins: 100
+  name: Take out the Trash
+  description: Trash needs to be taken out every Thursday by 5:00
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:45:18.391659000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:45:18.391659000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  needs_approval: true
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-11 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-01 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 46
+
+ 
+Chore_48:
+  id: 48
+  child_id: 1
+  coins: 100
+  name: Take out the Trash
+  description: Trash needs to be taken out every Thursday by 5:00
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:45:18.400567000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:45:18.400567000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  needs_approval: true
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-18 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-01 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 46
+
+ 
+Chore_49:
+  id: 49
+  child_id: 1
+  coins: 100
+  name: Take out the Trash
+  description: Trash needs to be taken out every Thursday by 5:00
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:45:18.411326000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:45:18.411326000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  needs_approval: true
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-25 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-01 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 46
+
+ 
+Chore_50:
+  id: 50
+  child_id: 1
+  coins: 100
+  name: Take out the Trash
+  description: Trash needs to be taken out every Thursday by 5:00
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:45:18.420005000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:45:18.420005000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  needs_approval: true
+  repeat_type: Weekly
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-06-01 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-01 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 46
+
+ 
+Chore_51:
+  id: 51
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.727953000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:49:13.119580000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-02 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  completed: true
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+  completed_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2017-05-02 18:49:13.118645000 Z
+    zone: *2
+    time: *6
+
+ 
+Chore_52:
+  id: 52
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.739541000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 22:03:05.199415000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-03 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  completed: true
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+  completed_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2017-05-02 22:03:05.198016000 Z
+    zone: *2
+    time: *6
+
+ 
+Chore_53:
+  id: 53
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.747628000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.747628000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-04 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_54:
+  id: 54
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.809309000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.809309000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-05 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_55:
+  id: 55
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.819933000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.819933000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-06 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_56:
+  id: 56
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.827587000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.827587000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-07 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_57:
+  id: 57
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.835630000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.835630000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-08 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_58:
+  id: 58
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.843606000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.843606000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-09 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_59:
+  id: 59
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.851807000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.851807000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-10 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_60:
+  id: 60
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.860033000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.860033000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-11 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_61:
+  id: 61
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.868272000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.868272000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-12 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_62:
+  id: 62
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.877738000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.877738000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-13 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_63:
+  id: 63
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.888064000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.888064000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-14 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_64:
+  id: 64
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.896058000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.896058000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-15 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_65:
+  id: 65
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.904813000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.904813000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-16 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_66:
+  id: 66
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.913566000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.913566000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-17 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_67:
+  id: 67
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.923056000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.923056000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-18 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_68:
+  id: 68
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.932504000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.932504000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-19 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_69:
+  id: 69
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.943511000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.943511000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-20 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_70:
+  id: 70
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.951468000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.951468000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-21 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_71:
+  id: 71
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.959552000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.959552000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-22 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_72:
+  id: 72
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.968692000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.968692000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-23 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_73:
+  id: 73
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.977580000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.977580000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-24 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_74:
+  id: 74
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.987894000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.987894000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-25 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_75:
+  id: 75
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:50.995737000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:50.995737000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-26 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_76:
+  id: 76
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:51.004074000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:51.004074000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-27 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_77:
+  id: 77
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:51.011852000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:51.011852000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-28 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_78:
+  id: 78
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:51.019756000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:51.019756000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-29 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_79:
+  id: 79
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:51.027987000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:51.027987000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-30 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_80:
+  id: 80
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:51.036429000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:51.036429000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_81:
+  id: 81
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:51.047068000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:51.047068000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-06-01 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_82:
+  id: 82
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:51.056361000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:51.056361000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-06-02 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+ 
+Chore_83:
+  id: 83
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:51.065619000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:51.065619000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+
+Chore_84:
+  id: 84
+  child_id: 1
+  coins: 100
+  name: Walk the Dog
+  description: Dog needs to go out every day
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2016-05-02 18:48:51.065619000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2016-05-02 18:48:51.065619000 Z
+    zone: *2
+    time: *3
+  parent_id: 1
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2016-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-06-03 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 51
+   
+Chore_85:
+  id: 85
+  child_id: 2
+  coins: 25
+  name: Sweep the Floors
+  description: These floors need to be spotless!
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:56.893668000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:43:37.069832000 Z
+    zone: *2
+    time: *3
+  parent_id: 2
+  repeat_type: Daily
+  repeat_data: 0
+  due_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2017-05-05 00:00:00.000000000 Z
+    zone: *2
+    time: *4
+  repeat_until: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2017-05-31 00:00:00.000000000 Z
+    zone: *2
+    time: *5
+  group_id: 52
+
+

@@ -50,7 +50,7 @@ class RewardsController < ApplicationController
     redeemReward = Reward.find(params[:id])
     decrementChild = Child.find(params[:child])
     
-    if decrementChild.balance > redeemReward.cost
+    if decrementChild.balance >= redeemReward.cost
       redeemReward.pending_approval = false
       
       redeemReward.redeemed = true

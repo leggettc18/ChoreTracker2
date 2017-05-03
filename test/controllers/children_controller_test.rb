@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class ChildrenControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
-    @child = children(:one)
+    sign_in parents(:Parent_1)
+    @child = children(:Child_1)
   end
 
   test "should get index" do
@@ -17,10 +19,10 @@ class ChildrenControllerTest < ActionDispatch::IntegrationTest
 
   test "should create child" do
     assert_difference('Child.count') do
-      post children_url, params: { child: {  } }
+      post children_url, params: { child: { :name => "test" } }
     end
 
-    assert_redirected_to child_url(Child.last)
+    assert_redirected_to children_url
   end
 
   test "should show child" do
@@ -35,7 +37,7 @@ class ChildrenControllerTest < ActionDispatch::IntegrationTest
 
   test "should update child" do
     patch child_url(@child), params: { child: {  } }
-    assert_redirected_to child_url(@child)
+    assert_redirected_to children_url
   end
 
   test "should destroy child" do

@@ -1,13 +1,234 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  unread: false
-  type: 1
+Notification_1:
+  id: 1
+  unread: true
+  object_type: new_reward
   object_id: 1
-  parent_id: 1
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-04-26 14:36:53.688958000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-04-26 14:36:53.688958000 Z
+    zone: *2
+    time: *3
+  user_type: child
 
-two:
-  unread: false
-  type: 1
+
+Notification_2:
+  id: 2
+  unread: true
+  object_type: new_chore
   object_id: 1
-  parent_id: 1
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.227501000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.227501000 Z
+    zone: *2
+    time: *3
+  user_type: child
+
+
+Notification_3:
+  id: 3
+  unread: true
+  object_type: new_chore
+  object_id: 1
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:42:57.239989000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:42:57.239989000 Z
+    zone: *2
+    time: *3
+  user_type: child
+
+
+Notification_4:
+  id: 4
+  unread: true
+  object_type: new_chore
+  object_id: 28
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:44:35.230507000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:44:35.230507000 Z
+    zone: *2
+    time: *3
+  user_type: child
+
+
+Notification_5:
+  id: 5
+  unread: true
+  object_type: new_chore
+  object_id: 46
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:45:18.428397000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:45:18.428397000 Z
+    zone: *2
+    time: *3
+  user_type: child
+
+
+Notification_6:
+  id: 6
+  unread: true
+  object_type: new_reward
+  object_id: 2
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:45:43.713647000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:45:43.713647000 Z
+    zone: *2
+    time: *3
+  user_type: child
+
+
+Notification_7:
+  id: 7
+  unread: true
+  object_type: new_reward
+  object_id: 3
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:46:40.813480000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:46:40.813480000 Z
+    zone: *2
+    time: *3
+  user_type: child
+
+
+Notification_8:
+  id: 8
+  unread: true
+  object_type: new_reward
+  object_id: 4
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:47:04.153685000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:47:04.153685000 Z
+    zone: *2
+    time: *3
+  user_type: child
+
+
+Notification_9:
+  id: 9
+  unread: true
+  object_type: new_reward
+  object_id: 5
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:47:27.002354000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:47:27.002354000 Z
+    zone: *2
+    time: *3
+  user_type: child
+
+
+Notification_10:
+  id: 10
+  unread: true
+  object_type: new_chore
+  object_id: 51
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:48:51.075536000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:48:51.075536000 Z
+    zone: *2
+    time: *3
+  user_type: child
+
+
+Notification_11:
+  id: 11
+  unread: true
+  object_type: chore_approval
+  object_id: 46
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 18:49:19.836580000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 18:49:19.836580000 Z
+    zone: *2
+    time: *3
+  user_type: parent_user
+
+
+Notification_12:
+  id: 12
+  unread: true
+  object_type: reward_approval
+  object_id: 4
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 22:03:39.877988000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 22:03:39.877988000 Z
+    zone: *2
+    time: *3
+  user_type: parent_user
+
+
+Notification_13:
+  id: 13
+  unread: true
+  object_type: reward_approved
+  object_id: 4
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-05-02 22:03:52.809804000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-05-02 22:03:52.809804000 Z
+    zone: *2
+    time: *3
+  user_type: child
+
