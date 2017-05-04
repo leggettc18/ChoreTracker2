@@ -1,5 +1,7 @@
 class Child < ApplicationRecord
  
+ validates_presence_of :name
+ 
  #because they dont match, rename
   # self.table_name = "children"
  #this was wrong ^
