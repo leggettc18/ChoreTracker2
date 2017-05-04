@@ -3,8 +3,8 @@ require 'test_helper'
 class ChoresControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   setup do
-    sign_in parents(:one)
-    @chore = chores(:one)
+    sign_in parents(:Parent_1)
+    @chore = chores(:Chore_1)
   end
 
   test "should get index" do
@@ -19,7 +19,7 @@ class ChoresControllerTest < ActionDispatch::IntegrationTest
 
   test "should create chore" do
     assert_difference('Chore.count') do
-      post chores_url, params: { chore: {  } }
+      post chores_url, params: { chore: { :name => 'test', :coins => 10, :due_date => DateTime.now + 7 } }
     end
 
     assert_redirected_to chore_url(Chore.last)

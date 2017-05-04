@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class RewardsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
-    @reward = rewards(:one)
+    sign_in parents(:Parent_1)
+    @reward = rewards(:Reward_1)
   end
 
   test "should get index" do
