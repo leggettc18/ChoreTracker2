@@ -48,7 +48,7 @@
             <!--chores-->
             <div class="tabs_item">
               <div class="col-md-6 col-md-offset-3">
-                <% @chores = Chore.where(:child_id => @child.id).order(due_date: :asc).each do |chore| %>
+                <% @chores = Chore.where(child_id: @child.id).or(Chore.where(child_id: nil)).order(due_date: :asc).each do |chore| %>
                     <div class="index-wrapper">
                       <% if chore.completed == false %>
                           <div class="row chore">

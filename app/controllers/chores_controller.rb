@@ -48,30 +48,39 @@ class ChoresController < ApplicationController
   
   
   def complete
+    
     completeChore = Chore.find(params[:id])
+    
+    if(completeChore.child_id == nil)
+      completeChore.child_id = params[:child]
+    end
     
     completeChore.completed = true
     completeChore.completed_at = DateTime.now
     
     # flop pending_approval to false because it technically isn't pending approval. This also eases some searching done elsewhere.
     completeChore.pending_approval = false
-    
     completeChore.save
- 
-    
+     
     
     incrementChild = Child.find(params[:child])
     incrementChild.balance = incrementChild.balance + completeChore.coins
     incrementChild.save
     
+
     #Notification.chore_approved(completeChore.id, completeChore.child_id)   
        
-    redirect_to :back, notice: 'Chore was successfully completed.'
+    redirect_to :back, notice: "Chore was successfully approved"
     
   end
   
   def pending 
     pendingChore = Chore.find(params[:id])
+    
+    if(pendingChore.child_id == nil)
+      pendingChore.child_id = params[:child]
+    end
+    
     pendingChore.pending_approval = true
     pendingChore.save
     
